@@ -48,8 +48,8 @@ public class Mesario extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         ButConfig = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         txtUsuario = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -191,16 +191,15 @@ public class Mesario extends javax.swing.JFrame {
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Icon Usuario.png"))); // NOI18N
         jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 0, 70, 70));
 
+        txtUsuario.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        txtUsuario.setForeground(new java.awt.Color(4, 21, 111));
+        txtUsuario.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jPanel3.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 10, 160, 50));
+
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(4, 21, 111));
         jLabel6.setText("__________________________________________________________________");
         jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, 660, 90));
-
-        txtUsuario.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        txtUsuario.setForeground(new java.awt.Color(4, 21, 111));
-        txtUsuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txtUsuario.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel3.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 10, 160, 50));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

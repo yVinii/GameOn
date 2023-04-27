@@ -9,6 +9,7 @@ import Classes.Pessoa;
 public class Login extends javax.swing.JFrame {
     MySQL conectar = new MySQL();
     Pessoa p1 = new Pessoa();
+    
     public Login() {
         initComponents(); 
         Visivel.setVisible(false);

@@ -119,7 +119,6 @@ public class Estatistica extends javax.swing.JFrame {
 
         txtUsuario.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         txtUsuario.setForeground(new java.awt.Color(4, 21, 111));
-        txtUsuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txtUsuario.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jPanel1.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 10, 160, 50));
 
