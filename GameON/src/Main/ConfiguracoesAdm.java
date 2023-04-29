@@ -71,7 +71,9 @@ public class ConfiguracoesAdm extends javax.swing.JFrame {
         IconCamp = new javax.swing.JLabel();
         IconTimes = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         txtUsuario = new javax.swing.JLabel();
@@ -81,9 +83,7 @@ public class ConfiguracoesAdm extends javax.swing.JFrame {
         TxtSenha = new javax.swing.JLabel();
         ButMostrar = new javax.swing.JButton();
         ButEsconder = new javax.swing.JButton();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        ButTrocar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -206,9 +206,23 @@ public class ConfiguracoesAdm extends javax.swing.JFrame {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/logo-clara.png"))); // NOI18N
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 430, 140, 120));
 
-        jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
-        jTabbedPane1.setForeground(new java.awt.Color(4, 21, 111));
-        jTabbedPane1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Icon Fechar.png"))); // NOI18N
+        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel7MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 0, 110, 110));
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(4, 21, 111));
+        jLabel4.setText("_________________________________________________________________");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, 660, 90));
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(4, 21, 111));
+        jLabel8.setText("Conta.");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70, 180, 60));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -249,41 +263,32 @@ public class ConfiguracoesAdm extends javax.swing.JFrame {
                 ButMostrarActionPerformed(evt);
             }
         });
-        jPanel3.add(ButMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, 200, 60));
+        jPanel3.add(ButMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 320, 200, 60));
 
         ButEsconder.setBackground(new java.awt.Color(255, 255, 255));
         ButEsconder.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         ButEsconder.setForeground(new java.awt.Color(4, 21, 111));
         ButEsconder.setText("Esconder Senha");
-        ButEsconder.setBorder(null);
+        ButEsconder.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(4, 21, 111)));
         ButEsconder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ButEsconderActionPerformed(evt);
             }
         });
-        jPanel3.add(ButEsconder, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, 200, 60));
+        jPanel3.add(ButEsconder, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 320, 200, 60));
 
-        jTabbedPane1.addTab("Conta", jPanel3);
-
-        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel4.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jTabbedPane1.addTab("CRUD", jPanel4);
-
-        jPanel1.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 67, 660, 483));
-
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Icon Fechar.png"))); // NOI18N
-        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel7MouseClicked(evt);
+        ButTrocar.setBackground(new java.awt.Color(255, 255, 255));
+        ButTrocar.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        ButTrocar.setForeground(new java.awt.Color(4, 21, 111));
+        ButTrocar.setText("Trocar Senha");
+        ButTrocar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButTrocarActionPerformed(evt);
             }
         });
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 0, 110, 110));
+        jPanel3.add(ButTrocar, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 320, 200, 60));
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(4, 21, 111));
-        jLabel4.setText("__________________________________________________________________");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, 660, 90));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -382,14 +387,10 @@ public class ConfiguracoesAdm extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_ButInicioMouseClicked
 
-    private void ButEsconderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButEsconderActionPerformed
-        ButEsconder.setVisible(false);
-        ButEsconder.setEnabled(false);
-        ButMostrar.setVisible(true);
-        ButMostrar.setEnabled(true);
-        TxtSenha.setText(senhaCensura);
-        ImagemSenha.setIcon(Esconder);
-    }//GEN-LAST:event_ButEsconderActionPerformed
+    private void ButTrocarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButTrocarActionPerformed
+        TrocarSenhaAdm minhatela = new TrocarSenhaAdm(txtUsuario.getText());
+        minhatela.setVisible(true);
+    }//GEN-LAST:event_ButTrocarActionPerformed
 
     private void ButMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButMostrarActionPerformed
         ButEsconder.setVisible(true);
@@ -400,35 +401,16 @@ public class ConfiguracoesAdm extends javax.swing.JFrame {
         ImagemSenha.setIcon(Mostrar);
     }//GEN-LAST:event_ButMostrarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void ButEsconderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButEsconderActionPerformed
+        ButEsconder.setVisible(false);
+        ButEsconder.setEnabled(false);
+        ButMostrar.setVisible(true);
+        ButMostrar.setEnabled(true);
+        TxtSenha.setText(senhaCensura);
+        ImagemSenha.setIcon(Esconder);
+    }//GEN-LAST:event_ButEsconderActionPerformed
+                                
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ConfiguracoesAdm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ConfiguracoesAdm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ConfiguracoesAdm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ConfiguracoesAdm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new ConfiguracoesAdm("").setVisible(true);
@@ -444,6 +426,7 @@ public class ConfiguracoesAdm extends javax.swing.JFrame {
     private javax.swing.JLabel ButMesario;
     private javax.swing.JButton ButMostrar;
     private javax.swing.JLabel ButTimes;
+    private javax.swing.JButton ButTrocar;
     private javax.swing.JLabel IconCamp;
     private javax.swing.JLabel IconInicio;
     private javax.swing.JLabel IconJogadores;
@@ -458,11 +441,10 @@ public class ConfiguracoesAdm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel txtUsuario;
     // End of variables declaration//GEN-END:variables
 
