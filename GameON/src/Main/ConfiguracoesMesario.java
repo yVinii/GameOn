@@ -9,11 +9,17 @@ import javax.swing.JOptionPane;
 public class ConfiguracoesMesario extends javax.swing.JFrame {
     String senha;
     String senhaCensura;
+    String usuario;
     ImageIcon Esconder = new ImageIcon(this.getClass().getResource("/Imagens//Cadeado fechado.png"));
     ImageIcon Mostrar = new ImageIcon(this.getClass().getResource("/Imagens//Cadeado aberto.png"));
     MySQL conectar = new MySQL();
     public ConfiguracoesMesario(String usu) {
         initComponents();
+        usuario = usu;
+        ButAtualizar.setVisible(false);
+        ButAtualizar.setEnabled(false);
+        txtAtualizar.setVisible(false);
+        txtAtualizar.setEnabled(false);
         ButEsconder.setVisible(false);
         ButEsconder.setEnabled(false);
         txtUsuario.setText(usu);
@@ -49,6 +55,8 @@ public class ConfiguracoesMesario extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        ButAtualizar = new javax.swing.JLabel();
+        txtAtualizar = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         ButInicio = new javax.swing.JLabel();
@@ -77,6 +85,26 @@ public class ConfiguracoesMesario extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        ButAtualizar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ButAtualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Atualizar.png"))); // NOI18N
+        ButAtualizar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ButAtualizarMouseClicked(evt);
+            }
+        });
+        jPanel1.add(ButAtualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 80, 80, 80));
+
+        txtAtualizar.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        txtAtualizar.setForeground(new java.awt.Color(4, 21, 111));
+        txtAtualizar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtAtualizar.setText("Atualizar");
+        txtAtualizar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtAtualizarMouseClicked(evt);
+            }
+        });
+        jPanel1.add(txtAtualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 140, 120, 40));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI Black", 1, 34)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(4, 21, 111));
@@ -330,7 +358,81 @@ public class ConfiguracoesMesario extends javax.swing.JFrame {
     private void ButTrocarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButTrocarActionPerformed
         TrocarSenhaMesario minhatela = new TrocarSenhaMesario(txtUsuario.getText());
         minhatela.setVisible(true);
+        ButAtualizar.setVisible(true);
+        ButAtualizar.setEnabled(true);
+        txtAtualizar.setVisible(true);
+        txtAtualizar.setEnabled(true);
     }//GEN-LAST:event_ButTrocarActionPerformed
+
+    private void ButAtualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButAtualizarMouseClicked
+        this.conectar.conectaBanco();
+        try{
+            this.conectar.executarSQL(
+                "SELECT "
+                +"senha"
+                +" FROM "
+                +"mesario"
+                + " WHERE "
+                + " usuario = '" + usuario + "'"
+                + ";"
+            );
+            while(this.conectar.getResultSet().next()){
+                senha = this.conectar.getResultSet().getString(1);
+                senhaCensura = censurarTexto(senha);
+                TxtSenha.setText(senhaCensura);
+                ImagemSenha.setIcon(Esconder);
+                ButEsconder.setVisible(false);
+                ButEsconder.setEnabled(false);
+                ButMostrar.setVisible(true);
+                ButMostrar.setEnabled(true);
+                ButAtualizar.setVisible(false);
+                ButAtualizar.setEnabled(false);
+                txtAtualizar.setVisible(false);
+                txtAtualizar.setEnabled(false);
+            }
+
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null, "Erro ao buscar usuário!");
+        }finally{
+
+            this.conectar.fechaBanco();
+        }
+    }//GEN-LAST:event_ButAtualizarMouseClicked
+
+    private void txtAtualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtAtualizarMouseClicked
+        this.conectar.conectaBanco();
+        try{
+            this.conectar.executarSQL(
+                "SELECT "
+                +"senha"
+                +" FROM "
+                +"mesario"
+                + " WHERE "
+                + " usuario = '" + usuario + "'"
+                + ";"
+            );
+            while(this.conectar.getResultSet().next()){
+                senha = this.conectar.getResultSet().getString(1);
+                senhaCensura = censurarTexto(senha);
+                TxtSenha.setText(senhaCensura);
+                ImagemSenha.setIcon(Esconder);
+                ButEsconder.setVisible(false);
+                ButEsconder.setEnabled(false);
+                ButMostrar.setVisible(true);
+                ButMostrar.setEnabled(true);
+                ButAtualizar.setVisible(false);
+                ButAtualizar.setEnabled(false);
+                txtAtualizar.setVisible(false);
+                txtAtualizar.setEnabled(false);
+            }
+
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null, "Erro ao buscar usuário!");
+        }finally{
+
+            this.conectar.fechaBanco();
+        }
+    }//GEN-LAST:event_txtAtualizarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -368,6 +470,7 @@ public class ConfiguracoesMesario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel ButAtualizar;
     private javax.swing.JButton ButEsconder;
     private javax.swing.JLabel ButEstatistica;
     private javax.swing.JLabel ButInicio;
@@ -390,6 +493,7 @@ public class ConfiguracoesMesario extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JLabel txtAtualizar;
     private javax.swing.JLabel txtUsuario;
     // End of variables declaration//GEN-END:variables
 }
