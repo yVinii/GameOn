@@ -1,7 +1,8 @@
 package Main;
 
-import Classes.Pessoa;
+import Classes.*;
 import Conexões.MySQL;
+import java.awt.Component;
 import java.awt.HeadlessException;
 import java.awt.Toolkit;
 import static java.lang.System.exit;
@@ -43,7 +44,8 @@ public class Mesario extends javax.swing.JFrame {
                 model.addRow(new Object[]{
                 this.conectar.getResultSet().getString(1),
                 this.conectar.getResultSet().getString(2),
-                this.conectar.getResultSet().getString(3)
+                this.conectar.getResultSet().getString(3),
+                this.conectar.getResultSet().getString(4)
                 });     
             }
         } 
@@ -88,18 +90,14 @@ public class Mesario extends javax.swing.JFrame {
         TxtFieldUsuario = new javax.swing.JTextField();
         Adicionar = new javax.swing.JButton();
         Limpar = new javax.swing.JButton();
-        jPanel5 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
+        TxtFieldNome = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-        TxtFieldUsuario1 = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        ImagemSenha1 = new javax.swing.JLabel();
-        TxtFieldSenha1 = new javax.swing.JTextField();
-        Excluir = new javax.swing.JButton();
-        Limpar2 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        ExcluirBut = new javax.swing.JButton();
+        AtualizarBut = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -258,10 +256,10 @@ public class Mesario extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(4, 21, 111));
         jLabel9.setText("Usuário:");
-        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 200, 50));
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 30, 200, 50));
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Icon Usuario.png"))); // NOI18N
-        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 70, 70));
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 80, 70, 70));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(4, 21, 111));
@@ -295,7 +293,7 @@ public class Mesario extends javax.swing.JFrame {
         TxtFieldUsuario.setForeground(new java.awt.Color(4, 21, 111));
         TxtFieldUsuario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(4, 21, 111)));
         TxtFieldUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        jPanel2.add(TxtFieldUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, 190, 70));
+        jPanel2.add(TxtFieldUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 80, 190, 70));
 
         Adicionar.setBackground(new java.awt.Color(255, 255, 255));
         Adicionar.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -319,65 +317,22 @@ public class Mesario extends javax.swing.JFrame {
         });
         jPanel2.add(Limpar, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 310, 150, 70));
 
-        jTabbedPane1.addTab("Adicionar", jPanel2);
-
-        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel5.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(4, 21, 111));
-        jLabel11.setText("Usuário:");
-        jPanel5.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 200, 50));
+        jLabel11.setText("Nome:");
+        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 200, 50));
+
+        TxtFieldNome.setBackground(new java.awt.Color(255, 255, 255));
+        TxtFieldNome.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        TxtFieldNome.setForeground(new java.awt.Color(4, 21, 111));
+        TxtFieldNome.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(4, 21, 111)));
+        TxtFieldNome.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        jPanel2.add(TxtFieldNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, 190, 70));
 
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Icon Usuario.png"))); // NOI18N
-        jPanel5.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 70, 70));
+        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 70, 70));
 
-        TxtFieldUsuario1.setBackground(new java.awt.Color(255, 255, 255));
-        TxtFieldUsuario1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        TxtFieldUsuario1.setForeground(new java.awt.Color(4, 21, 111));
-        TxtFieldUsuario1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(4, 21, 111)));
-        TxtFieldUsuario1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        jPanel5.add(TxtFieldUsuario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, 190, 70));
-
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(4, 21, 111));
-        jLabel3.setText("Senha:");
-        jPanel5.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, 200, 50));
-
-        ImagemSenha1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Cadeado fechado.png"))); // NOI18N
-        jPanel5.add(ImagemSenha1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, 70, 70));
-
-        TxtFieldSenha1.setBackground(new java.awt.Color(255, 255, 255));
-        TxtFieldSenha1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        TxtFieldSenha1.setForeground(new java.awt.Color(4, 21, 111));
-        TxtFieldSenha1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(4, 21, 111)));
-        TxtFieldSenha1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        jPanel5.add(TxtFieldSenha1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 210, 190, 70));
-
-        Excluir.setBackground(new java.awt.Color(255, 255, 255));
-        Excluir.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        Excluir.setForeground(new java.awt.Color(4, 21, 111));
-        Excluir.setText("Excluir");
-        Excluir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ExcluirActionPerformed(evt);
-            }
-        });
-        jPanel5.add(Excluir, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 310, 150, 70));
-
-        Limpar2.setBackground(new java.awt.Color(255, 255, 255));
-        Limpar2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        Limpar2.setForeground(new java.awt.Color(4, 21, 111));
-        Limpar2.setText("Limpar");
-        Limpar2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Limpar2ActionPerformed(evt);
-            }
-        });
-        jPanel5.add(Limpar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 310, 150, 70));
-
-        jTabbedPane1.addTab("Excluir", jPanel5);
+        jTabbedPane1.addTab("Adicionar", jPanel2);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -390,11 +345,11 @@ public class Mesario extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Usuário", "Senha"
+                "ID", "Nome", "Usuário", "Senha"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -406,20 +361,52 @@ public class Mesario extends javax.swing.JFrame {
         jTable1.setSelectionForeground(new java.awt.Color(255, 255, 255));
         jScrollPane1.setViewportView(jTable1);
 
+        ExcluirBut.setBackground(new java.awt.Color(255, 255, 255));
+        ExcluirBut.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        ExcluirBut.setForeground(new java.awt.Color(4, 21, 111));
+        ExcluirBut.setText("Excluir");
+        ExcluirBut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ExcluirButActionPerformed(evt);
+            }
+        });
+
+        AtualizarBut.setBackground(new java.awt.Color(255, 255, 255));
+        AtualizarBut.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        AtualizarBut.setForeground(new java.awt.Color(4, 21, 111));
+        AtualizarBut.setLabel("Atualizar\n");
+        AtualizarBut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AtualizarButActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 640, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 553, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(AtualizarBut, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ExcluirBut, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 439, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(172, 172, 172)
+                .addComponent(ExcluirBut, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
+                .addComponent(AtualizarBut, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Tabela", jPanel1);
 
-        jPanel3.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 70, 640, 480));
+        jPanel3.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 70, 650, 480));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(4, 21, 111));
@@ -526,16 +513,19 @@ public class Mesario extends javax.swing.JFrame {
     private void AdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdicionarActionPerformed
         int status=0;
         conectar.conectaBanco();
-        Pessoa pessoa = new Pessoa();
-        pessoa.setNome(TxtFieldUsuario.getText());
+        Funcionario pessoa = new Funcionario();
+        pessoa.setNome(TxtFieldNome.getText());
+        pessoa.setUsuario(TxtFieldUsuario.getText());
         pessoa.setSenha(TxtFieldSenha.getText());
 
         try {
             status = this.conectar.insertSQL("INSERT INTO mesario ("
+                    + "nome,"
                     + "usuario,"
                     + "senha"
                 + ") VALUES ("
                     + "'" + pessoa.getNome() + "',"
+                    + "'" + pessoa.getUsuario() + "',"
                     + "'" + pessoa.getSenha() + "'"
                 + ");");
                 if(status == 1){
@@ -556,36 +546,6 @@ public class Mesario extends javax.swing.JFrame {
         LimparAdicionar();
     }//GEN-LAST:event_LimparActionPerformed
 
-    private void ExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExcluirActionPerformed
-        conectar.conectaBanco();
-        boolean status = false;
-        String usuu = TxtFieldUsuario1.getText();
-        String senha = TxtFieldSenha1.getText();
-        try {
-            status = this.conectar.updateSQL(
-                "DELETE FROM mesario "
-                + " WHERE "
-                + "usuario = '" + usuu + "'"
-                + " AND "
-                + "senha = '" + senha + "'"
-                + ";"
-            );
-            if(status){ JOptionPane.showMessageDialog(null, "Mesário deletado com sucesso");
-                LimparExcluir();
-                ListarDados();
-            }else{
-                JOptionPane.showMessageDialog(null, "Houve um erro ao apagar o mesário");
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Houve um erro ao apagar o mesário");
-        } finally {conectar.fechaBanco();
-        }
-    }//GEN-LAST:event_ExcluirActionPerformed
-
-    private void Limpar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Limpar2ActionPerformed
-        LimparExcluir();
-    }//GEN-LAST:event_Limpar2ActionPerformed
-
     private void CadeadoAbertoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CadeadoAbertoMouseClicked
         CadeadoAberto.setVisible(false);
         CadeadoAberto.setEnabled(false);
@@ -601,15 +561,70 @@ public class Mesario extends javax.swing.JFrame {
         CadeadoFechado.setEnabled(false);
         TxtFieldSenha.setEchoChar((char)(0));
     }//GEN-LAST:event_CadeadoFechadoMouseClicked
+
+    private void ExcluirButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExcluirButActionPerformed
+        int b = jTable1.getSelectedRow();
+        if(b==-1){
+            JOptionPane.showMessageDialog(null, "Alguma linha deve ser selecionada para essa ação", "Erro Excluir", JOptionPane.ERROR_MESSAGE);
+        }else{
+            String a = (String) jTable1.getValueAt(b, 0);
+            conectar.conectaBanco();
+            boolean status = false;
+            try {
+                status = this.conectar.updateSQL(
+                    "DELETE FROM mesario "
+                    + " WHERE "
+                    + "id = '" + a + "'"
+                    + ";"
+                );
+                if(status){ JOptionPane.showMessageDialog(null, "Mesário deletado com sucesso");
+                    ListarDados();
+                }else{
+                    JOptionPane.showMessageDialog(null, "Houve um erro ao apagar o mesário");
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Houve um erro ao apagar o mesário");
+            } finally {conectar.fechaBanco();
+            }
+        }
+    }//GEN-LAST:event_ExcluirButActionPerformed
+
+    private void AtualizarButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtualizarButActionPerformed
+        int c = jTable1.getSelectedRow();
+        if(c==-1){
+            JOptionPane.showMessageDialog(null, "Alguma linha deve ser selecionada para essa ação", "Erro Excluir", JOptionPane.ERROR_MESSAGE);
+        }else{
+            String id = (String) jTable1.getValueAt(c, 0);
+            String nom = (String) jTable1.getValueAt(c, 1);
+            String usua = (String) jTable1.getValueAt(c, 2);
+            String sen = (String) jTable1.getValueAt(c, 3);
+            conectar.conectaBanco();
+                    boolean status = false;
+                        try {status = this.conectar.updateSQL(
+                                "UPDATE mesario SET "
+                                    + "nome = '" + nom + "',"
+                                    + "usuario = '" + usua + "',"
+                                    + "senha = '" + sen + "'"
+                                + " WHERE "
+                                + "id = '" + id + "'"
+                                + ";"
+                            );
+                        if(status){JOptionPane.showMessageDialog(null, "Atualização realizada com sucesso");
+                        ListarDados();
+                        }else{ JOptionPane.showMessageDialog(null, "Houve um erro na atualização, tente novamente");
+                        }
+                        } catch (Exception e) {
+                            e.getMessage();
+                            JOptionPane.showMessageDialog(null, "Houve um erro na atualização");
+                        } finally {conectar.fechaBanco();
+                        }
+        }
+    }//GEN-LAST:event_AtualizarButActionPerformed
     
     private void LimparAdicionar(){
+        TxtFieldNome.setText("");
         TxtFieldUsuario.setText("");
         TxtFieldSenha.setText("");
-    }
-    
-    private void LimparExcluir(){
-        TxtFieldUsuario1.setText("");
-        TxtFieldSenha1.setText("");
     }
     
     public static void main(String args[]) {
@@ -622,6 +637,7 @@ public class Mesario extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Adicionar;
+    private javax.swing.JButton AtualizarBut;
     private javax.swing.JLabel ButCamp;
     private javax.swing.JLabel ButConfig;
     private javax.swing.JLabel ButInicio1;
@@ -630,25 +646,21 @@ public class Mesario extends javax.swing.JFrame {
     private javax.swing.JLabel ButTimes;
     private javax.swing.JLabel CadeadoAberto;
     private javax.swing.JLabel CadeadoFechado;
-    private javax.swing.JButton Excluir;
+    private javax.swing.JButton ExcluirBut;
     private javax.swing.JLabel IconCamp;
     private javax.swing.JLabel IconInicio;
     private javax.swing.JLabel IconJogadores;
     private javax.swing.JLabel IconMesario;
     private javax.swing.JLabel IconTimes;
-    private javax.swing.JLabel ImagemSenha1;
     private javax.swing.JButton Limpar;
-    private javax.swing.JButton Limpar2;
+    private javax.swing.JTextField TxtFieldNome;
     private javax.swing.JPasswordField TxtFieldSenha;
-    private javax.swing.JTextField TxtFieldSenha1;
     private javax.swing.JTextField TxtFieldUsuario;
-    private javax.swing.JTextField TxtFieldUsuario1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -658,7 +670,6 @@ public class Mesario extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;

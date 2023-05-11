@@ -4,11 +4,11 @@ import java.awt.Toolkit;
 import static java.lang.System.exit;
 import javax.swing.JOptionPane;
 import Conexões.MySQL;
-import Classes.Pessoa;
+import Classes.*;
 
 public class Login extends javax.swing.JFrame {
     MySQL conectar = new MySQL();
-    Pessoa p1 = new Pessoa();
+    Funcionario p1 = new Funcionario();
     
     public Login() {
         initComponents(); 
@@ -42,6 +42,8 @@ public class Login extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         CheckMes = new javax.swing.JCheckBox();
         CheckAdm = new javax.swing.JCheckBox();
+        TxtNome = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -142,11 +144,11 @@ public class Login extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(4, 21, 111));
         jLabel3.setText("Usuário:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 150, 140, 70));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 150, 140, 70));
 
         TxtUsuario.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         TxtUsuario.setForeground(new java.awt.Color(4, 21, 111));
-        jPanel1.add(TxtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 220, 230, 70));
+        jPanel1.add(TxtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 220, 230, 70));
 
         Invisivel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Icon Invisivel.png"))); // NOI18N
         Invisivel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -154,19 +156,19 @@ public class Login extends javax.swing.JFrame {
                 InvisivelMouseClicked(evt);
             }
         });
-        jPanel1.add(Invisivel, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 360, 70, 70));
+        jPanel1.add(Invisivel, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 360, 70, 70));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(4, 21, 111));
         jLabel5.setText("Senha:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 290, 140, 70));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 290, 140, 70));
 
         TxtSenha.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         TxtSenha.setForeground(new java.awt.Color(4, 21, 111));
-        jPanel1.add(TxtSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 360, 230, 70));
+        jPanel1.add(TxtSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 360, 230, 70));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Icon Usuario.png"))); // NOI18N
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 220, 70, 70));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 220, 70, 70));
 
         Visivel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Icon Visivel.png"))); // NOI18N
         Visivel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -174,7 +176,7 @@ public class Login extends javax.swing.JFrame {
                 VisivelMouseClicked(evt);
             }
         });
-        jPanel1.add(Visivel, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 360, 70, 70));
+        jPanel1.add(Visivel, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 360, 70, 70));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Icon Fechar.png"))); // NOI18N
         jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -192,14 +194,23 @@ public class Login extends javax.swing.JFrame {
         CheckMes.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         CheckMes.setForeground(new java.awt.Color(4, 21, 111));
         CheckMes.setText("Mesário");
-        jPanel1.add(CheckMes, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 220, -1, -1));
+        jPanel1.add(CheckMes, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 380, -1, -1));
 
         CheckAdm.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup1.add(CheckAdm);
         CheckAdm.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         CheckAdm.setForeground(new java.awt.Color(4, 21, 111));
         CheckAdm.setText("Admin");
-        jPanel1.add(CheckAdm, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 290, -1, -1));
+        jPanel1.add(CheckAdm, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 320, -1, -1));
+
+        TxtNome.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        TxtNome.setForeground(new java.awt.Color(4, 21, 111));
+        jPanel1.add(TxtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 220, 230, 70));
+
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(4, 21, 111));
+        jLabel10.setText("Nome:");
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 150, 140, 70));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, -1));
 
@@ -230,18 +241,22 @@ public class Login extends javax.swing.JFrame {
     private void ButEntrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButEntrarMouseClicked
         if(CheckAdm.isSelected()){
             conectar.conectaBanco();
-            p1 = new Pessoa();
+            p1 = new Funcionario();
 
+        
+        String nome = TxtNome.getText();
         String usuario = TxtUsuario.getText();
         String senha = TxtSenha.getText();
         //String senha = TxtSenha.getText();
         try {this.conectar.executarSQL(
                    "SELECT "
+                    + "nome,"
                     + "usuario,"
                     + "senha"
                  + " FROM"
                      + " admin"
                  + " WHERE"
+                     + " nome = '"+ nome + "'"+" AND"
                      + " usuario = '" + usuario + "'"+ " AND"
                      + " senha = '" + senha + "'"
                 
@@ -249,12 +264,13 @@ public class Login extends javax.swing.JFrame {
             );
         while(conectar.getResultSet().next()){
             p1.setNome(conectar.getResultSet().getString(1));
-            p1.setSenha(conectar.getResultSet().getString(2));
+            p1.setUsuario(conectar.getResultSet().getString(2));
+            p1.setSenha(conectar.getResultSet().getString(3));
         }
         if(p1.getNome().equals("")){
             JOptionPane.showMessageDialog(null, "Houve algum problema ao consultar cadastro");
         }else{
-            JOptionPane.showMessageDialog(null, "Bem Vindo");
+            JOptionPane.showMessageDialog(null, "Bem Vindo Admin "+ usuario);
             InicioAdm minhaTela = new InicioAdm(usuario);
             
             minhaTela.setVisible(true);
@@ -266,18 +282,21 @@ public class Login extends javax.swing.JFrame {
         }
         }else if(CheckMes.isSelected()){
             conectar.conectaBanco();
-            p1 = new Pessoa();
+            p1 = new Funcionario();
 
+        String nome = TxtNome.getText();
         String usuario = TxtUsuario.getText();
         String senha = TxtSenha.getText();
         //String senha = TxtSenha.getText();
         try {this.conectar.executarSQL(
                    "SELECT "
+                    + "nome,"
                     + "usuario,"
                     + "senha"
                  + " FROM"
                      + " mesario"
                  + " WHERE"
+                     + " nome = '"+ nome + "'"+"AND"
                      + " usuario = '" + usuario + "'"+ " AND"
                      + " senha = '" + senha + "'"
                 
@@ -285,12 +304,13 @@ public class Login extends javax.swing.JFrame {
             );
         while(conectar.getResultSet().next()){
             p1.setNome(conectar.getResultSet().getString(1));
-            p1.setSenha(conectar.getResultSet().getString(2));
+            p1.setUsuario(conectar.getResultSet().getString(2));
+            p1.setSenha(conectar.getResultSet().getString(3));
         }
         if(p1.getNome().equals("")){
             JOptionPane.showMessageDialog(null, "Houve algum problema ao consultar cadastro");
         }else{
-            JOptionPane.showMessageDialog(null, "Bem Vindo Mesário");
+            JOptionPane.showMessageDialog(null, "Bem Vindo Mesário "+ usuario);
            
             InicioMesario minhatela = new InicioMesario(usuario);
             minhatela.setVisible(true);
@@ -334,10 +354,12 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JCheckBox CheckAdm;
     private javax.swing.JCheckBox CheckMes;
     private javax.swing.JLabel Invisivel;
+    private javax.swing.JTextField TxtNome;
     private javax.swing.JPasswordField TxtSenha;
     private javax.swing.JTextField TxtUsuario;
     private javax.swing.JLabel Visivel;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

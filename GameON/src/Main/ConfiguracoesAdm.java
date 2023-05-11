@@ -1,3 +1,4 @@
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -21,6 +22,7 @@ public class ConfiguracoesAdm extends javax.swing.JFrame {
     ImageIcon Mostrar = new ImageIcon(this.getClass().getResource("/Imagens//Cadeado aberto.png"));
     MySQL conectar = new MySQL();
     String usuario;
+    String nome;
     public ConfiguracoesAdm(String usu) {
         initComponents();
         usuario = usu;
@@ -37,6 +39,7 @@ public class ConfiguracoesAdm extends javax.swing.JFrame {
         try{
         this.conectar.executarSQL(
             "SELECT "
+                +"nome,"
                 +"senha"
             +" FROM "
                 +"admin"
@@ -45,8 +48,10 @@ public class ConfiguracoesAdm extends javax.swing.JFrame {
                 + ";"
         );
         while(this.conectar.getResultSet().next()){
-            senha = this.conectar.getResultSet().getString(1);
+            nome = this.conectar.getResultSet().getString(1);
+            senha = this.conectar.getResultSet().getString(2);
             senhaCensura = censurarTexto(senha);
+            txtNome.setText(nome);
             TxtSenha.setText(senhaCensura);
         }
         
@@ -89,9 +94,13 @@ public class ConfiguracoesAdm extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         TxtSenha = new javax.swing.JLabel();
+        ButTrocarU = new javax.swing.JButton();
+        txtNome = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        ButTrocarS = new javax.swing.JButton();
         ButMostrar = new javax.swing.JButton();
         ButEsconder = new javax.swing.JButton();
-        ButTrocar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -257,12 +266,12 @@ public class ConfiguracoesAdm extends javax.swing.JFrame {
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Icon Usuario.png"))); // NOI18N
-        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 70, 70));
+        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 80, 70, 70));
 
         txtUsuario.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         txtUsuario.setForeground(new java.awt.Color(4, 21, 111));
         txtUsuario.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel3.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 90, 160, 50));
+        jPanel3.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 90, 160, 50));
 
         ImagemSenha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Cadeado fechado.png"))); // NOI18N
         jPanel3.add(ImagemSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, 70, 70));
@@ -275,15 +284,50 @@ public class ConfiguracoesAdm extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(4, 21, 111));
         jLabel5.setText("Usuário:");
-        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, 200, 50));
+        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 40, 200, 50));
 
         TxtSenha.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         TxtSenha.setForeground(new java.awt.Color(4, 21, 111));
         TxtSenha.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jPanel3.add(TxtSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 230, 160, 50));
 
+        ButTrocarU.setBackground(new java.awt.Color(255, 255, 255));
+        ButTrocarU.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
+        ButTrocarU.setForeground(new java.awt.Color(4, 21, 111));
+        ButTrocarU.setText("Trocar Usuário");
+        ButTrocarU.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButTrocarUActionPerformed(evt);
+            }
+        });
+        jPanel3.add(ButTrocarU, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 320, 190, 60));
+
+        txtNome.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        txtNome.setForeground(new java.awt.Color(4, 21, 111));
+        txtNome.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jPanel3.add(txtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 90, 160, 50));
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(4, 21, 111));
+        jLabel9.setText("Nome:");
+        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, 200, 50));
+
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Icon Usuario.png"))); // NOI18N
+        jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 70, 70));
+
+        ButTrocarS.setBackground(new java.awt.Color(255, 255, 255));
+        ButTrocarS.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        ButTrocarS.setForeground(new java.awt.Color(4, 21, 111));
+        ButTrocarS.setText("Trocar Senha");
+        ButTrocarS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButTrocarSActionPerformed(evt);
+            }
+        });
+        jPanel3.add(ButTrocarS, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 320, 190, 60));
+
         ButMostrar.setBackground(new java.awt.Color(255, 255, 255));
-        ButMostrar.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        ButMostrar.setFont(new java.awt.Font("Segoe UI", 1, 23)); // NOI18N
         ButMostrar.setForeground(new java.awt.Color(4, 21, 111));
         ButMostrar.setText("Mostrar Senha");
         ButMostrar.addActionListener(new java.awt.event.ActionListener() {
@@ -291,32 +335,20 @@ public class ConfiguracoesAdm extends javax.swing.JFrame {
                 ButMostrarActionPerformed(evt);
             }
         });
-        jPanel3.add(ButMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 320, 200, 60));
+        jPanel3.add(ButMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, 190, 60));
 
         ButEsconder.setBackground(new java.awt.Color(255, 255, 255));
         ButEsconder.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         ButEsconder.setForeground(new java.awt.Color(4, 21, 111));
         ButEsconder.setText("Esconder Senha");
-        ButEsconder.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(4, 21, 111)));
         ButEsconder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ButEsconderActionPerformed(evt);
             }
         });
-        jPanel3.add(ButEsconder, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 320, 200, 60));
+        jPanel3.add(ButEsconder, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, 190, 60));
 
-        ButTrocar.setBackground(new java.awt.Color(255, 255, 255));
-        ButTrocar.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        ButTrocar.setForeground(new java.awt.Color(4, 21, 111));
-        ButTrocar.setText("Trocar Senha");
-        ButTrocar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButTrocarActionPerformed(evt);
-            }
-        });
-        jPanel3.add(ButTrocar, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 320, 200, 60));
-
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, -1, -1));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, 670, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -415,14 +447,14 @@ public class ConfiguracoesAdm extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_ButInicioMouseClicked
 
-    private void ButTrocarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButTrocarActionPerformed
-        TrocarSenhaAdm minhatela = new TrocarSenhaAdm(txtUsuario.getText());
+    private void ButTrocarUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButTrocarUActionPerformed
+        TrocarUsuarioAdm minhatela = new TrocarUsuarioAdm(txtUsuario.getText());
         minhatela.setVisible(true);
         ButAtualizar.setVisible(true);
         ButAtualizar.setEnabled(true);
         txtAtualizar.setVisible(true);
         txtAtualizar.setEnabled(true);
-    }//GEN-LAST:event_ButTrocarActionPerformed
+    }//GEN-LAST:event_ButTrocarUActionPerformed
 
     private void ButMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButMostrarActionPerformed
         ButEsconder.setVisible(true);
@@ -447,17 +479,20 @@ public class ConfiguracoesAdm extends javax.swing.JFrame {
         try{
         this.conectar.executarSQL(
             "SELECT "
+                +"usuario,"
                 +"senha"
             +" FROM "
                 +"admin"
             + " WHERE " 
-                     + " usuario = '" + usuario + "'"
+                     + " nome = '" + txtNome.getText() + "'"
                 + ";"
         );
         while(this.conectar.getResultSet().next()){
-            senha = this.conectar.getResultSet().getString(1);
+            usuario = this.conectar.getResultSet().getString(1);
+            senha = this.conectar.getResultSet().getString(2);
             senhaCensura = censurarTexto(senha);
             TxtSenha.setText(senhaCensura);
+            txtUsuario.setText(usuario);
             ImagemSenha.setIcon(Esconder);
             ButEsconder.setVisible(false);
             ButEsconder.setEnabled(false);
@@ -483,17 +518,20 @@ public class ConfiguracoesAdm extends javax.swing.JFrame {
         try{
         this.conectar.executarSQL(
             "SELECT "
+                +"usuario,"
                 +"senha"
             +" FROM "
                 +"admin"
             + " WHERE " 
-                     + " usuario = '" + usuario + "'"
+                     + " nome = '" + txtNome.getText() + "'"
                 + ";"
         );
         while(this.conectar.getResultSet().next()){
-            senha = this.conectar.getResultSet().getString(1);
+            usuario = this.conectar.getResultSet().getString(1);
+            senha = this.conectar.getResultSet().getString(2);
             senhaCensura = censurarTexto(senha);
             TxtSenha.setText(senhaCensura);
+            txtUsuario.setText(usuario);
             ImagemSenha.setIcon(Esconder);
             ButEsconder.setVisible(false);
             ButEsconder.setEnabled(false);
@@ -513,6 +551,15 @@ public class ConfiguracoesAdm extends javax.swing.JFrame {
             this.conectar.fechaBanco();
     }
     }//GEN-LAST:event_txtAtualizarMouseClicked
+
+    private void ButTrocarSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButTrocarSActionPerformed
+        TrocarSenhaAdm minhatela = new TrocarSenhaAdm(txtUsuario.getText());
+        minhatela.setVisible(true);
+        ButAtualizar.setVisible(true);
+        ButAtualizar.setEnabled(true);
+        txtAtualizar.setVisible(true);
+        txtAtualizar.setEnabled(true);
+    }//GEN-LAST:event_ButTrocarSActionPerformed
                                 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -531,7 +578,8 @@ public class ConfiguracoesAdm extends javax.swing.JFrame {
     private javax.swing.JLabel ButMesario;
     private javax.swing.JButton ButMostrar;
     private javax.swing.JLabel ButTimes;
-    private javax.swing.JButton ButTrocar;
+    private javax.swing.JButton ButTrocarS;
+    private javax.swing.JButton ButTrocarU;
     private javax.swing.JLabel IconCamp;
     private javax.swing.JLabel IconInicio;
     private javax.swing.JLabel IconJogadores;
@@ -540,6 +588,7 @@ public class ConfiguracoesAdm extends javax.swing.JFrame {
     private javax.swing.JLabel ImagemSenha;
     private javax.swing.JLabel TxtSenha;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -547,10 +596,12 @@ public class ConfiguracoesAdm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel txtAtualizar;
+    private javax.swing.JLabel txtNome;
     private javax.swing.JLabel txtUsuario;
     // End of variables declaration//GEN-END:variables
 

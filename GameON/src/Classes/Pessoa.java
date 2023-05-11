@@ -1,7 +1,6 @@
 package Classes;
 public class Pessoa {
     private String nome;
-    private String senha;
 
     public String getNome() {
         return nome;
@@ -11,11 +10,4 @@ public class Pessoa {
         this.nome = nome;
     }
 
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
 }
