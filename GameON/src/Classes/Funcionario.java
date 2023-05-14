@@ -2,6 +2,15 @@ package Classes;
 public class Funcionario extends Pessoa{
     private String senha;
     private String usuario;
+
+    public Funcionario() {
+    }
+
+    public Funcionario(String senha, String usuario, String nome) {
+        super(nome);
+        this.senha = senha;
+        this.usuario = usuario;
+    }
     
     
     public String getSenha() {
