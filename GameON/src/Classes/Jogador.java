@@ -4,7 +4,16 @@ import javax.swing.JOptionPane;
 public class Jogador extends Pessoa{
     private String cpf;
     private String time;
+    private int gols;
 
+    public int getGols() {
+        return gols;
+    }
+
+    public void setGols(int gols) {
+        this.gols = gols;
+    }
+    
     public String getTime() {
         return time;
     }

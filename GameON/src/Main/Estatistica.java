@@ -12,6 +12,22 @@ public class Estatistica extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel3 = new javax.swing.JPanel();
+        jComboBox8 = new javax.swing.JComboBox<>();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jComboBox9 = new javax.swing.JComboBox<>();
+        jComboBox7 = new javax.swing.JComboBox<>();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jComboBox6 = new javax.swing.JComboBox<>();
+        jButton8 = new javax.swing.JButton();
+        jLabel19 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jPanel4 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         ButInicio = new javax.swing.JLabel();
@@ -32,6 +48,104 @@ public class Estatistica extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
+        jTabbedPane1.setForeground(new java.awt.Color(4, 21, 111));
+        jTabbedPane1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jComboBox8.setBackground(new java.awt.Color(255, 255, 255));
+        jComboBox8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jComboBox8.setForeground(new java.awt.Color(4, 21, 111));
+        jPanel3.add(jComboBox8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 190, 70));
+
+        jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(4, 21, 111));
+        jLabel18.setText("Selecione Campeonato:");
+        jPanel3.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 230, 50));
+
+        jLabel20.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(4, 21, 111));
+        jLabel20.setText("Selecione Time:");
+        jPanel3.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 230, 50));
+
+        jComboBox9.setBackground(new java.awt.Color(255, 255, 255));
+        jComboBox9.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jComboBox9.setForeground(new java.awt.Color(4, 21, 111));
+        jPanel3.add(jComboBox9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 190, 70));
+
+        jComboBox7.setBackground(new java.awt.Color(255, 255, 255));
+        jComboBox7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jComboBox7.setForeground(new java.awt.Color(4, 21, 111));
+        jPanel3.add(jComboBox7, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 60, 190, 70));
+
+        jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(4, 21, 111));
+        jLabel16.setText("Selecione Partida:");
+        jPanel3.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 10, 230, 50));
+
+        jLabel17.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(4, 21, 111));
+        jLabel17.setText("Selecione Jogador:");
+        jPanel3.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 130, 230, 50));
+
+        jComboBox6.setBackground(new java.awt.Color(255, 255, 255));
+        jComboBox6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jComboBox6.setForeground(new java.awt.Color(4, 21, 111));
+        jPanel3.add(jComboBox6, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 180, 190, 70));
+
+        jButton8.setBackground(new java.awt.Color(255, 255, 255));
+        jButton8.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
+        jButton8.setForeground(new java.awt.Color(4, 21, 111));
+        jButton8.setText("Cadastrar Gols");
+        jPanel3.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 300, 190, 70));
+
+        jLabel19.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(4, 21, 111));
+        jLabel19.setText("Gols do Jogador:");
+        jPanel3.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, 230, 50));
+
+        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
+        jTextField1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jTextField1.setForeground(new java.awt.Color(4, 21, 111));
+        jTextField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(4, 21, 111)));
+        jPanel3.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 190, 70));
+
+        jTabbedPane1.addTab("Cadastrar Gols", jPanel3);
+
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jTable1.setBackground(new java.awt.Color(255, 255, 255));
+        jTable1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jTable1.setForeground(new java.awt.Color(4, 21, 111));
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Nome", "Time", "Gols"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jTable1.setEnabled(false);
+        jTable1.setRowHeight(35);
+        jScrollPane1.setViewportView(jTable1);
+
+        jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 446));
+
+        jTabbedPane1.addTab("Tabela de Artilheiro", jPanel4);
+
+        jPanel1.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 70, 650, 480));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI Black", 1, 34)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(4, 21, 111));
@@ -202,13 +316,29 @@ public class Estatistica extends javax.swing.JFrame {
     private javax.swing.JLabel IconEstatistica;
     private javax.swing.JLabel IconInicio;
     private javax.swing.JLabel IconResultado;
+    private javax.swing.JButton jButton8;
+    private javax.swing.JComboBox<String> jComboBox6;
+    private javax.swing.JComboBox<String> jComboBox7;
+    private javax.swing.JComboBox<String> jComboBox8;
+    private javax.swing.JComboBox<String> jComboBox9;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel txtUsuario;
     // End of variables declaration//GEN-END:variables
 }

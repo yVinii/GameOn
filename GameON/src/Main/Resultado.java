@@ -12,6 +12,28 @@ public class Resultado extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
+        jComboBox2 = new javax.swing.JComboBox<>();
+        jLabel12 = new javax.swing.JLabel();
+        jComboBox3 = new javax.swing.JComboBox<>();
+        jLabel13 = new javax.swing.JLabel();
+        jComboBox4 = new javax.swing.JComboBox<>();
+        jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jComboBox5 = new javax.swing.JComboBox<>();
+        jComboBox6 = new javax.swing.JComboBox<>();
+        TxtFieldNome1 = new javax.swing.JTextField();
+        TxtFieldNome2 = new javax.swing.JTextField();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jButton7 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         ButInicio = new javax.swing.JLabel();
         ButEstatistica = new javax.swing.JLabel();
@@ -37,6 +59,124 @@ public class Resultado extends javax.swing.JFrame {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Resultado.");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, 200, 50));
+
+        jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
+        jTabbedPane1.setForeground(new java.awt.Color(4, 21, 111));
+        jTabbedPane1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(4, 21, 111));
+        jLabel11.setText("Time 2:");
+        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 150, 230, 50));
+
+        jComboBox2.setBackground(new java.awt.Color(255, 255, 255));
+        jComboBox2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jComboBox2.setForeground(new java.awt.Color(4, 21, 111));
+        jPanel3.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 200, 190, 70));
+
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(4, 21, 111));
+        jLabel12.setText("Selecione Campeonato:");
+        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 230, 50));
+
+        jComboBox3.setBackground(new java.awt.Color(255, 255, 255));
+        jComboBox3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jComboBox3.setForeground(new java.awt.Color(4, 21, 111));
+        jPanel3.add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 190, 70));
+
+        jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(4, 21, 111));
+        jLabel13.setText("Time 1:");
+        jPanel3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 230, 50));
+
+        jComboBox4.setBackground(new java.awt.Color(255, 255, 255));
+        jComboBox4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jComboBox4.setForeground(new java.awt.Color(4, 21, 111));
+        jPanel3.add(jComboBox4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 190, 70));
+
+        jButton5.setBackground(new java.awt.Color(255, 255, 255));
+        jButton5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jButton5.setForeground(new java.awt.Color(4, 21, 111));
+        jButton5.setText("Limpar");
+        jPanel3.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, 190, 70));
+
+        jButton6.setBackground(new java.awt.Color(255, 255, 255));
+        jButton6.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jButton6.setForeground(new java.awt.Color(4, 21, 111));
+        jButton6.setText("Criar ");
+        jPanel3.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 330, 190, 70));
+
+        jTabbedPane1.addTab("Criar Partida", jPanel3);
+
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(4, 21, 111));
+        jLabel14.setText("Selecione Partida:");
+        jPanel4.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 30, 230, 50));
+
+        jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(4, 21, 111));
+        jLabel15.setText("Gols Time 2:");
+        jPanel4.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 170, 230, 50));
+
+        jComboBox5.setBackground(new java.awt.Color(255, 255, 255));
+        jComboBox5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jComboBox5.setForeground(new java.awt.Color(4, 21, 111));
+        jPanel4.add(jComboBox5, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 80, 190, 70));
+
+        jComboBox6.setBackground(new java.awt.Color(255, 255, 255));
+        jComboBox6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jComboBox6.setForeground(new java.awt.Color(4, 21, 111));
+        jPanel4.add(jComboBox6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 190, 70));
+
+        TxtFieldNome1.setBackground(new java.awt.Color(255, 255, 255));
+        TxtFieldNome1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        TxtFieldNome1.setForeground(new java.awt.Color(4, 21, 111));
+        TxtFieldNome1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(4, 21, 111)));
+        TxtFieldNome1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        jPanel4.add(TxtFieldNome1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 190, 70));
+
+        TxtFieldNome2.setBackground(new java.awt.Color(255, 255, 255));
+        TxtFieldNome2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        TxtFieldNome2.setForeground(new java.awt.Color(4, 21, 111));
+        TxtFieldNome2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(4, 21, 111)));
+        TxtFieldNome2.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        jPanel4.add(TxtFieldNome2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 220, 190, 70));
+
+        jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(4, 21, 111));
+        jLabel16.setText("Selecione Campeonato:");
+        jPanel4.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 230, 50));
+
+        jLabel17.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(4, 21, 111));
+        jLabel17.setText("Gols Time 1:");
+        jPanel4.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 230, 50));
+
+        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/xIcon.png"))); // NOI18N
+        jPanel4.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 230, 60, 50));
+
+        jButton7.setBackground(new java.awt.Color(255, 255, 255));
+        jButton7.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jButton7.setForeground(new java.awt.Color(4, 21, 111));
+        jButton7.setText("Limpar");
+        jPanel4.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, 190, 70));
+
+        jButton8.setBackground(new java.awt.Color(255, 255, 255));
+        jButton8.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jButton8.setForeground(new java.awt.Color(4, 21, 111));
+        jButton8.setText("Inserir");
+        jPanel4.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 330, 190, 70));
+
+        jTabbedPane1.addTab("Inserir Resultado", jPanel4);
+
+        jPanel1.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 70, 650, 480));
 
         jPanel2.setBackground(new java.awt.Color(4, 21, 111));
         jPanel2.setForeground(new java.awt.Color(4, 21, 111));
@@ -200,6 +340,25 @@ public class Resultado extends javax.swing.JFrame {
     private javax.swing.JLabel IconEstatistica;
     private javax.swing.JLabel IconInicio;
     private javax.swing.JLabel IconResultado;
+    private javax.swing.JTextField TxtFieldNome1;
+    private javax.swing.JTextField TxtFieldNome2;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
+    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> jComboBox3;
+    private javax.swing.JComboBox<String> jComboBox4;
+    private javax.swing.JComboBox<String> jComboBox5;
+    private javax.swing.JComboBox<String> jComboBox6;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -207,6 +366,9 @@ public class Resultado extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel txtUsuario;
     // End of variables declaration//GEN-END:variables
 }
