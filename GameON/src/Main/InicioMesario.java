@@ -23,11 +23,11 @@ public class InicioMesario extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         ButConfig = new javax.swing.JLabel();
-        PanelMesario = new javax.swing.JPanel();
+        PanelEstatistica = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
-        PanelCamp = new javax.swing.JPanel();
+        PanelResultado = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
@@ -46,7 +46,7 @@ public class InicioMesario extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(4, 21, 111));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Início.");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, 110, 50));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, 170, 50));
 
         jPanel2.setBackground(new java.awt.Color(4, 21, 111));
         jPanel2.setForeground(new java.awt.Color(4, 21, 111));
@@ -59,7 +59,7 @@ public class InicioMesario extends javax.swing.JFrame {
         ButInicio.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jPanel2.add(ButInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 100, 40));
 
-        ButEstatistica.setFont(new java.awt.Font("Segoe UI Black", 1, 22)); // NOI18N
+        ButEstatistica.setFont(new java.awt.Font("Segoe UI Black", 1, 21)); // NOI18N
         ButEstatistica.setForeground(new java.awt.Color(118, 127, 176));
         ButEstatistica.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         ButEstatistica.setText("Estatística");
@@ -123,17 +123,17 @@ public class InicioMesario extends javax.swing.JFrame {
         });
         jPanel1.add(ButConfig, new org.netbeans.lib.awtextra.AbsoluteConstraints(823, 110, 60, 60));
 
-        PanelMesario.setBackground(new java.awt.Color(255, 255, 255));
-        PanelMesario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(4, 21, 111)));
-        PanelMesario.addMouseListener(new java.awt.event.MouseAdapter() {
+        PanelEstatistica.setBackground(new java.awt.Color(255, 255, 255));
+        PanelEstatistica.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(4, 21, 111)));
+        PanelEstatistica.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                PanelMesarioMouseClicked(evt);
+                PanelEstatisticaMouseClicked(evt);
             }
         });
-        PanelMesario.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        PanelEstatistica.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/EstatImagem.jpg"))); // NOI18N
-        PanelMesario.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, 0, 220, 150));
+        PanelEstatistica.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, 0, 220, 150));
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(4, 21, 111)));
@@ -159,21 +159,21 @@ public class InicioMesario extends javax.swing.JFrame {
                 .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        PanelMesario.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 200, 50));
+        PanelEstatistica.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 200, 50));
 
-        jPanel1.add(PanelMesario, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 90, 200, 200));
+        jPanel1.add(PanelEstatistica, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 90, 200, 200));
 
-        PanelCamp.setBackground(new java.awt.Color(255, 255, 255));
-        PanelCamp.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(4, 21, 111)));
-        PanelCamp.addMouseListener(new java.awt.event.MouseAdapter() {
+        PanelResultado.setBackground(new java.awt.Color(255, 255, 255));
+        PanelResultado.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(4, 21, 111)));
+        PanelResultado.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                PanelCampMouseClicked(evt);
+                PanelResultadoMouseClicked(evt);
             }
         });
-        PanelCamp.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        PanelResultado.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/ResultadoImage.png"))); // NOI18N
-        PanelCamp.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 150));
+        PanelResultado.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 150));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(4, 21, 111)));
@@ -199,9 +199,9 @@ public class InicioMesario extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        PanelCamp.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 200, 50));
+        PanelResultado.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 200, 50));
 
-        jPanel1.add(PanelCamp, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 90, 200, 200));
+        jPanel1.add(PanelResultado, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 90, 200, 200));
 
         txtUsuario.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         txtUsuario.setForeground(new java.awt.Color(4, 21, 111));
@@ -256,17 +256,17 @@ public class InicioMesario extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_ButConfigMouseClicked
 
-    private void PanelMesarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelMesarioMouseClicked
-        Mesario minhatela = new Mesario(txtUsuario.getText());
+    private void PanelEstatisticaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelEstatisticaMouseClicked
+        Estatistica minhatela = new Estatistica(txtUsuario.getText());
         minhatela.setVisible(true);
         dispose();
-    }//GEN-LAST:event_PanelMesarioMouseClicked
+    }//GEN-LAST:event_PanelEstatisticaMouseClicked
 
-    private void PanelCampMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelCampMouseClicked
-        Campeonato minhatela = new Campeonato(txtUsuario.getText());
+    private void PanelResultadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelResultadoMouseClicked
+        Resultado minhatela = new Resultado(txtUsuario.getText());
         minhatela.setVisible(true);
         dispose();
-    }//GEN-LAST:event_PanelCampMouseClicked
+    }//GEN-LAST:event_PanelResultadoMouseClicked
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -284,8 +284,8 @@ public class InicioMesario extends javax.swing.JFrame {
     private javax.swing.JLabel IconEstatistica;
     private javax.swing.JLabel IconInicio;
     private javax.swing.JLabel IconResultado;
-    private javax.swing.JPanel PanelCamp;
-    private javax.swing.JPanel PanelMesario;
+    private javax.swing.JPanel PanelEstatistica;
+    private javax.swing.JPanel PanelResultado;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;

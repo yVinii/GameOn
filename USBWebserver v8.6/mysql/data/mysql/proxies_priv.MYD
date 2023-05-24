@@ -1,3 +1,6 @@
 ˇlocalhost                                                                                                                                                                           root                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       Q›èœ2023-04-10 21:20:34 6240 [Note] Event Scheduler: Loaded 0 events
 2023-04-10 21:20:34 6240 [Note] C:\Users\Pichau\Desktop\USBWebserver v8.6/mysql/bin/mysqld_usbwv8.exe: ready for connections.
 Version: '5.6.13'  socket: ''  port: 3307  MySQL Community Server (GPL)
+2023-05-17 19:17:56 16068 [Note] Event Scheduler: Loaded 0 events
+2023-05-17 19:17:56 16068 [Note] C:\Users\Gabriel\Desktop\Fabrica 3\GameOn\GameOn\GameOn\USBWebserver v8.6/mysql/bin/mysqld_usbwv8.exe: ready for connections.
+Version: '5.6.13'  socket: ''  port: 3307  MySQL Community Server (GPL)

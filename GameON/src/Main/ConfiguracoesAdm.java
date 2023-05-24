@@ -294,7 +294,7 @@ public class ConfiguracoesAdm extends javax.swing.JFrame {
         ButTrocarU.setBackground(new java.awt.Color(255, 255, 255));
         ButTrocarU.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
         ButTrocarU.setForeground(new java.awt.Color(4, 21, 111));
-        ButTrocarU.setText("Trocar Usuário");
+        ButTrocarU.setText("Editar Usuário");
         ButTrocarU.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ButTrocarUActionPerformed(evt);
@@ -327,7 +327,7 @@ public class ConfiguracoesAdm extends javax.swing.JFrame {
         jPanel3.add(ButTrocarS, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 320, 190, 60));
 
         ButMostrar.setBackground(new java.awt.Color(255, 255, 255));
-        ButMostrar.setFont(new java.awt.Font("Segoe UI", 1, 23)); // NOI18N
+        ButMostrar.setFont(new java.awt.Font("Segoe UI", 1, 21)); // NOI18N
         ButMostrar.setForeground(new java.awt.Color(4, 21, 111));
         ButMostrar.setText("Mostrar Senha");
         ButMostrar.addActionListener(new java.awt.event.ActionListener() {

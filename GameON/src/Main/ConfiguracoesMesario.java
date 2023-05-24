@@ -225,7 +225,7 @@ public class ConfiguracoesMesario extends javax.swing.JFrame {
         jPanel3.add(TxtSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 230, 160, 50));
 
         ButEsconder.setBackground(new java.awt.Color(255, 255, 255));
-        ButEsconder.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
+        ButEsconder.setFont(new java.awt.Font("Segoe UI", 1, 21)); // NOI18N
         ButEsconder.setForeground(new java.awt.Color(4, 21, 111));
         ButEsconder.setText("Esconder Senha");
         ButEsconder.addActionListener(new java.awt.event.ActionListener() {
@@ -275,7 +275,7 @@ public class ConfiguracoesMesario extends javax.swing.JFrame {
         ButTrocarU.setBackground(new java.awt.Color(255, 255, 255));
         ButTrocarU.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
         ButTrocarU.setForeground(new java.awt.Color(4, 21, 111));
-        ButTrocarU.setText("Trocar Usuário");
+        ButTrocarU.setText("Editar Usuário");
         ButTrocarU.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ButTrocarUActionPerformed(evt);

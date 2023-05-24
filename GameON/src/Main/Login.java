@@ -42,8 +42,6 @@ public class Login extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         CheckMes = new javax.swing.JCheckBox();
         CheckAdm = new javax.swing.JCheckBox();
-        TxtNome = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -58,11 +56,11 @@ public class Login extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 100, -1, 40));
@@ -73,11 +71,11 @@ public class Login extends javax.swing.JFrame {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 260, -1, 40));
@@ -88,11 +86,11 @@ public class Login extends javax.swing.JFrame {
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 410, -1, 40));
@@ -114,11 +112,11 @@ public class Login extends javax.swing.JFrame {
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 20, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 550, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 0, 20, 550));
@@ -127,7 +125,7 @@ public class Login extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(4, 21, 111));
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/logo-clara.png"))); // NOI18N
         jLabel2.setText("LOGIN");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 30, 340, 130));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 20, 340, 130));
 
         ButEntrar.setBackground(new java.awt.Color(4, 21, 111));
         ButEntrar.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
@@ -144,11 +142,11 @@ public class Login extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(4, 21, 111));
         jLabel3.setText("Usuário:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 150, 140, 70));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 150, 140, 70));
 
         TxtUsuario.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         TxtUsuario.setForeground(new java.awt.Color(4, 21, 111));
-        jPanel1.add(TxtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 220, 230, 70));
+        jPanel1.add(TxtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 230, 300, 50));
 
         Invisivel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Icon Invisivel.png"))); // NOI18N
         Invisivel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -165,7 +163,7 @@ public class Login extends javax.swing.JFrame {
 
         TxtSenha.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         TxtSenha.setForeground(new java.awt.Color(4, 21, 111));
-        jPanel1.add(TxtSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 360, 230, 70));
+        jPanel1.add(TxtSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 370, 300, 50));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Icon Usuario.png"))); // NOI18N
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 220, 70, 70));
@@ -194,23 +192,14 @@ public class Login extends javax.swing.JFrame {
         CheckMes.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         CheckMes.setForeground(new java.awt.Color(4, 21, 111));
         CheckMes.setText("Mesário");
-        jPanel1.add(CheckMes, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 380, -1, -1));
+        jPanel1.add(CheckMes, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 310, -1, -1));
 
         CheckAdm.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup1.add(CheckAdm);
         CheckAdm.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         CheckAdm.setForeground(new java.awt.Color(4, 21, 111));
         CheckAdm.setText("Admin");
-        jPanel1.add(CheckAdm, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 320, -1, -1));
-
-        TxtNome.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        TxtNome.setForeground(new java.awt.Color(4, 21, 111));
-        jPanel1.add(TxtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 220, 230, 70));
-
-        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(4, 21, 111));
-        jLabel10.setText("Nome:");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 150, 140, 70));
+        jPanel1.add(CheckAdm, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 240, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, -1));
 
@@ -244,28 +233,24 @@ public class Login extends javax.swing.JFrame {
             p1 = new Funcionario();
 
         
-        String nome = TxtNome.getText();
         String usuario = TxtUsuario.getText();
         String senha = TxtSenha.getText();
         //String senha = TxtSenha.getText();
         try {this.conectar.executarSQL(
                    "SELECT "
-                    + "nome,"
                     + "usuario,"
                     + "senha"
                  + " FROM"
                      + " admin"
                  + " WHERE"
-                     + " nome = '"+ nome + "'"+" AND"
                      + " usuario = '" + usuario + "'"+ " AND"
                      + " senha = '" + senha + "'"
                 
                 + ";"
             );
         while(conectar.getResultSet().next()){
-            p1.setNome(conectar.getResultSet().getString(1));
-            p1.setUsuario(conectar.getResultSet().getString(2));
-            p1.setSenha(conectar.getResultSet().getString(3));
+            p1.setUsuario(conectar.getResultSet().getString(1));
+            p1.setSenha(conectar.getResultSet().getString(2));
         }
         if(p1.getNome().equals("")){
             JOptionPane.showMessageDialog(null, "Houve algum problema ao consultar cadastro");
@@ -284,28 +269,24 @@ public class Login extends javax.swing.JFrame {
             conectar.conectaBanco();
             p1 = new Funcionario();
 
-        String nome = TxtNome.getText();
         String usuario = TxtUsuario.getText();
         String senha = TxtSenha.getText();
         //String senha = TxtSenha.getText();
         try {this.conectar.executarSQL(
                    "SELECT "
-                    + "nome,"
                     + "usuario,"
                     + "senha"
                  + " FROM"
                      + " mesario"
                  + " WHERE"
-                     + " nome = '"+ nome + "'"+"AND"
                      + " usuario = '" + usuario + "'"+ " AND"
                      + " senha = '" + senha + "'"
                 
                 + ";"
             );
         while(conectar.getResultSet().next()){
-            p1.setNome(conectar.getResultSet().getString(1));
-            p1.setUsuario(conectar.getResultSet().getString(2));
-            p1.setSenha(conectar.getResultSet().getString(3));
+            p1.setUsuario(conectar.getResultSet().getString(1));
+            p1.setSenha(conectar.getResultSet().getString(2));
         }
         if(p1.getNome().equals("")){
             JOptionPane.showMessageDialog(null, "Houve algum problema ao consultar cadastro");
@@ -354,12 +335,10 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JCheckBox CheckAdm;
     private javax.swing.JCheckBox CheckMes;
     private javax.swing.JLabel Invisivel;
-    private javax.swing.JTextField TxtNome;
     private javax.swing.JPasswordField TxtSenha;
     private javax.swing.JTextField TxtUsuario;
     private javax.swing.JLabel Visivel;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

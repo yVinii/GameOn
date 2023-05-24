@@ -107,41 +107,41 @@ public class Times extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(4, 21, 111));
         jLabel10.setText("Nome:");
-        jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, 200, 50));
+        jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, 200, 50));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(4, 21, 111));
         jLabel1.setText("Responsável:");
-        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 70, 220, 50));
+        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 180, 220, 50));
 
         TxtFieldNome.setBackground(new java.awt.Color(255, 255, 255));
         TxtFieldNome.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         TxtFieldNome.setForeground(new java.awt.Color(4, 21, 111));
         TxtFieldNome.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(4, 21, 111)));
         TxtFieldNome.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        jPanel3.add(TxtFieldNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 120, 190, 70));
+        jPanel3.add(TxtFieldNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 230, 470, 50));
 
         TxtFieldNome1.setBackground(new java.awt.Color(255, 255, 255));
         TxtFieldNome1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         TxtFieldNome1.setForeground(new java.awt.Color(4, 21, 111));
         TxtFieldNome1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(4, 21, 111)));
         TxtFieldNome1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        jPanel3.add(TxtFieldNome1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, 190, 70));
+        jPanel3.add(TxtFieldNome1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 470, 50));
 
         jButton2.setBackground(new java.awt.Color(255, 255, 255));
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jButton2.setForeground(new java.awt.Color(4, 21, 111));
         jButton2.setText("Limpar");
-        jPanel3.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 300, 190, 70));
+        jPanel3.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 340, 190, 70));
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jButton1.setForeground(new java.awt.Color(4, 21, 111));
         jButton1.setText("Adicionar");
-        jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 300, 190, 70));
+        jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 340, 190, 70));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/escudoIcon.png"))); // NOI18N
-        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 20, 60, 70));
+        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 360, 60, 70));
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/timeIcon.png"))); // NOI18N
         jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 60, 70));
@@ -176,19 +176,19 @@ public class Times extends javax.swing.JFrame {
         jTable1.setSelectionForeground(new java.awt.Color(255, 255, 255));
         jScrollPane1.setViewportView(jTable1);
 
-        jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 280));
+        jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 320));
 
         jButton3.setBackground(new java.awt.Color(255, 255, 255));
         jButton3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jButton3.setForeground(new java.awt.Color(4, 21, 111));
         jButton3.setText("Excluir");
-        jPanel4.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 300, 190, 70));
+        jPanel4.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 340, 190, 70));
 
         jButton4.setBackground(new java.awt.Color(255, 255, 255));
         jButton4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jButton4.setForeground(new java.awt.Color(4, 21, 111));
         jButton4.setText("Atualizar");
-        jPanel4.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 300, 190, 70));
+        jPanel4.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 340, 190, 70));
 
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/escudoIcon.png"))); // NOI18N
         jPanel4.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 360, 60, 70));
@@ -205,12 +205,12 @@ public class Times extends javax.swing.JFrame {
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(4, 21, 111));
         jLabel11.setText("Time:");
-        jPanel5.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, 200, 50));
+        jPanel5.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, 200, 50));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(4, 21, 111));
         jLabel9.setText("Jogadores:");
-        jPanel5.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 70, 220, 50));
+        jPanel5.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 180, 220, 50));
 
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/timeIcon.png"))); // NOI18N
         jPanel5.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 60, 70));
@@ -218,18 +218,18 @@ public class Times extends javax.swing.JFrame {
         jComboBox1.setBackground(new java.awt.Color(255, 255, 255));
         jComboBox1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jComboBox1.setForeground(new java.awt.Color(4, 21, 111));
-        jPanel5.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 120, 190, 70));
+        jPanel5.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 230, 460, 50));
 
         jComboBox2.setBackground(new java.awt.Color(255, 255, 255));
         jComboBox2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jComboBox2.setForeground(new java.awt.Color(4, 21, 111));
-        jPanel5.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, 190, 70));
+        jPanel5.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 460, 50));
 
         jButton5.setBackground(new java.awt.Color(255, 255, 255));
         jButton5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jButton5.setForeground(new java.awt.Color(4, 21, 111));
         jButton5.setText("Incluir");
-        jPanel5.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 300, 190, 70));
+        jPanel5.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 340, 190, 70));
 
         jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/escudoIcon.png"))); // NOI18N
         jPanel5.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 360, 60, 70));
@@ -246,22 +246,22 @@ public class Times extends javax.swing.JFrame {
         jLabel17.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(4, 21, 111));
         jLabel17.setText("Time:");
-        jPanel6.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, 200, 50));
+        jPanel6.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, 200, 50));
 
         jComboBox3.setBackground(new java.awt.Color(255, 255, 255));
         jComboBox3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jComboBox3.setForeground(new java.awt.Color(4, 21, 111));
-        jPanel6.add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, 190, 70));
+        jPanel6.add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 460, 50));
 
         jComboBox4.setBackground(new java.awt.Color(255, 255, 255));
         jComboBox4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jComboBox4.setForeground(new java.awt.Color(4, 21, 111));
-        jPanel6.add(jComboBox4, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 120, 190, 70));
+        jPanel6.add(jComboBox4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 230, 460, 50));
 
         jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(4, 21, 111));
         jLabel18.setText("Jogadores:");
-        jPanel6.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 70, 220, 50));
+        jPanel6.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 180, 220, 50));
 
         jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/escudoIcon.png"))); // NOI18N
         jPanel6.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 360, 60, 70));
@@ -270,7 +270,7 @@ public class Times extends javax.swing.JFrame {
         jButton6.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jButton6.setForeground(new java.awt.Color(4, 21, 111));
         jButton6.setText("Remover");
-        jPanel6.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 300, 190, 70));
+        jPanel6.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 340, 190, 70));
 
         jTabbedPane1.addTab("Tirar Jogador", jPanel6);
 
@@ -318,7 +318,7 @@ public class Times extends javax.swing.JFrame {
         });
         jPanel2.add(IconCamp, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, 60, 60));
 
-        ButCamp.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        ButCamp.setFont(new java.awt.Font("Segoe UI Black", 1, 17)); // NOI18N
         ButCamp.setForeground(new java.awt.Color(118, 127, 176));
         ButCamp.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         ButCamp.setText("Campeonato");

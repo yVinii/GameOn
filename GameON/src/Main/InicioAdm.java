@@ -194,7 +194,7 @@ public class InicioAdm extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(4, 21, 111));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Início.");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, 110, 50));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, 170, 50));
 
         jPanel2.setBackground(new java.awt.Color(4, 21, 111));
         jPanel2.setForeground(new java.awt.Color(4, 21, 111));

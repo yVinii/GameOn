@@ -23,9 +23,9 @@ public class Jogadores extends javax.swing.JFrame {
         jFormattedTextField1 = new javax.swing.JFormattedTextField();
         jButton1 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -77,19 +77,19 @@ public class Jogadores extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(4, 21, 111));
         jLabel10.setText("Nome:");
-        jPanel4.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, 200, 50));
+        jPanel4.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, 200, 50));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(4, 21, 111));
         jLabel1.setText("CPF:");
-        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 70, 200, 50));
+        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, 200, 50));
 
         TxtFieldNome.setBackground(new java.awt.Color(255, 255, 255));
         TxtFieldNome.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         TxtFieldNome.setForeground(new java.awt.Color(4, 21, 111));
         TxtFieldNome.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(4, 21, 111)));
         TxtFieldNome.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        jPanel4.add(TxtFieldNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, 190, 70));
+        jPanel4.add(TxtFieldNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 470, 50));
 
         jFormattedTextField1.setBackground(new java.awt.Color(255, 255, 255));
         jFormattedTextField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(4, 21, 111)));
@@ -99,28 +99,29 @@ public class Jogadores extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jPanel4.add(jFormattedTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 120, 190, 70));
+        jFormattedTextField1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jPanel4.add(jFormattedTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 210, 470, 50));
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jButton1.setForeground(new java.awt.Color(4, 21, 111));
         jButton1.setText("Adicionar");
-        jPanel4.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 300, 190, 70));
+        jPanel4.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 340, 190, 70));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/jogadorIcon.png"))); // NOI18N
         jPanel4.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 60, 70));
-
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/golIcon.png"))); // NOI18N
-        jPanel4.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 10, 60, 70));
-
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/goleiroIcon.png"))); // NOI18N
-        jPanel4.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 30, 60, 70));
 
         jButton2.setBackground(new java.awt.Color(255, 255, 255));
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jButton2.setForeground(new java.awt.Color(4, 21, 111));
         jButton2.setText("Limpar");
-        jPanel4.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 300, 190, 70));
+        jPanel4.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 340, 190, 70));
+
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/golIcon.png"))); // NOI18N
+        jPanel4.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 340, 60, 90));
+
+        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/goleiroIcon.png"))); // NOI18N
+        jPanel4.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 380, 60, 50));
 
         jTabbedPane1.addTab("Adicionar", jPanel4);
 
@@ -152,19 +153,19 @@ public class Jogadores extends javax.swing.JFrame {
         jTable1.setSelectionForeground(new java.awt.Color(255, 255, 255));
         jScrollPane1.setViewportView(jTable1);
 
-        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 280));
+        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 320));
 
         jButton3.setBackground(new java.awt.Color(255, 255, 255));
         jButton3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jButton3.setForeground(new java.awt.Color(4, 21, 111));
         jButton3.setText("Excluir");
-        jPanel3.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 300, 190, 70));
+        jPanel3.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 340, 190, 70));
 
         jButton4.setBackground(new java.awt.Color(255, 255, 255));
         jButton4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jButton4.setForeground(new java.awt.Color(4, 21, 111));
         jButton4.setText("Atualizar");
-        jPanel3.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 300, 190, 70));
+        jPanel3.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 340, 190, 70));
 
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/jogadorIcon.png"))); // NOI18N
         jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, 60, 70));
@@ -222,7 +223,7 @@ public class Jogadores extends javax.swing.JFrame {
         });
         jPanel2.add(IconCamp, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, 60, 60));
 
-        ButCamp.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        ButCamp.setFont(new java.awt.Font("Segoe UI Black", 1, 17)); // NOI18N
         ButCamp.setForeground(new java.awt.Color(118, 127, 176));
         ButCamp.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         ButCamp.setText("Campeonato");
@@ -417,15 +418,15 @@ public class Jogadores extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

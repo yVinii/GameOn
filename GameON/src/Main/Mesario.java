@@ -144,7 +144,7 @@ public class Mesario extends javax.swing.JFrame {
         });
         jPanel4.add(IconCamp, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, 60, 60));
 
-        ButCamp.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        ButCamp.setFont(new java.awt.Font("Segoe UI Black", 1, 17)); // NOI18N
         ButCamp.setForeground(new java.awt.Color(118, 127, 176));
         ButCamp.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         ButCamp.setText("Campeonato");
@@ -256,15 +256,15 @@ public class Mesario extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(4, 21, 111));
         jLabel9.setText("Usuário:");
-        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 30, 200, 50));
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 40, 200, 50));
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Icon Usuario.png"))); // NOI18N
-        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 80, 70, 70));
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 90, 70, 70));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(4, 21, 111));
         jLabel1.setText("Senha:");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, 200, 50));
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 200, 50));
 
         CadeadoFechado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Cadeado fechado.png"))); // NOI18N
         CadeadoFechado.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -272,7 +272,7 @@ public class Mesario extends javax.swing.JFrame {
                 CadeadoFechadoMouseClicked(evt);
             }
         });
-        jPanel2.add(CadeadoFechado, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, 70, 70));
+        jPanel2.add(CadeadoFechado, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, 70, 70));
 
         CadeadoAberto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Cadeado aberto.png"))); // NOI18N
         CadeadoAberto.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -280,20 +280,20 @@ public class Mesario extends javax.swing.JFrame {
                 CadeadoAbertoMouseClicked(evt);
             }
         });
-        jPanel2.add(CadeadoAberto, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, 70, 70));
+        jPanel2.add(CadeadoAberto, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, 70, 70));
 
         TxtFieldSenha.setBackground(new java.awt.Color(255, 255, 255));
         TxtFieldSenha.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         TxtFieldSenha.setForeground(new java.awt.Color(4, 21, 111));
         TxtFieldSenha.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(4, 21, 111)));
-        jPanel2.add(TxtFieldSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 210, 190, 70));
+        jPanel2.add(TxtFieldSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 230, 230, 50));
 
         TxtFieldUsuario.setBackground(new java.awt.Color(255, 255, 255));
         TxtFieldUsuario.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         TxtFieldUsuario.setForeground(new java.awt.Color(4, 21, 111));
         TxtFieldUsuario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(4, 21, 111)));
         TxtFieldUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        jPanel2.add(TxtFieldUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 80, 190, 70));
+        jPanel2.add(TxtFieldUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 100, 200, 50));
 
         Adicionar.setBackground(new java.awt.Color(255, 255, 255));
         Adicionar.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -304,7 +304,7 @@ public class Mesario extends javax.swing.JFrame {
                 AdicionarActionPerformed(evt);
             }
         });
-        jPanel2.add(Adicionar, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 310, 150, 70));
+        jPanel2.add(Adicionar, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 340, 190, 70));
 
         Limpar.setBackground(new java.awt.Color(255, 255, 255));
         Limpar.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -315,27 +315,28 @@ public class Mesario extends javax.swing.JFrame {
                 LimparActionPerformed(evt);
             }
         });
-        jPanel2.add(Limpar, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 310, 150, 70));
+        jPanel2.add(Limpar, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 340, 190, 70));
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(4, 21, 111));
         jLabel11.setText("Nome:");
-        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 200, 50));
+        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, 200, 50));
 
         TxtFieldNome.setBackground(new java.awt.Color(255, 255, 255));
         TxtFieldNome.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         TxtFieldNome.setForeground(new java.awt.Color(4, 21, 111));
         TxtFieldNome.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(4, 21, 111)));
         TxtFieldNome.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        jPanel2.add(TxtFieldNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, 190, 70));
+        jPanel2.add(TxtFieldNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, 200, 50));
 
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Icon Usuario.png"))); // NOI18N
-        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 70, 70));
+        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 70, 70));
 
         jTabbedPane1.addTab("Adicionar", jPanel2);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTable1.setBackground(new java.awt.Color(255, 255, 255));
         jTable1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -361,8 +362,10 @@ public class Mesario extends javax.swing.JFrame {
         jTable1.setSelectionForeground(new java.awt.Color(255, 255, 255));
         jScrollPane1.setViewportView(jTable1);
 
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 320));
+
         ExcluirBut.setBackground(new java.awt.Color(255, 255, 255));
-        ExcluirBut.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        ExcluirBut.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         ExcluirBut.setForeground(new java.awt.Color(4, 21, 111));
         ExcluirBut.setText("Excluir");
         ExcluirBut.addActionListener(new java.awt.event.ActionListener() {
@@ -370,9 +373,10 @@ public class Mesario extends javax.swing.JFrame {
                 ExcluirButActionPerformed(evt);
             }
         });
+        jPanel1.add(ExcluirBut, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 340, 190, 70));
 
         AtualizarBut.setBackground(new java.awt.Color(255, 255, 255));
-        AtualizarBut.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        AtualizarBut.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         AtualizarBut.setForeground(new java.awt.Color(4, 21, 111));
         AtualizarBut.setLabel("Atualizar\n");
         AtualizarBut.addActionListener(new java.awt.event.ActionListener() {
@@ -380,29 +384,7 @@ public class Mesario extends javax.swing.JFrame {
                 AtualizarButActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 553, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(AtualizarBut, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(ExcluirBut, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 439, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(172, 172, 172)
-                .addComponent(ExcluirBut, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
-                .addComponent(AtualizarBut, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        jPanel1.add(AtualizarBut, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 340, 190, 70));
 
         jTabbedPane1.addTab("Tabela", jPanel1);
 
