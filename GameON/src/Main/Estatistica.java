@@ -58,7 +58,7 @@ public class Estatistica extends javax.swing.JFrame {
         jComboBox8.setBackground(new java.awt.Color(255, 255, 255));
         jComboBox8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jComboBox8.setForeground(new java.awt.Color(4, 21, 111));
-        jPanel3.add(jComboBox8, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 450, 70));
+        jPanel3.add(jComboBox8, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 450, 50));
 
         jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(4, 21, 111));
@@ -73,7 +73,7 @@ public class Estatistica extends javax.swing.JFrame {
         jComboBox6.setBackground(new java.awt.Color(255, 255, 255));
         jComboBox6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jComboBox6.setForeground(new java.awt.Color(4, 21, 111));
-        jPanel3.add(jComboBox6, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 210, 450, 70));
+        jPanel3.add(jComboBox6, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 210, 450, 50));
 
         jButton8.setBackground(new java.awt.Color(255, 255, 255));
         jButton8.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
@@ -84,14 +84,16 @@ public class Estatistica extends javax.swing.JFrame {
         jLabel19.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(4, 21, 111));
         jLabel19.setText("Total de gols:");
-        jPanel3.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 290, 230, 50));
+        jPanel3.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 350, 140, 50));
 
         jTextField1.setEditable(false);
-        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jTextField1.setBackground(new java.awt.Color(153, 204, 255));
+        jTextField1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jTextField1.setForeground(new java.awt.Color(4, 21, 111));
+        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField1.setText("9");
         jTextField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(4, 21, 111)));
-        jPanel3.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 340, 190, 70));
+        jPanel3.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 340, 80, 70));
 
         jButton9.setBackground(new java.awt.Color(255, 255, 255));
         jButton9.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
@@ -112,7 +114,7 @@ public class Estatistica extends javax.swing.JFrame {
         jComboBox10.setBackground(new java.awt.Color(255, 255, 255));
         jComboBox10.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jComboBox10.setForeground(new java.awt.Color(4, 21, 111));
-        jPanel4.add(jComboBox10, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 340, 390, 70));
+        jPanel4.add(jComboBox10, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 350, 390, 50));
 
         jTable1.setBackground(new java.awt.Color(255, 255, 255));
         jTable1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N

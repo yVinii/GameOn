@@ -2,6 +2,7 @@ package Classes;
 import java.util.ArrayList;
 public class Campeonato {
     private String nome;
+    private String dataElocal;
     private ArrayList<Time> times;
 
     public Campeonato() {
@@ -14,6 +15,14 @@ public class Campeonato {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public String getDataElocal() {
+        return dataElocal;
+    }
+
+    public void setDataElocal(String dataElocal) {
+        this.dataElocal = dataElocal;
     }
     
     public ArrayList<Time> getTimes() {

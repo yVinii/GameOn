@@ -110,7 +110,7 @@ public class Mesario extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(4, 21, 111));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Mesário.");
-        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, 170, 50));
+        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, 180, 50));
 
         jPanel4.setBackground(new java.awt.Color(4, 21, 111));
         jPanel4.setForeground(new java.awt.Color(4, 21, 111));
@@ -256,10 +256,10 @@ public class Mesario extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(4, 21, 111));
         jLabel9.setText("Usuário:");
-        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 40, 200, 50));
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 170, 200, 50));
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Icon Usuario.png"))); // NOI18N
-        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 90, 70, 70));
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 220, 70, 70));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(4, 21, 111));
@@ -286,14 +286,14 @@ public class Mesario extends javax.swing.JFrame {
         TxtFieldSenha.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         TxtFieldSenha.setForeground(new java.awt.Color(4, 21, 111));
         TxtFieldSenha.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(4, 21, 111)));
-        jPanel2.add(TxtFieldSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 230, 230, 50));
+        jPanel2.add(TxtFieldSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 230, 190, 50));
 
         TxtFieldUsuario.setBackground(new java.awt.Color(255, 255, 255));
         TxtFieldUsuario.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         TxtFieldUsuario.setForeground(new java.awt.Color(4, 21, 111));
         TxtFieldUsuario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(4, 21, 111)));
         TxtFieldUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        jPanel2.add(TxtFieldUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 100, 200, 50));
+        jPanel2.add(TxtFieldUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 230, 190, 50));
 
         Adicionar.setBackground(new java.awt.Color(255, 255, 255));
         Adicionar.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -327,7 +327,7 @@ public class Mesario extends javax.swing.JFrame {
         TxtFieldNome.setForeground(new java.awt.Color(4, 21, 111));
         TxtFieldNome.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(4, 21, 111)));
         TxtFieldNome.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        jPanel2.add(TxtFieldNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, 200, 50));
+        jPanel2.add(TxtFieldNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, 480, 50));
 
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Icon Usuario.png"))); // NOI18N
         jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 70, 70));
