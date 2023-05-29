@@ -252,7 +252,7 @@ public class Login extends javax.swing.JFrame {
             p1.setUsuario(conectar.getResultSet().getString(1));
             p1.setSenha(conectar.getResultSet().getString(2));
         }
-        if(p1.getNome().equals("")){
+        if(p1.getUsuario().equals("")){
             JOptionPane.showMessageDialog(null, "Houve algum problema ao consultar cadastro");
         }else{
             JOptionPane.showMessageDialog(null, "Bem Vindo Admin "+ usuario);
@@ -288,7 +288,7 @@ public class Login extends javax.swing.JFrame {
             p1.setUsuario(conectar.getResultSet().getString(1));
             p1.setSenha(conectar.getResultSet().getString(2));
         }
-        if(p1.getNome().equals("")){
+        if(p1.getUsuario().equals("")){
             JOptionPane.showMessageDialog(null, "Houve algum problema ao consultar cadastro");
         }else{
             JOptionPane.showMessageDialog(null, "Bem Vindo Mesário "+ usuario);

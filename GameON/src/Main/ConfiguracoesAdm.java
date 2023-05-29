@@ -101,6 +101,7 @@ public class ConfiguracoesAdm extends javax.swing.JFrame {
         ButTrocarS = new javax.swing.JButton();
         ButMostrar = new javax.swing.JButton();
         ButEsconder = new javax.swing.JButton();
+        Btn_logout = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -350,6 +351,14 @@ public class ConfiguracoesAdm extends javax.swing.JFrame {
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, 670, -1));
 
+        Btn_logout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Logout.png"))); // NOI18N
+        Btn_logout.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Btn_logoutMouseClicked(evt);
+            }
+        });
+        jPanel1.add(Btn_logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 100, 60, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -560,6 +569,13 @@ public class ConfiguracoesAdm extends javax.swing.JFrame {
         txtAtualizar.setVisible(true);
         txtAtualizar.setEnabled(true);
     }//GEN-LAST:event_ButTrocarSActionPerformed
+
+    private void Btn_logoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Btn_logoutMouseClicked
+        String usu = null;
+        Login minhatela = new Login();
+        minhatela.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_Btn_logoutMouseClicked
                                 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -570,6 +586,7 @@ public class ConfiguracoesAdm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Btn_logout;
     private javax.swing.JLabel ButAtualizar;
     private javax.swing.JLabel ButCamp;
     private javax.swing.JButton ButEsconder;

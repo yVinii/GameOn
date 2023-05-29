@@ -21,7 +21,7 @@ public class Jogadores extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         TxtFieldNome = new javax.swing.JTextField();
         jFormattedTextField1 = new javax.swing.JFormattedTextField();
-        jButton1 = new javax.swing.JButton();
+        Btn_addJogador = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
@@ -50,6 +50,7 @@ public class Jogadores extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         txtUsuario = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        Btn_logout = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -102,11 +103,16 @@ public class Jogadores extends javax.swing.JFrame {
         jFormattedTextField1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jPanel4.add(jFormattedTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 210, 470, 50));
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(4, 21, 111));
-        jButton1.setText("Adicionar");
-        jPanel4.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 340, 190, 70));
+        Btn_addJogador.setBackground(new java.awt.Color(255, 255, 255));
+        Btn_addJogador.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        Btn_addJogador.setForeground(new java.awt.Color(4, 21, 111));
+        Btn_addJogador.setText("Adicionar");
+        Btn_addJogador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_addJogadorActionPerformed(evt);
+            }
+        });
+        jPanel4.add(Btn_addJogador, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 340, 190, 70));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/jogadorIcon.png"))); // NOI18N
         jPanel4.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 60, 70));
@@ -306,6 +312,14 @@ public class Jogadores extends javax.swing.JFrame {
         jLabel4.setText("__________________________________________________________________");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, 660, 90));
 
+        Btn_logout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Logout.png"))); // NOI18N
+        Btn_logout.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Btn_logoutMouseClicked(evt);
+            }
+        });
+        jPanel1.add(Btn_logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 190, 60, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -388,6 +402,17 @@ public class Jogadores extends javax.swing.JFrame {
         minhatela.setVisible(true);
         dispose();
     }//GEN-LAST:event_ButConfigMouseClicked
+
+    private void Btn_logoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Btn_logoutMouseClicked
+        String usu = null;
+        Login minhatela = new Login();
+        minhatela.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_Btn_logoutMouseClicked
+
+    private void Btn_addJogadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_addJogadorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Btn_addJogadorActionPerformed
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -397,6 +422,8 @@ public class Jogadores extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Btn_addJogador;
+    private javax.swing.JLabel Btn_logout;
     private javax.swing.JLabel ButCamp;
     private javax.swing.JLabel ButConfig;
     private javax.swing.JLabel ButInicio;
@@ -407,7 +434,6 @@ public class Jogadores extends javax.swing.JFrame {
     private javax.swing.JLabel IconMesario;
     private javax.swing.JLabel IconTimes;
     private javax.swing.JTextField TxtFieldNome;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;

@@ -133,6 +133,7 @@ public class Campeonato extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         txtUsuario = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        Btn_logout = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -180,7 +181,7 @@ public class Campeonato extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(4, 21, 111));
-        jLabel1.setText("Quadra e Data:");
+        jLabel1.setText("Informações:");
         jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, 260, 50));
 
         jTextPane1.setBackground(new java.awt.Color(255, 255, 255));
@@ -796,6 +797,14 @@ public class Campeonato extends javax.swing.JFrame {
         jLabel4.setText("__________________________________________________________________");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, 660, 90));
 
+        Btn_logout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Logout.png"))); // NOI18N
+        Btn_logout.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Btn_logoutMouseClicked(evt);
+            }
+        });
+        jPanel1.add(Btn_logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 190, 60, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -1068,6 +1077,13 @@ public class Campeonato extends javax.swing.JFrame {
             butEncerrar.setVisible(true);
         }
     }//GEN-LAST:event_time5678MouseClicked
+
+    private void Btn_logoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Btn_logoutMouseClicked
+        String usu = null;
+        Login minhatela = new Login();
+        minhatela.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_Btn_logoutMouseClicked
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -1077,6 +1093,7 @@ public class Campeonato extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Btn_logout;
     private javax.swing.JLabel ButConfig;
     private javax.swing.JLabel ButInicio;
     private javax.swing.JLabel ButJogadores;

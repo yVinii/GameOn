@@ -2,7 +2,7 @@ package Classes;
 import java.util.ArrayList;
 public class Campeonato {
     private String nome;
-    private String dataElocal;
+    private String Informacoes;
     private ArrayList<Time> times;
 
     public Campeonato() {
@@ -17,12 +17,12 @@ public class Campeonato {
         this.nome = nome;
     }
 
-    public String getDataElocal() {
-        return dataElocal;
+    public String getInformacoes() {
+        return Informacoes;
     }
 
-    public void setDataElocal(String dataElocal) {
-        this.dataElocal = dataElocal;
+    public void setInformacoes(String dataElocal) {
+        this.Informacoes = dataElocal;
     }
     
     public ArrayList<Time> getTimes() {

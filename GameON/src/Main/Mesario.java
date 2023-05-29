@@ -99,6 +99,7 @@ public class Mesario extends javax.swing.JFrame {
         ExcluirBut = new javax.swing.JButton();
         AtualizarBut = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
+        Btn_logout = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -395,6 +396,14 @@ public class Mesario extends javax.swing.JFrame {
         jLabel6.setText("________________________________________________________________");
         jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, 660, 90));
 
+        Btn_logout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Logout.png"))); // NOI18N
+        Btn_logout.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Btn_logoutMouseClicked(evt);
+            }
+        });
+        jPanel3.add(Btn_logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 190, 60, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -602,6 +611,13 @@ public class Mesario extends javax.swing.JFrame {
                         }
         }
     }//GEN-LAST:event_AtualizarButActionPerformed
+
+    private void Btn_logoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Btn_logoutMouseClicked
+        String usu = null;
+        Login minhatela = new Login();
+        minhatela.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_Btn_logoutMouseClicked
     
     private void LimparAdicionar(){
         TxtFieldNome.setText("");
@@ -620,6 +636,7 @@ public class Mesario extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Adicionar;
     private javax.swing.JButton AtualizarBut;
+    private javax.swing.JLabel Btn_logout;
     private javax.swing.JLabel ButCamp;
     private javax.swing.JLabel ButConfig;
     private javax.swing.JLabel ButInicio1;

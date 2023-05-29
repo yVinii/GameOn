@@ -34,6 +34,7 @@ public class InicioMesario extends javax.swing.JFrame {
         txtUsuario = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        Btn_logout = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -216,6 +217,14 @@ public class InicioMesario extends javax.swing.JFrame {
         jLabel4.setText("__________________________________________________________________");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, 660, 90));
 
+        Btn_logout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Logout.png"))); // NOI18N
+        Btn_logout.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Btn_logoutMouseClicked(evt);
+            }
+        });
+        jPanel1.add(Btn_logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 190, 60, -1));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 550));
 
         pack();
@@ -268,6 +277,13 @@ public class InicioMesario extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_PanelResultadoMouseClicked
 
+    private void Btn_logoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Btn_logoutMouseClicked
+        String usu = null;
+        Login minhatela = new Login();
+        minhatela.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_Btn_logoutMouseClicked
+
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -277,6 +293,7 @@ public class InicioMesario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Btn_logout;
     private javax.swing.JLabel ButConfig;
     private javax.swing.JLabel ButEstatistica;
     private javax.swing.JLabel ButInicio;
