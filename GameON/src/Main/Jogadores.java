@@ -1,13 +1,27 @@
 package Main;
 
+import Classes.*;
+import Conexões.MySQL;
+import static Metodos.CPFValidacao.validarCPF;
+import java.awt.HeadlessException;
 import java.awt.Toolkit;
 import static java.lang.System.exit;
+import java.sql.SQLException;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
 public class Jogadores extends javax.swing.JFrame {
+    MySQL conectar = new MySQL();
+    MySQL con1 = new MySQL();
     public Jogadores(String usu) {
         initComponents();
         txtUsuario.setText(usu);
         this.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Imagens//logo-clara.png"))); // Define Icone
+        ListarDados();
     }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -20,17 +34,17 @@ public class Jogadores extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         TxtFieldNome = new javax.swing.JTextField();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
+        TxtFieldCPF = new javax.swing.JFormattedTextField();
         Btn_addJogador = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        ButLimpar = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        TabelaJogador = new javax.swing.JTable();
+        ButExcluir = new javax.swing.JButton();
+        ButAtualizar = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
@@ -92,16 +106,16 @@ public class Jogadores extends javax.swing.JFrame {
         TxtFieldNome.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         jPanel4.add(TxtFieldNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 470, 50));
 
-        jFormattedTextField1.setBackground(new java.awt.Color(255, 255, 255));
-        jFormattedTextField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(4, 21, 111)));
-        jFormattedTextField1.setForeground(new java.awt.Color(4, 21, 111));
+        TxtFieldCPF.setBackground(new java.awt.Color(255, 255, 255));
+        TxtFieldCPF.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(4, 21, 111)));
+        TxtFieldCPF.setForeground(new java.awt.Color(4, 21, 111));
         try {
-            jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+            TxtFieldCPF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jFormattedTextField1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jPanel4.add(jFormattedTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 210, 470, 50));
+        TxtFieldCPF.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jPanel4.add(TxtFieldCPF, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 210, 470, 50));
 
         Btn_addJogador.setBackground(new java.awt.Color(255, 255, 255));
         Btn_addJogador.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -117,11 +131,16 @@ public class Jogadores extends javax.swing.JFrame {
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/jogadorIcon.png"))); // NOI18N
         jPanel4.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 60, 70));
 
-        jButton2.setBackground(new java.awt.Color(255, 255, 255));
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(4, 21, 111));
-        jButton2.setText("Limpar");
-        jPanel4.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 340, 190, 70));
+        ButLimpar.setBackground(new java.awt.Color(255, 255, 255));
+        ButLimpar.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        ButLimpar.setForeground(new java.awt.Color(4, 21, 111));
+        ButLimpar.setText("Limpar");
+        ButLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButLimparActionPerformed(evt);
+            }
+        });
+        jPanel4.add(ButLimpar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 340, 190, 70));
 
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/golIcon.png"))); // NOI18N
         jPanel4.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 340, 60, 90));
@@ -135,10 +154,10 @@ public class Jogadores extends javax.swing.JFrame {
         jPanel3.setForeground(new java.awt.Color(4, 21, 111));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable1.setBackground(new java.awt.Color(255, 255, 255));
-        jTable1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jTable1.setForeground(new java.awt.Color(4, 21, 111));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        TabelaJogador.setBackground(new java.awt.Color(255, 255, 255));
+        TabelaJogador.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        TabelaJogador.setForeground(new java.awt.Color(4, 21, 111));
+        TabelaJogador.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -149,29 +168,46 @@ public class Jogadores extends javax.swing.JFrame {
             Class[] types = new Class [] {
                 java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, true, true, false
+            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
         });
-        jTable1.setRowHeight(35);
-        jTable1.setSelectionBackground(new java.awt.Color(4, 21, 111));
-        jTable1.setSelectionForeground(new java.awt.Color(255, 255, 255));
-        jScrollPane1.setViewportView(jTable1);
+        TabelaJogador.setRowHeight(35);
+        TabelaJogador.setSelectionBackground(new java.awt.Color(4, 21, 111));
+        TabelaJogador.setSelectionForeground(new java.awt.Color(255, 255, 255));
+        jScrollPane1.setViewportView(TabelaJogador);
 
         jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 320));
 
-        jButton3.setBackground(new java.awt.Color(255, 255, 255));
-        jButton3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(4, 21, 111));
-        jButton3.setText("Excluir");
-        jPanel3.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 340, 190, 70));
+        ButExcluir.setBackground(new java.awt.Color(255, 255, 255));
+        ButExcluir.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        ButExcluir.setForeground(new java.awt.Color(4, 21, 111));
+        ButExcluir.setText("Excluir");
+        ButExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButExcluirActionPerformed(evt);
+            }
+        });
+        jPanel3.add(ButExcluir, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 340, 190, 70));
 
-        jButton4.setBackground(new java.awt.Color(255, 255, 255));
-        jButton4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(4, 21, 111));
-        jButton4.setText("Atualizar");
-        jPanel3.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 340, 190, 70));
+        ButAtualizar.setBackground(new java.awt.Color(255, 255, 255));
+        ButAtualizar.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        ButAtualizar.setForeground(new java.awt.Color(4, 21, 111));
+        ButAtualizar.setText("Atualizar");
+        ButAtualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButAtualizarActionPerformed(evt);
+            }
+        });
+        jPanel3.add(ButAtualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 340, 190, 70));
 
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/jogadorIcon.png"))); // NOI18N
         jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, 60, 70));
@@ -345,6 +381,63 @@ public class Jogadores extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    public void ListarDados(){
+        conectar.conectaBanco();
+        String nomeT = "";
+        String listar_dados = 
+                "SELECT "
+                + "* "                                
+                + "FROM "
+                + "jogador "
+                + "ORDER BY "
+                + "ID"
+                + ";";
+
+        try{
+            conectar.executarSQL(listar_dados);
+            DefaultTableModel model =(DefaultTableModel) TabelaJogador.getModel();
+            model.setNumRows(0);
+            while(conectar.getResultSet().next()){
+                int idt = this.conectar.getResultSet().getInt(4);
+                System.out.println(idt);
+                con1.conectaBanco();
+        try{
+            con1.executarSQL(
+                "SELECT "
+                    +"nome"
+                +" FROM "
+                    +"times"
+                +" WHERE "
+                +"id = '"+idt+"';"
+            );
+            while(con1.getResultSet().next()){
+                nomeT = con1.getResultSet().getString(1);
+                idt = 0;
+            }
+                }catch (Exception e){
+                    JOptionPane.showMessageDialog(null, "Erro ao buscar!");
+                    
+                }finally{
+            con1.fechaBanco();
+        }
+                model.addRow(new Object[]{
+                this.conectar.getResultSet().getString(1),
+                this.conectar.getResultSet().getString(2),
+                this.conectar.getResultSet().getString(3),
+                nomeT
+                });     
+                nomeT="Livre no mercado";
+            }
+        } 
+        catch (HeadlessException | SQLException e) {            
+                JOptionPane.showMessageDialog(null, "Falha em buscar times!");
+        } finally{  
+            ((DefaultTableCellRenderer) TabelaJogador.getTableHeader().getDefaultRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
+            ((DefaultTableCellRenderer) TabelaJogador.getDefaultRenderer(JLabel.class)).setHorizontalAlignment(SwingConstants.CENTER);
+            conectar.fechaBanco();
+        }  
+    }   
+    
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
         exit(0);
     }//GEN-LAST:event_jLabel7MouseClicked
@@ -411,8 +504,112 @@ public class Jogadores extends javax.swing.JFrame {
     }//GEN-LAST:event_Btn_logoutMouseClicked
 
     private void Btn_addJogadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_addJogadorActionPerformed
-        // TODO add your handling code here:
+        boolean validacao = validarCPF(TxtFieldCPF.getText());
+        if(validacao == true){
+            int status=0;
+        conectar.conectaBanco();
+        Jogador pessoa = new Jogador();
+        pessoa.setNome(TxtFieldNome.getText());
+        pessoa.setCpf(TxtFieldCPF.getText());
+
+        try {
+            status = this.conectar.insertSQL("INSERT INTO jogador ("
+                    + "nome,"
+                    + "cpf"
+                + ") VALUES ("
+                    + "'" + pessoa.getNome() + "',"
+                    + "'" + pessoa.getCpf() + "'"
+                + ");");
+                if(status == 1){
+                    JOptionPane.showMessageDialog(null, "Jogador cadastrado com sucesso");
+                    LimparAdicionar();
+                    ListarDados();
+                }else{JOptionPane.showMessageDialog(null, "Houve algum problema de cadastro");
+                }
+        } catch (Exception e){
+                JOptionPane.showMessageDialog(null, "Houve algum problema com a conexão do servidor");
+                }
+       finally {
+        }
+        conectar.fechaBanco();
+        }else{
+            JOptionPane.showMessageDialog(null, "O Cpf inserido está inválido", "VALIDAÇÃO CPF", JOptionPane.ERROR_MESSAGE);
+            TxtFieldCPF.setValue(null);
+        }
+        
     }//GEN-LAST:event_Btn_addJogadorActionPerformed
+
+    private void ButLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButLimparActionPerformed
+        LimparAdicionar();
+    }//GEN-LAST:event_ButLimparActionPerformed
+
+    private void ButAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButAtualizarActionPerformed
+        int c = TabelaJogador.getSelectedRow();
+        if(c==-1){
+            JOptionPane.showMessageDialog(null, "Alguma linha deve ser selecionada para essa ação", "Erro Excluir", JOptionPane.ERROR_MESSAGE);
+        }else{
+            String id = (String) TabelaJogador.getValueAt(c, 0);
+            String nom = (String) TabelaJogador.getValueAt(c, 1);
+            String cpf = (String) TabelaJogador.getValueAt(c, 2);
+            String time = (String) TabelaJogador.getValueAt(c, 3);
+            boolean mn = validarCPF(cpf);
+            if(mn ==true){
+             
+            conectar.conectaBanco();
+                    boolean status = false;
+                        try {status = this.conectar.updateSQL(
+                                "UPDATE jogador SET "
+                                    + "nome = '" + nom + "',"
+                                    + "cpf = '" + cpf + "'"
+                                + " WHERE "
+                                + "id = '" + id + "'"
+                                + ";"
+                            );
+                        if(status){JOptionPane.showMessageDialog(null, "Atualização realizada com sucesso");
+                            ListarDados();
+                        }else{ JOptionPane.showMessageDialog(null, "Houve um erro na atualização, tente novamente");
+                        }
+                        } catch (Exception e) {
+                            e.getMessage();
+                            JOptionPane.showMessageDialog(null, "Houve um erro na atualização");
+                        } finally {conectar.fechaBanco();
+                        }
+        }else{
+                JOptionPane.showMessageDialog(null, "O Cpf do jogador selecionado está errado", "VALIDAÇÃO CPF", JOptionPane.ERROR_MESSAGE);
+            }
+            }
+    }//GEN-LAST:event_ButAtualizarActionPerformed
+
+    private void ButExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButExcluirActionPerformed
+        int b = TabelaJogador.getSelectedRow();
+        if(b==-1){
+            JOptionPane.showMessageDialog(null, "Alguma linha deve ser selecionada para essa ação", "Erro Excluir", JOptionPane.ERROR_MESSAGE);
+        }else{
+            String a = (String) TabelaJogador.getValueAt(b, 0);
+            conectar.conectaBanco();
+            boolean status = false;
+            try {
+                status = this.conectar.updateSQL(
+                    "DELETE FROM jogador "
+                    + " WHERE "
+                    + "id = '" + a + "'"
+                    + ";"
+                );
+                if(status){ JOptionPane.showMessageDialog(null, "Jogador deletado com sucesso");
+                    ListarDados();
+                }else{
+                    JOptionPane.showMessageDialog(null, "Houve um erro ao apagar o time");
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Houve um erro ao apagar o time");
+            } finally {conectar.fechaBanco();
+            }
+        }
+    }//GEN-LAST:event_ButExcluirActionPerformed
+    public void LimparAdicionar(){
+        TxtFieldNome.setText("");
+        TxtFieldCPF.setValue(null);
+    }
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -424,20 +621,21 @@ public class Jogadores extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Btn_addJogador;
     private javax.swing.JLabel Btn_logout;
+    private javax.swing.JButton ButAtualizar;
     private javax.swing.JLabel ButCamp;
     private javax.swing.JLabel ButConfig;
+    private javax.swing.JButton ButExcluir;
     private javax.swing.JLabel ButInicio;
+    private javax.swing.JButton ButLimpar;
     private javax.swing.JLabel ButMesario;
     private javax.swing.JLabel ButTimes;
     private javax.swing.JLabel IconCamp;
     private javax.swing.JLabel IconInicio;
     private javax.swing.JLabel IconMesario;
     private javax.swing.JLabel IconTimes;
+    private javax.swing.JTable TabelaJogador;
+    private javax.swing.JFormattedTextField TxtFieldCPF;
     private javax.swing.JTextField TxtFieldNome;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -459,7 +657,6 @@ public class Jogadores extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel txtUsuario;
     // End of variables declaration//GEN-END:variables
 }

@@ -91,7 +91,7 @@ public class InicioAdm extends javax.swing.JFrame {
         PanelJogadores.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 200, 50));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Jogadores.png"))); // NOI18N
-        PanelJogadores.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, -1));
+        PanelJogadores.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 210, -1));
 
         jPanel1.add(PanelJogadores, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 320, 200, 200));
 
@@ -355,30 +355,6 @@ public class InicioAdm extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_ButMesarioMouseClicked
 
-    private void PanelMesarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelMesarioMouseClicked
-        Mesario minhatela = new Mesario(txtUsuario.getText());
-        minhatela.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_PanelMesarioMouseClicked
-
-    private void PanelJogadoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelJogadoresMouseClicked
-        Jogadores minhatela = new Jogadores(txtUsuario.getText());
-        minhatela.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_PanelJogadoresMouseClicked
-
-    private void PanelCampMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelCampMouseClicked
-        Campeonato minhatela = new Campeonato(txtUsuario.getText());
-        minhatela.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_PanelCampMouseClicked
-
-    private void PanelTimesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelTimesMouseClicked
-        Times minhatela = new Times(txtUsuario.getText());
-        minhatela.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_PanelTimesMouseClicked
-
     private void IconCampMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_IconCampMouseClicked
         Campeonato minhatela = new Campeonato(txtUsuario.getText());
         minhatela.setVisible(true);
@@ -427,6 +403,30 @@ public class InicioAdm extends javax.swing.JFrame {
         minhatela.setVisible(true);
         dispose();
     }//GEN-LAST:event_Btn_logoutMouseClicked
+
+    private void PanelCampMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelCampMouseClicked
+        Campeonato minhatela = new Campeonato(txtUsuario.getText());
+        minhatela.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_PanelCampMouseClicked
+
+    private void PanelMesarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelMesarioMouseClicked
+        Mesario minhatela = new Mesario(txtUsuario.getText());
+        minhatela.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_PanelMesarioMouseClicked
+
+    private void PanelTimesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelTimesMouseClicked
+        Times minhatela = new Times(txtUsuario.getText());
+        minhatela.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_PanelTimesMouseClicked
+
+    private void PanelJogadoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelJogadoresMouseClicked
+        Jogadores minhatela = new Jogadores(txtUsuario.getText());
+        minhatela.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_PanelJogadoresMouseClicked
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

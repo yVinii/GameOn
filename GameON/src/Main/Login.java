@@ -20,7 +20,6 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
@@ -40,8 +39,6 @@ public class Login extends javax.swing.JFrame {
         Visivel = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        CheckMes = new javax.swing.JCheckBox();
-        CheckAdm = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -187,20 +184,6 @@ public class Login extends javax.swing.JFrame {
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Icon Canto.png"))); // NOI18N
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 430, 100, 120));
 
-        CheckMes.setBackground(new java.awt.Color(255, 255, 255));
-        buttonGroup1.add(CheckMes);
-        CheckMes.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        CheckMes.setForeground(new java.awt.Color(4, 21, 111));
-        CheckMes.setText("Mesário");
-        jPanel1.add(CheckMes, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 310, -1, -1));
-
-        CheckAdm.setBackground(new java.awt.Color(255, 255, 255));
-        buttonGroup1.add(CheckAdm);
-        CheckAdm.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        CheckAdm.setForeground(new java.awt.Color(4, 21, 111));
-        CheckAdm.setText("Admin");
-        jPanel1.add(CheckAdm, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 240, -1, -1));
-
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, -1));
 
         pack();
@@ -228,7 +211,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel7MouseClicked
 
     private void ButEntrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButEntrarMouseClicked
-        if(CheckAdm.isSelected()){
+        
             conectar.conectaBanco();
             p1 = new Funcionario();
 
@@ -261,16 +244,12 @@ public class Login extends javax.swing.JFrame {
             minhaTela.setVisible(true);
             dispose();
         }
-        } catch (Exception e) { 
-          JOptionPane.showMessageDialog(null, "Houve algum problema com a conexão do servidor");
+        } catch (Exception e) {
+            
         } finally {  conectar.fechaBanco();
         }
-        }else if(CheckMes.isSelected()){
             conectar.conectaBanco();
             p1 = new Funcionario();
-
-        String usuario = TxtUsuario.getText();
-        String senha = TxtSenha.getText();
         //String senha = TxtSenha.getText();
         try {this.conectar.executarSQL(
                    "SELECT "
@@ -298,12 +277,8 @@ public class Login extends javax.swing.JFrame {
             dispose();
         }
         } catch (Exception e) { 
-          JOptionPane.showMessageDialog(null, "Houve algum problema com a conexão do servidor");
+            
         } finally {  conectar.fechaBanco();
-        }
-        
-        }else{
-            JOptionPane.showMessageDialog(null, "Uma caixa deve ser selecionada");
         }
     }//GEN-LAST:event_ButEntrarMouseClicked
     public static void main(String args[]) {
@@ -332,13 +307,10 @@ public class Login extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel ButEntrar;
-    private javax.swing.JCheckBox CheckAdm;
-    private javax.swing.JCheckBox CheckMes;
     private javax.swing.JLabel Invisivel;
     private javax.swing.JPasswordField TxtSenha;
     private javax.swing.JTextField TxtUsuario;
     private javax.swing.JLabel Visivel;
-    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

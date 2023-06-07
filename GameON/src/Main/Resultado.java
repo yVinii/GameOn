@@ -1,11 +1,19 @@
 package Main;
+import Conexões.MySQL;
 import java.awt.Toolkit;
 import static java.lang.System.exit;
+import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 public class Resultado extends javax.swing.JFrame {
+    MySQL conectar = new MySQL();
     public Resultado(String usu) {
         initComponents();
         txtUsuario.setText(usu);
         this.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Imagens//logo-clara.png"))); // Define Icone
+        AtualizarComboCamp(ComboCamp1);
+        AtualizarComboCamp(ComboCamp2);
+        AtualizarComboTimes(ComboTime1);
+        AtualizarComboTimes(ComboTime2);
     }   @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -15,18 +23,18 @@ public class Resultado extends javax.swing.JFrame {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel3 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        ComboTime2 = new javax.swing.JComboBox<>();
         jLabel12 = new javax.swing.JLabel();
-        jComboBox3 = new javax.swing.JComboBox<>();
+        ComboCamp1 = new javax.swing.JComboBox<>();
         jLabel13 = new javax.swing.JLabel();
-        jComboBox4 = new javax.swing.JComboBox<>();
+        ComboTime1 = new javax.swing.JComboBox<>();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        jComboBox5 = new javax.swing.JComboBox<>();
-        jComboBox6 = new javax.swing.JComboBox<>();
+        ComboPartida = new javax.swing.JComboBox<>();
+        ComboCamp2 = new javax.swing.JComboBox<>();
         TxtFieldNome1 = new javax.swing.JTextField();
         TxtFieldNome2 = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
@@ -73,30 +81,30 @@ public class Resultado extends javax.swing.JFrame {
         jLabel11.setText("Time 2:");
         jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 180, 220, 50));
 
-        jComboBox2.setBackground(new java.awt.Color(255, 255, 255));
-        jComboBox2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jComboBox2.setForeground(new java.awt.Color(4, 21, 111));
-        jPanel3.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 230, 220, 50));
+        ComboTime2.setBackground(new java.awt.Color(255, 255, 255));
+        ComboTime2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        ComboTime2.setForeground(new java.awt.Color(4, 21, 111));
+        jPanel3.add(ComboTime2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 230, 220, 50));
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(4, 21, 111));
         jLabel12.setText("Selecione Campeonato:");
         jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, 420, 50));
 
-        jComboBox3.setBackground(new java.awt.Color(255, 255, 255));
-        jComboBox3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jComboBox3.setForeground(new java.awt.Color(4, 21, 111));
-        jPanel3.add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 480, 50));
+        ComboCamp1.setBackground(new java.awt.Color(255, 255, 255));
+        ComboCamp1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        ComboCamp1.setForeground(new java.awt.Color(4, 21, 111));
+        jPanel3.add(ComboCamp1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 480, 50));
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(4, 21, 111));
         jLabel13.setText("Time 1:");
         jPanel3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 180, 220, 50));
 
-        jComboBox4.setBackground(new java.awt.Color(255, 255, 255));
-        jComboBox4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jComboBox4.setForeground(new java.awt.Color(4, 21, 111));
-        jPanel3.add(jComboBox4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 230, 220, 50));
+        ComboTime1.setBackground(new java.awt.Color(255, 255, 255));
+        ComboTime1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        ComboTime1.setForeground(new java.awt.Color(4, 21, 111));
+        jPanel3.add(ComboTime1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 230, 220, 50));
 
         jButton5.setBackground(new java.awt.Color(255, 255, 255));
         jButton5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -125,15 +133,15 @@ public class Resultado extends javax.swing.JFrame {
         jLabel15.setText("Gols Time 2:");
         jPanel4.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 180, 230, 50));
 
-        jComboBox5.setBackground(new java.awt.Color(255, 255, 255));
-        jComboBox5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jComboBox5.setForeground(new java.awt.Color(4, 21, 111));
-        jPanel4.add(jComboBox5, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 90, 220, 50));
+        ComboPartida.setBackground(new java.awt.Color(255, 255, 255));
+        ComboPartida.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        ComboPartida.setForeground(new java.awt.Color(4, 21, 111));
+        jPanel4.add(ComboPartida, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 90, 220, 50));
 
-        jComboBox6.setBackground(new java.awt.Color(255, 255, 255));
-        jComboBox6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jComboBox6.setForeground(new java.awt.Color(4, 21, 111));
-        jPanel4.add(jComboBox6, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 220, 50));
+        ComboCamp2.setBackground(new java.awt.Color(255, 255, 255));
+        ComboCamp2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        ComboCamp2.setForeground(new java.awt.Color(4, 21, 111));
+        jPanel4.add(ComboCamp2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 220, 50));
 
         TxtFieldNome1.setBackground(new java.awt.Color(255, 255, 255));
         TxtFieldNome1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -340,6 +348,44 @@ public class Resultado extends javax.swing.JFrame {
         minhatela.setVisible(true);
         dispose();
     }//GEN-LAST:event_Btn_logoutMouseClicked
+    public void AtualizarComboCamp(JComboBox si){
+        si.removeAllItems();
+        conectar.conectaBanco();
+    try{
+        conectar.executarSQL(
+            "SELECT "
+                +"nome"
+            +" FROM "
+                +"campeonato"
+        );
+        while(conectar.getResultSet().next()){   
+            si.addItem(conectar.getResultSet().getString(1));
+        }
+            }catch (Exception e){
+                JOptionPane.showMessageDialog(null, "Erro ao buscar!");
+            }finally{
+            conectar.fechaBanco();
+    }
+    }
+    public void AtualizarComboTimes(JComboBox hehe){
+        hehe.removeAllItems();
+        conectar.conectaBanco();
+    try{
+        conectar.executarSQL(
+            "SELECT "
+                +"nome"
+            +" FROM "
+                +"times"
+        );
+        while(conectar.getResultSet().next()){   
+            hehe.addItem(conectar.getResultSet().getString(1));
+        }
+            }catch (Exception e){
+                JOptionPane.showMessageDialog(null, "Erro ao buscar!");
+            }finally{
+            conectar.fechaBanco();
+    }
+    }
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -354,6 +400,11 @@ public class Resultado extends javax.swing.JFrame {
     private javax.swing.JLabel ButEstatistica;
     private javax.swing.JLabel ButInicio;
     private javax.swing.JLabel ButResultado;
+    private javax.swing.JComboBox<String> ComboCamp1;
+    private javax.swing.JComboBox<String> ComboCamp2;
+    private javax.swing.JComboBox<String> ComboPartida;
+    private javax.swing.JComboBox<String> ComboTime1;
+    private javax.swing.JComboBox<String> ComboTime2;
     private javax.swing.JLabel IconEstatistica;
     private javax.swing.JLabel IconInicio;
     private javax.swing.JLabel IconResultado;
@@ -363,11 +414,6 @@ public class Resultado extends javax.swing.JFrame {
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JComboBox<String> jComboBox4;
-    private javax.swing.JComboBox<String> jComboBox5;
-    private javax.swing.JComboBox<String> jComboBox6;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;

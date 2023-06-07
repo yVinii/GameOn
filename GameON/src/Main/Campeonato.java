@@ -1,7 +1,12 @@
 package Main;
+import Classes.*;
+import Conexões.MySQL;
 import java.awt.Toolkit;
 import static java.lang.System.exit;
-public class Campeonato extends javax.swing.JFrame {
+import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
+public class Campeonato extends javax.swing.JFrame{
+    MySQL conectar = new MySQL();
     public Campeonato(String usu) {
         initComponents();
         txtUsuario.setText(usu);
@@ -10,6 +15,9 @@ public class Campeonato extends javax.swing.JFrame {
         campeao.setVisible(false);
         butEncerrar.setEnabled(false);
         butEncerrar.setVisible(false);
+        AtualizarComboCamp(ComboCamp1);
+        AtualizarComboCamp(ComboCamp2);
+        AtualizarComboTimes(ComboTimes);
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -21,24 +29,24 @@ public class Campeonato extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         TxtFieldNome1 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        ButLimpar = new javax.swing.JButton();
+        ButCriar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
+        txtInformacao = new javax.swing.JTextPane();
         jLabel8 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        ComboCamp1 = new javax.swing.JComboBox<>();
         jLabel11 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        ComboTimes = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
-        jButton5 = new javax.swing.JButton();
+        ButAdicionar = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
-        jComboBox3 = new javax.swing.JComboBox<>();
+        ComboCamp2 = new javax.swing.JComboBox<>();
         jLabel35 = new javax.swing.JLabel();
         jLabel36 = new javax.swing.JLabel();
         jLabel37 = new javax.swing.JLabel();
@@ -167,27 +175,37 @@ public class Campeonato extends javax.swing.JFrame {
         TxtFieldNome1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         jPanel3.add(TxtFieldNome1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 470, 50));
 
-        jButton2.setBackground(new java.awt.Color(255, 255, 255));
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(4, 21, 111));
-        jButton2.setText("Limpar");
-        jPanel3.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 340, 190, 70));
+        ButLimpar.setBackground(new java.awt.Color(255, 255, 255));
+        ButLimpar.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        ButLimpar.setForeground(new java.awt.Color(4, 21, 111));
+        ButLimpar.setText("Limpar");
+        ButLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButLimparActionPerformed(evt);
+            }
+        });
+        jPanel3.add(ButLimpar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 340, 190, 70));
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(4, 21, 111));
-        jButton1.setText("Adicionar");
-        jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 340, 190, 70));
+        ButCriar.setBackground(new java.awt.Color(255, 255, 255));
+        ButCriar.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        ButCriar.setForeground(new java.awt.Color(4, 21, 111));
+        ButCriar.setText("Criar");
+        ButCriar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButCriarActionPerformed(evt);
+            }
+        });
+        jPanel3.add(ButCriar, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 340, 190, 70));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(4, 21, 111));
         jLabel1.setText("Informações:");
         jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, 260, 50));
 
-        jTextPane1.setBackground(new java.awt.Color(255, 255, 255));
-        jTextPane1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jTextPane1.setForeground(new java.awt.Color(4, 21, 111));
-        jScrollPane2.setViewportView(jTextPane1);
+        txtInformacao.setBackground(new java.awt.Color(255, 255, 255));
+        txtInformacao.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtInformacao.setForeground(new java.awt.Color(4, 21, 111));
+        jScrollPane2.setViewportView(txtInformacao);
 
         jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 210, 470, 100));
 
@@ -203,31 +221,36 @@ public class Campeonato extends javax.swing.JFrame {
         jPanel4.setForeground(new java.awt.Color(4, 21, 111));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jComboBox2.setBackground(new java.awt.Color(255, 255, 255));
-        jComboBox2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jComboBox2.setForeground(new java.awt.Color(4, 21, 111));
-        jPanel4.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 420, 50));
+        ComboCamp1.setBackground(new java.awt.Color(255, 255, 255));
+        ComboCamp1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        ComboCamp1.setForeground(new java.awt.Color(4, 21, 111));
+        jPanel4.add(ComboCamp1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 420, 50));
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(4, 21, 111));
         jLabel11.setText("Campeonato:");
         jPanel4.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, 230, 50));
 
-        jComboBox1.setBackground(new java.awt.Color(255, 255, 255));
-        jComboBox1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jComboBox1.setForeground(new java.awt.Color(4, 21, 111));
-        jPanel4.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 230, 420, 50));
+        ComboTimes.setBackground(new java.awt.Color(255, 255, 255));
+        ComboTimes.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        ComboTimes.setForeground(new java.awt.Color(4, 21, 111));
+        jPanel4.add(ComboTimes, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 230, 420, 50));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(4, 21, 111));
         jLabel9.setText("Time:");
         jPanel4.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 180, 220, 50));
 
-        jButton5.setBackground(new java.awt.Color(255, 255, 255));
-        jButton5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jButton5.setForeground(new java.awt.Color(4, 21, 111));
-        jButton5.setText("Adicionar");
-        jPanel4.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 340, 190, 70));
+        ButAdicionar.setBackground(new java.awt.Color(255, 255, 255));
+        ButAdicionar.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        ButAdicionar.setForeground(new java.awt.Color(4, 21, 111));
+        ButAdicionar.setText("Adicionar");
+        ButAdicionar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButAdicionarActionPerformed(evt);
+            }
+        });
+        jPanel4.add(ButAdicionar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 340, 190, 70));
 
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/campoIcon.png"))); // NOI18N
         jPanel4.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 60, 70));
@@ -246,10 +269,10 @@ public class Campeonato extends javax.swing.JFrame {
         jLabel14.setText("Selecione o Campeonato:");
         jPanel5.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 230, 40));
 
-        jComboBox3.setBackground(new java.awt.Color(255, 255, 255));
-        jComboBox3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jComboBox3.setForeground(new java.awt.Color(4, 21, 111));
-        jPanel5.add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 220, 50));
+        ComboCamp2.setBackground(new java.awt.Color(255, 255, 255));
+        ComboCamp2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        ComboCamp2.setForeground(new java.awt.Color(4, 21, 111));
+        jPanel5.add(ComboCamp2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 220, 50));
 
         jLabel35.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel35.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/retaIcon.png"))); // NOI18N
@@ -279,7 +302,6 @@ public class Campeonato extends javax.swing.JFrame {
         time8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(4, 21, 111)));
         time8.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
         time8.setForeground(new java.awt.Color(4, 21, 111));
-        time8.setText("FLUMINENSE");
         time8.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 time8MouseClicked(evt);
@@ -294,7 +316,6 @@ public class Campeonato extends javax.swing.JFrame {
         time7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(4, 21, 111)));
         time7.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
         time7.setForeground(new java.awt.Color(4, 21, 111));
-        time7.setText("CRUZEIRO");
         time7.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 time7MouseClicked(evt);
@@ -331,7 +352,6 @@ public class Campeonato extends javax.swing.JFrame {
         time2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(4, 21, 111)));
         time2.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
         time2.setForeground(new java.awt.Color(4, 21, 111));
-        time2.setText("ATLETICO");
         time2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 time2MouseClicked(evt);
@@ -346,7 +366,6 @@ public class Campeonato extends javax.swing.JFrame {
         time1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(4, 21, 111)));
         time1.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
         time1.setForeground(new java.awt.Color(4, 21, 111));
-        time1.setText("CORINTHIANS");
         time1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 time1MouseClicked(evt);
@@ -383,7 +402,6 @@ public class Campeonato extends javax.swing.JFrame {
         time4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(4, 21, 111)));
         time4.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
         time4.setForeground(new java.awt.Color(4, 21, 111));
-        time4.setText("FORTALEZA");
         time4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 time4MouseClicked(evt);
@@ -398,7 +416,6 @@ public class Campeonato extends javax.swing.JFrame {
         time3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(4, 21, 111)));
         time3.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
         time3.setForeground(new java.awt.Color(4, 21, 111));
-        time3.setText("PALMEIRAS");
         time3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 time3MouseClicked(evt);
@@ -435,7 +452,6 @@ public class Campeonato extends javax.swing.JFrame {
         time6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(4, 21, 111)));
         time6.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
         time6.setForeground(new java.awt.Color(4, 21, 111));
-        time6.setText("BAHIA");
         time6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 time6MouseClicked(evt);
@@ -450,7 +466,6 @@ public class Campeonato extends javax.swing.JFrame {
         time5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(4, 21, 111)));
         time5.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
         time5.setForeground(new java.awt.Color(4, 21, 111));
-        time5.setText("FLAMENGO");
         time5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 time5MouseClicked(evt);
@@ -1084,6 +1099,151 @@ public class Campeonato extends javax.swing.JFrame {
         minhatela.setVisible(true);
         dispose();
     }//GEN-LAST:event_Btn_logoutMouseClicked
+
+    private void ButLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButLimparActionPerformed
+        LimparCriar();
+    }//GEN-LAST:event_ButLimparActionPerformed
+
+    private void ButCriarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButCriarActionPerformed
+        int status=0;
+        conectar.conectaBanco();
+        Campeonat c1 = new Campeonat();
+        c1.setInformacoes(txtInformacao.getText());
+        c1.setNome(TxtFieldNome1.getText());
+        
+        try {
+            status = this.conectar.insertSQL("INSERT INTO campeonato ("
+                    + "nome,"
+                    + "informacoes"
+                + ") VALUES ("
+                    + "'" + c1.getNome() + "',"
+                    + "'" + c1.getInformacoes()+ "'"
+                + ");");
+                if(status == 1){
+                    JOptionPane.showMessageDialog(null, "Campeonato criado com sucesso");
+                    LimparCriar();
+                    AtualizarComboCamp(ComboCamp1);
+                    AtualizarComboCamp(ComboCamp2);
+                }else{JOptionPane.showMessageDialog(null, "Houve algum problema de cadastro");
+                }
+        } catch (Exception e){
+                JOptionPane.showMessageDialog(null, "Houve algum problema com a conexão do servidor");
+                }
+       finally {
+        }
+        conectar.fechaBanco();
+    }//GEN-LAST:event_ButCriarActionPerformed
+
+    private void ButAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButAdicionarActionPerformed
+        String nt = (String) ComboTimes.getSelectedItem();
+        String nc = (String) ComboCamp1.getSelectedItem();
+        int idt= 0;
+        int idc = 0;
+        conectar.conectaBanco();
+    try{
+        conectar.executarSQL(
+            "SELECT "
+                +"id"
+            +" FROM "
+                +"times"
+                +" WHERE "
+                +" nome = '"+ nt +"'"
+                +";"
+        );
+        while(conectar.getResultSet().next()){
+            idt = conectar.getResultSet().getInt(1);
+        }
+            }catch (Exception e){
+                JOptionPane.showMessageDialog(null, "Erro ao buscar!");
+            }finally{
+            conectar.fechaBanco();
+    }
+    
+        conectar.conectaBanco();
+    try{
+        conectar.executarSQL(
+        "SELECT "
+            +"id"
+        +" FROM "
+            +"campeonato"
+            +" WHERE "
+            +" nome = '"+ nc +"'"
+            +";"
+        );
+        while(conectar.getResultSet().next()){
+            idc = conectar.getResultSet().getInt(1);
+        }
+            }catch (Exception e){
+                JOptionPane.showMessageDialog(null, "Erro ao buscar!");
+            }finally{
+            conectar.fechaBanco();
+                }
+    
+            int status=0;
+            conectar.conectaBanco();
+
+        try {
+            status = this.conectar.insertSQL("INSERT INTO camp_time ("
+                    + "id_camp,"
+                    + "id_time"
+                + ") VALUES ("
+                    + "'" + idc + "',"
+                    + "'" + idt + "'"
+                + ");");
+                if(status == 1){
+                    JOptionPane.showMessageDialog(null, "Time adicionado ao campeonato com sucesso");
+                }else{JOptionPane.showMessageDialog(null, "Houve algum problema de cadastro");
+                }
+        } catch (Exception e){
+                JOptionPane.showMessageDialog(null, "Houve algum problema com a conexão do servidor");
+                }
+       finally {
+        }
+        conectar.fechaBanco();
+    
+    }//GEN-LAST:event_ButAdicionarActionPerformed
+    public void AtualizarComboCamp(JComboBox si){
+        si.removeAllItems();
+        conectar.conectaBanco();
+    try{
+        conectar.executarSQL(
+            "SELECT "
+                +"nome"
+            +" FROM "
+                +"campeonato"
+        );
+        while(conectar.getResultSet().next()){   
+            si.addItem(conectar.getResultSet().getString(1));
+        }
+            }catch (Exception e){
+                JOptionPane.showMessageDialog(null, "Erro ao buscar!");
+            }finally{
+            conectar.fechaBanco();
+    }
+    }
+    public void AtualizarComboTimes(JComboBox hehe){
+        hehe.removeAllItems();
+        conectar.conectaBanco();
+    try{
+        conectar.executarSQL(
+            "SELECT "
+                +"nome"
+            +" FROM "
+                +"times"
+        );
+        while(conectar.getResultSet().next()){   
+            hehe.addItem(conectar.getResultSet().getString(1));
+        }
+            }catch (Exception e){
+                JOptionPane.showMessageDialog(null, "Erro ao buscar!");
+            }finally{
+            conectar.fechaBanco();
+    }
+    }
+    public void LimparCriar(){
+        TxtFieldNome1.setText("");
+        txtInformacao.setText("");
+    }
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -1094,15 +1254,21 @@ public class Campeonato extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Btn_logout;
+    private javax.swing.JButton ButAdicionar;
     private javax.swing.JLabel ButConfig;
+    private javax.swing.JButton ButCriar;
     private javax.swing.JLabel ButInicio;
     private javax.swing.JLabel ButJogadores;
+    private javax.swing.JButton ButLimpar;
     private javax.swing.JLabel ButMesario;
     private javax.swing.JLabel ButTimes;
     private javax.swing.JPanel Chaveamento1;
     private javax.swing.JPanel Chaveamento3;
     private javax.swing.JPanel Chaveamento4;
     private javax.swing.JPanel Chaveamento5;
+    private javax.swing.JComboBox<String> ComboCamp1;
+    private javax.swing.JComboBox<String> ComboCamp2;
+    private javax.swing.JComboBox<String> ComboTimes;
     private javax.swing.JLabel IconInicio;
     private javax.swing.JLabel IconJogadores;
     private javax.swing.JLabel IconMesario;
@@ -1115,12 +1281,6 @@ public class Campeonato extends javax.swing.JFrame {
     private javax.swing.JPanel chave12;
     private javax.swing.JPanel chave13;
     private javax.swing.JPanel chave9;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1195,7 +1355,6 @@ public class Campeonato extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextPane jTextPane1;
     private javax.swing.JLabel parabens;
     private javax.swing.JTextPane time1;
     private javax.swing.JTextPane time12;
@@ -1211,6 +1370,7 @@ public class Campeonato extends javax.swing.JFrame {
     private javax.swing.JTextPane time7;
     private javax.swing.JTextPane time78;
     private javax.swing.JTextPane time8;
+    private javax.swing.JTextPane txtInformacao;
     private javax.swing.JLabel txtUsuario;
     // End of variables declaration//GEN-END:variables
 }

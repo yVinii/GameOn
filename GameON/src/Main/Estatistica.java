@@ -1,11 +1,17 @@
 package Main;
+import Conexões.MySQL;
 import java.awt.Toolkit;
 import static java.lang.System.exit;
+import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 public class Estatistica extends javax.swing.JFrame {
+    MySQL conectar = new MySQL();
     public Estatistica(String usu) {
         initComponents();
         txtUsuario.setText(usu);
         this.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Imagens//logo-clara.png"))); // Define Icone
+        AtualizarComboCamp(ComboCamp1);
+        AtualizarComboCamp(ComboCamp2);
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -14,17 +20,17 @@ public class Estatistica extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel3 = new javax.swing.JPanel();
-        jComboBox8 = new javax.swing.JComboBox<>();
+        ComboCamp1 = new javax.swing.JComboBox<>();
         jLabel18 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
-        jComboBox6 = new javax.swing.JComboBox<>();
+        ComboJogador = new javax.swing.JComboBox<>();
         jButton8 = new javax.swing.JButton();
         jLabel19 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jButton9 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel21 = new javax.swing.JLabel();
-        jComboBox10 = new javax.swing.JComboBox<>();
+        ComboCamp2 = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
@@ -56,10 +62,10 @@ public class Estatistica extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jComboBox8.setBackground(new java.awt.Color(255, 255, 255));
-        jComboBox8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jComboBox8.setForeground(new java.awt.Color(4, 21, 111));
-        jPanel3.add(jComboBox8, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 450, 50));
+        ComboCamp1.setBackground(new java.awt.Color(255, 255, 255));
+        ComboCamp1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        ComboCamp1.setForeground(new java.awt.Color(4, 21, 111));
+        jPanel3.add(ComboCamp1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 450, 50));
 
         jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(4, 21, 111));
@@ -71,10 +77,10 @@ public class Estatistica extends javax.swing.JFrame {
         jLabel17.setText("Selecione Jogador:");
         jPanel3.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, 230, 50));
 
-        jComboBox6.setBackground(new java.awt.Color(255, 255, 255));
-        jComboBox6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jComboBox6.setForeground(new java.awt.Color(4, 21, 111));
-        jPanel3.add(jComboBox6, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 210, 450, 50));
+        ComboJogador.setBackground(new java.awt.Color(255, 255, 255));
+        ComboJogador.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        ComboJogador.setForeground(new java.awt.Color(4, 21, 111));
+        jPanel3.add(ComboJogador, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 210, 450, 50));
 
         jButton8.setBackground(new java.awt.Color(255, 255, 255));
         jButton8.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
@@ -92,7 +98,7 @@ public class Estatistica extends javax.swing.JFrame {
         jTextField1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jTextField1.setForeground(new java.awt.Color(4, 21, 111));
         jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField1.setText("9");
+        jTextField1.setText("0");
         jTextField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(4, 21, 111)));
         jPanel3.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 340, 80, 70));
 
@@ -112,10 +118,10 @@ public class Estatistica extends javax.swing.JFrame {
         jLabel21.setText("Selecione Campeonato:");
         jPanel4.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, 230, 70));
 
-        jComboBox10.setBackground(new java.awt.Color(255, 255, 255));
-        jComboBox10.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jComboBox10.setForeground(new java.awt.Color(4, 21, 111));
-        jPanel4.add(jComboBox10, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 350, 390, 50));
+        ComboCamp2.setBackground(new java.awt.Color(255, 255, 255));
+        ComboCamp2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        ComboCamp2.setForeground(new java.awt.Color(4, 21, 111));
+        jPanel4.add(ComboCamp2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 350, 390, 50));
 
         jTable1.setBackground(new java.awt.Color(255, 255, 255));
         jTable1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -314,7 +320,25 @@ public class Estatistica extends javax.swing.JFrame {
         minhatela.setVisible(true);
         dispose();
     }//GEN-LAST:event_Btn_logoutMouseClicked
-
+    public void AtualizarComboCamp(JComboBox si){
+        si.removeAllItems();
+        conectar.conectaBanco();
+    try{
+        conectar.executarSQL(
+            "SELECT "
+                +"nome"
+            +" FROM "
+                +"campeonato"
+        );
+        while(conectar.getResultSet().next()){   
+            si.addItem(conectar.getResultSet().getString(1));
+        }
+            }catch (Exception e){
+                JOptionPane.showMessageDialog(null, "Erro ao buscar!");
+            }finally{
+            conectar.fechaBanco();
+    }
+    }
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -329,14 +353,14 @@ public class Estatistica extends javax.swing.JFrame {
     private javax.swing.JLabel ButEstatistica;
     private javax.swing.JLabel ButInicio;
     private javax.swing.JLabel ButResultado;
+    private javax.swing.JComboBox<String> ComboCamp1;
+    private javax.swing.JComboBox<String> ComboCamp2;
+    private javax.swing.JComboBox<String> ComboJogador;
     private javax.swing.JLabel IconEstatistica;
     private javax.swing.JLabel IconInicio;
     private javax.swing.JLabel IconResultado;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
-    private javax.swing.JComboBox<String> jComboBox10;
-    private javax.swing.JComboBox<String> jComboBox6;
-    private javax.swing.JComboBox<String> jComboBox8;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
