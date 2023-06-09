@@ -5,6 +5,11 @@ import java.awt.Toolkit;
 import static java.lang.System.exit;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Random;
+import javax.swing.JTextPane;
 public class Campeonato extends javax.swing.JFrame{
     MySQL conectar = new MySQL();
     public Campeonato(String usu) {
@@ -17,7 +22,10 @@ public class Campeonato extends javax.swing.JFrame{
         butEncerrar.setVisible(false);
         AtualizarComboCamp(ComboCamp1);
         AtualizarComboCamp(ComboCamp2);
+        AtualizarComboCamp(ComboCamp3);
         AtualizarComboTimes(ComboTimes);
+        
+        
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -44,6 +52,15 @@ public class Campeonato extends javax.swing.JFrame{
         ButAdicionar = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel24 = new javax.swing.JLabel();
+        ComboCamp3 = new javax.swing.JComboBox<>();
+        jLabel25 = new javax.swing.JLabel();
+        ComboTimes1 = new javax.swing.JComboBox<>();
+        ButRetirar = new javax.swing.JButton();
+        jLabel57 = new javax.swing.JLabel();
+        jLabel58 = new javax.swing.JLabel();
+        ButBuscar2 = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         ComboCamp2 = new javax.swing.JComboBox<>();
@@ -157,7 +174,7 @@ public class Campeonato extends javax.swing.JFrame{
 
         jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
         jTabbedPane1.setForeground(new java.awt.Color(4, 21, 111));
-        jTabbedPane1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jTabbedPane1.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setForeground(new java.awt.Color(4, 21, 111));
@@ -259,6 +276,59 @@ public class Campeonato extends javax.swing.JFrame{
         jPanel4.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 350, 60, 70));
 
         jTabbedPane1.addTab("Adicionar Times", jPanel4);
+
+        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel24.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel24.setForeground(new java.awt.Color(4, 21, 111));
+        jLabel24.setText("Campeonato:");
+        jPanel6.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, 230, 50));
+
+        ComboCamp3.setBackground(new java.awt.Color(255, 255, 255));
+        ComboCamp3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        ComboCamp3.setForeground(new java.awt.Color(4, 21, 111));
+        jPanel6.add(ComboCamp3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 260, 50));
+
+        jLabel25.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel25.setForeground(new java.awt.Color(4, 21, 111));
+        jLabel25.setText("Time:");
+        jPanel6.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 180, 220, 50));
+
+        ComboTimes1.setBackground(new java.awt.Color(255, 255, 255));
+        ComboTimes1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        ComboTimes1.setForeground(new java.awt.Color(4, 21, 111));
+        jPanel6.add(ComboTimes1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 230, 420, 50));
+
+        ButRetirar.setBackground(new java.awt.Color(255, 255, 255));
+        ButRetirar.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        ButRetirar.setForeground(new java.awt.Color(4, 21, 111));
+        ButRetirar.setText("Retirar");
+        ButRetirar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButRetirarActionPerformed(evt);
+            }
+        });
+        jPanel6.add(ButRetirar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 340, 190, 70));
+
+        jLabel57.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/trofeuIcon.png"))); // NOI18N
+        jPanel6.add(jLabel57, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 350, 60, 70));
+
+        jLabel58.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/campoIcon.png"))); // NOI18N
+        jPanel6.add(jLabel58, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 60, 70));
+
+        ButBuscar2.setBackground(new java.awt.Color(255, 255, 255));
+        ButBuscar2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        ButBuscar2.setForeground(new java.awt.Color(4, 21, 111));
+        ButBuscar2.setText("Buscar");
+        ButBuscar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButBuscar2ActionPerformed(evt);
+            }
+        });
+        jPanel6.add(ButBuscar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 90, 150, 50));
+
+        jTabbedPane1.addTab("Retirar Times", jPanel6);
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setForeground(new java.awt.Color(4, 21, 111));
@@ -654,6 +724,11 @@ public class Campeonato extends javax.swing.JFrame{
         butSortear.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         butSortear.setForeground(new java.awt.Color(4, 21, 111));
         butSortear.setText("Sortear");
+        butSortear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                butSortearActionPerformed(evt);
+            }
+        });
         jPanel5.add(butSortear, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 60, 190, 30));
 
         jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -663,13 +738,13 @@ public class Campeonato extends javax.swing.JFrame{
         campeao.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         campeao.setForeground(new java.awt.Color(4, 21, 111));
         campeao.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jPanel5.add(campeao, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 370, 130, 50));
+        jPanel5.add(campeao, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 370, 170, 50));
 
         parabens.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         parabens.setForeground(new java.awt.Color(4, 21, 111));
-        parabens.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        parabens.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         parabens.setText("Parabéns");
-        jPanel5.add(parabens, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, 130, 50));
+        jPanel5.add(parabens, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 370, 110, 50));
 
         jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/campoIcon.png"))); // NOI18N
         jPanel5.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 20, 60, 70));
@@ -678,6 +753,11 @@ public class Campeonato extends javax.swing.JFrame{
         butEncerrar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         butEncerrar.setForeground(new java.awt.Color(4, 21, 111));
         butEncerrar.setText("Encerrar Campeonato");
+        butEncerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                butEncerrarActionPerformed(evt);
+            }
+        });
         jPanel5.add(butEncerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 370, 220, 50));
 
         jTabbedPane1.addTab("Sorteio e Chaveamento", jPanel5);
@@ -1202,6 +1282,206 @@ public class Campeonato extends javax.swing.JFrame{
         conectar.fechaBanco();
     
     }//GEN-LAST:event_ButAdicionarActionPerformed
+
+    private void ButRetirarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButRetirarActionPerformed
+        String nCamp  = (String)ComboCamp3.getSelectedItem();
+        String nTime = (String) ComboTimes1.getSelectedItem();
+        int idCamp = 0;
+        int idTime = 0;
+        conectar.conectaBanco();
+    try{
+        conectar.executarSQL(
+        "SELECT "
+            +"id"
+        +" FROM "
+            +"campeonato"
+            +" WHERE "
+            +" nome = '"+ nCamp +"'"
+            +";"
+        );
+        while(conectar.getResultSet().next()){
+            idCamp = conectar.getResultSet().getInt(1);
+            
+        }
+            }catch (Exception e){
+                JOptionPane.showMessageDialog(null, "Erro ao buscar!");
+            }finally{
+            conectar.fechaBanco();
+    }
+    
+        conectar.conectaBanco();
+    try{
+        conectar.executarSQL(
+        "SELECT "
+            +"id"
+        +" FROM "
+            +"times"
+            +" WHERE "
+            +" nome = '"+ nTime +"'"
+            +";"
+        );
+        while(conectar.getResultSet().next()){
+            idTime = conectar.getResultSet().getInt(1);
+            
+        }
+            }catch (Exception e){
+                JOptionPane.showMessageDialog(null, "Erro ao buscar!");
+            }finally{
+            conectar.fechaBanco();
+    }
+    
+        conectar.conectaBanco();
+            boolean status = false;
+            try {
+                status = this.conectar.updateSQL(
+                    "DELETE FROM camp_time "
+                    + " WHERE "
+                    + "id_camp = '" + idCamp + "'"
+                    + " AND "
+                    + "id_time = '" +idTime + "'"
+                    + ";"
+                );
+                if(status){ JOptionPane.showMessageDialog(null, "Time retirado com sucesso");
+                    ComboTimes1.removeAllItems();
+                }else{
+                    JOptionPane.showMessageDialog(null, "Houve um erro ao retirar o time");
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Houve um erro ao apagar o time");
+            } finally {conectar.fechaBanco();
+            }
+    }//GEN-LAST:event_ButRetirarActionPerformed
+
+    private void ButBuscar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButBuscar2ActionPerformed
+        String item = (String)ComboCamp3.getSelectedItem();
+        int id= 0;
+        ComboTimes1.removeAllItems();
+        conectar.conectaBanco();
+        try{
+            conectar.executarSQL(
+                "SELECT "
+                +"id"
+                +" FROM "
+                +"campeonato"
+                +" WHERE "
+                +" nome = '"+ item +"'"
+                +";"
+            );
+            while(conectar.getResultSet().next()){
+                id = conectar.getResultSet().getInt(1);
+            }
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null, "Erro ao buscar!");
+        }finally{
+            conectar.fechaBanco();
+        }
+        
+        conectar.conectaBanco();
+        try{
+            conectar.executarSQL(
+                "SELECT "
+                +"times.nome"
+                +" FROM "
+                +"camp_time "
+                +"left join campeonato on camp_time.id_camp = campeonato.id "
+                +"left join times on camp_time.id_time = times.id"
+                +" WHERE "
+                +" id_camp = '"+ id +"';"
+            );
+            while(conectar.getResultSet().next()){
+                ComboTimes1.addItem(conectar.getResultSet().getString(1));
+            }
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null, "Erro ao buscar!");
+        }finally{
+            conectar.fechaBanco();
+        }
+    }//GEN-LAST:event_ButBuscar2ActionPerformed
+
+    private void butSortearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butSortearActionPerformed
+        List<String> times = new ArrayList<>();
+        int idCmp = 0;
+        String nCam = (String) ComboCamp2.getSelectedItem();
+        conectar.conectaBanco();
+        try{
+            conectar.executarSQL(
+                "SELECT "
+                +"id"
+                +" FROM "
+                +"campeonato"
+                +" WHERE "
+                +" nome = '"+ nCam +"'"
+                +";"
+            );
+            while(conectar.getResultSet().next()){
+                idCmp = conectar.getResultSet().getInt(1);
+            }
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null, "Erro ao buscar!");
+        }finally{
+            conectar.fechaBanco();
+        }
+        
+        conectar.conectaBanco();
+        try{
+            conectar.executarSQL(
+                "SELECT "
+                +"times.nome"
+                +" FROM "
+                +"camp_time "
+                +"left join campeonato on camp_time.id_camp = campeonato.id "
+                +"left join times on camp_time.id_time = times.id"
+                +" WHERE "
+                +" id_camp = '"+ idCmp +"';"
+            );
+            while(conectar.getResultSet().next()){
+                times.add(conectar.getResultSet().getString(1));
+            }
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null, "Erro ao buscar!");
+        }finally{
+            conectar.fechaBanco();
+        }
+        sortearPosicao(times);
+        ArrayList<JTextPane> textpanels = new ArrayList<>();
+        textpanels.add(time1);
+        textpanels.add(time2);
+        textpanels.add(time3);
+        textpanels.add(time4);
+        textpanels.add(time5);
+        textpanels.add(time6);
+        textpanels.add(time7);
+        textpanels.add(time8);
+        
+        for (int i = 0; i < textpanels.size(); i++) {
+            if(i<times.size()){
+                textpanels.get(i).setText(times.get(i));
+            }else{
+                textpanels.get(i).setText("");
+            }
+        }
+    }//GEN-LAST:event_butSortearActionPerformed
+
+    private void butEncerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butEncerrarActionPerformed
+        parabens.setVisible(false);
+        campeao.setVisible(false);
+        butEncerrar.setVisible(false);
+        butEncerrar.setEnabled(false);
+        time1.setText("");
+        time2.setText("");
+        time3.setText("");
+        time4.setText("");
+        time5.setText("");
+        time6.setText("");
+        time7.setText("");
+        time8.setText("");
+        time12.setText("");
+        time34.setText("");
+        time56.setText("");
+        time78.setText("");
+        time1234.setText("");
+        time5678.setText("");
+    }//GEN-LAST:event_butEncerrarActionPerformed
     public void AtualizarComboCamp(JComboBox si){
         si.removeAllItems();
         conectar.conectaBanco();
@@ -1244,6 +1524,10 @@ public class Campeonato extends javax.swing.JFrame{
         TxtFieldNome1.setText("");
         txtInformacao.setText("");
     }
+    public void sortearPosicao(List<String> times){
+        Random random = new Random();
+        Collections.shuffle(times,random);
+    }
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -1255,12 +1539,14 @@ public class Campeonato extends javax.swing.JFrame{
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Btn_logout;
     private javax.swing.JButton ButAdicionar;
+    private javax.swing.JButton ButBuscar2;
     private javax.swing.JLabel ButConfig;
     private javax.swing.JButton ButCriar;
     private javax.swing.JLabel ButInicio;
     private javax.swing.JLabel ButJogadores;
     private javax.swing.JButton ButLimpar;
     private javax.swing.JLabel ButMesario;
+    private javax.swing.JButton ButRetirar;
     private javax.swing.JLabel ButTimes;
     private javax.swing.JPanel Chaveamento1;
     private javax.swing.JPanel Chaveamento3;
@@ -1268,7 +1554,9 @@ public class Campeonato extends javax.swing.JFrame{
     private javax.swing.JPanel Chaveamento5;
     private javax.swing.JComboBox<String> ComboCamp1;
     private javax.swing.JComboBox<String> ComboCamp2;
+    private javax.swing.JComboBox<String> ComboCamp3;
     private javax.swing.JComboBox<String> ComboTimes;
+    private javax.swing.JComboBox<String> ComboTimes1;
     private javax.swing.JLabel IconInicio;
     private javax.swing.JLabel IconJogadores;
     private javax.swing.JLabel IconMesario;
@@ -1297,6 +1585,8 @@ public class Campeonato extends javax.swing.JFrame{
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
@@ -1330,6 +1620,8 @@ public class Campeonato extends javax.swing.JFrame{
     private javax.swing.JLabel jLabel54;
     private javax.swing.JLabel jLabel55;
     private javax.swing.JLabel jLabel56;
+    private javax.swing.JLabel jLabel57;
+    private javax.swing.JLabel jLabel58;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -1339,6 +1631,7 @@ public class Campeonato extends javax.swing.JFrame{
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane11;
     private javax.swing.JScrollPane jScrollPane13;

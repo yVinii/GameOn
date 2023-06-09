@@ -1,45 +1,45 @@
 package Classes;
 
 public class Partida {
-    private Time time1;
-    private Time time2;
-    private Campeonat camp;
+    private String time1;
+    private String time2;
+    private String camp;
     private int golsT1;
     private int golsT2;
     
-    public Time getTime1() {
+    public String getTime1() {
         return time1;
     }
 
-    public void setTime1(Time time1) {
-        this.time1 = time1;
+    public void setTime1(String time) {
+        this.time1 = time;
     }
 
-    public Time getTime2() {
+    public String getTime2() {
         return time2;
     }
 
-    public void setTime2(Time time2) {
+    public void setTime2(String time2) {
         this.time2 = time2;
     }
 
-    public Campeonat getCamp() {
+    public String getCamp() {
         return camp;
     }
 
-    public void setCamp(Campeonat camp) {
+    public void setCamp(String camp) {
         this.camp = camp;
     }
 
     public Partida() {
     }
 
-    public Partida(Time time1, Time time2) {
+    public Partida(String time1, String time2) {
         this.time1 = time1;
         this.time2 = time2;
     }
 
-    public Partida(Time time1, Time time2, Campeonat camp) {
+    public Partida(String time1, String time2, String camp) {
         this.time1 = time1;
         this.time2 = time2;
         this.camp = camp;

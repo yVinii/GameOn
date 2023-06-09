@@ -1,17 +1,26 @@
 package Main;
 import Conexões.MySQL;
+import java.awt.HeadlessException;
 import java.awt.Toolkit;
 import static java.lang.System.exit;
+import java.sql.SQLException;
 import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
 public class Estatistica extends javax.swing.JFrame {
     MySQL conectar = new MySQL();
+    MySQL conT = new MySQL();
+    
     public Estatistica(String usu) {
         initComponents();
         txtUsuario.setText(usu);
         this.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Imagens//logo-clara.png"))); // Define Icone
+        AtualizarComboCamp(ComboCamp);
         AtualizarComboCamp(ComboCamp1);
-        AtualizarComboCamp(ComboCamp2);
+        AtualizarTabela();
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -20,19 +29,22 @@ public class Estatistica extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel3 = new javax.swing.JPanel();
-        ComboCamp1 = new javax.swing.JComboBox<>();
+        ComboCamp = new javax.swing.JComboBox<>();
         jLabel18 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         ComboJogador = new javax.swing.JComboBox<>();
-        jButton8 = new javax.swing.JButton();
+        MenosUm = new javax.swing.JButton();
         jLabel19 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton9 = new javax.swing.JButton();
+        TxtGols = new javax.swing.JTextField();
+        MaisUm = new javax.swing.JButton();
+        ButBuscar2 = new javax.swing.JButton();
+        ButBuscar3 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel21 = new javax.swing.JLabel();
-        ComboCamp2 = new javax.swing.JComboBox<>();
+        ComboCamp1 = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        TabelaArtilheiro = new javax.swing.JTable();
+        ButBuscar4 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         ButInicio = new javax.swing.JLabel();
@@ -62,10 +74,15 @@ public class Estatistica extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        ComboCamp1.setBackground(new java.awt.Color(255, 255, 255));
-        ComboCamp1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        ComboCamp1.setForeground(new java.awt.Color(4, 21, 111));
-        jPanel3.add(ComboCamp1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 450, 50));
+        ComboCamp.setBackground(new java.awt.Color(255, 255, 255));
+        ComboCamp.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        ComboCamp.setForeground(new java.awt.Color(4, 21, 111));
+        ComboCamp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ComboCampActionPerformed(evt);
+            }
+        });
+        jPanel3.add(ComboCamp, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 290, 50));
 
         jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(4, 21, 111));
@@ -80,33 +97,70 @@ public class Estatistica extends javax.swing.JFrame {
         ComboJogador.setBackground(new java.awt.Color(255, 255, 255));
         ComboJogador.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         ComboJogador.setForeground(new java.awt.Color(4, 21, 111));
-        jPanel3.add(ComboJogador, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 210, 450, 50));
+        ComboJogador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ComboJogadorActionPerformed(evt);
+            }
+        });
+        jPanel3.add(ComboJogador, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 210, 290, 50));
 
-        jButton8.setBackground(new java.awt.Color(255, 255, 255));
-        jButton8.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
-        jButton8.setForeground(new java.awt.Color(4, 21, 111));
-        jButton8.setText("-1");
-        jPanel3.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 340, 80, 70));
+        MenosUm.setBackground(new java.awt.Color(255, 255, 255));
+        MenosUm.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
+        MenosUm.setForeground(new java.awt.Color(4, 21, 111));
+        MenosUm.setText("-1");
+        MenosUm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenosUmActionPerformed(evt);
+            }
+        });
+        jPanel3.add(MenosUm, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 340, 80, 70));
 
         jLabel19.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(4, 21, 111));
         jLabel19.setText("Total de gols:");
         jPanel3.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 350, 140, 50));
 
-        jTextField1.setEditable(false);
-        jTextField1.setBackground(new java.awt.Color(153, 204, 255));
-        jTextField1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(4, 21, 111));
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField1.setText("0");
-        jTextField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(4, 21, 111)));
-        jPanel3.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 340, 80, 70));
+        TxtGols.setEditable(false);
+        TxtGols.setBackground(new java.awt.Color(153, 204, 255));
+        TxtGols.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        TxtGols.setForeground(new java.awt.Color(4, 21, 111));
+        TxtGols.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        TxtGols.setText("0");
+        TxtGols.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(4, 21, 111)));
+        jPanel3.add(TxtGols, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 340, 80, 70));
 
-        jButton9.setBackground(new java.awt.Color(255, 255, 255));
-        jButton9.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
-        jButton9.setForeground(new java.awt.Color(4, 21, 111));
-        jButton9.setText("+1");
-        jPanel3.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 340, 80, 70));
+        MaisUm.setBackground(new java.awt.Color(255, 255, 255));
+        MaisUm.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
+        MaisUm.setForeground(new java.awt.Color(4, 21, 111));
+        MaisUm.setText("+1");
+        MaisUm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MaisUmActionPerformed(evt);
+            }
+        });
+        jPanel3.add(MaisUm, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 340, 80, 70));
+
+        ButBuscar2.setBackground(new java.awt.Color(255, 255, 255));
+        ButBuscar2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        ButBuscar2.setForeground(new java.awt.Color(4, 21, 111));
+        ButBuscar2.setText("Buscar");
+        ButBuscar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButBuscar2ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(ButBuscar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 210, 150, 50));
+
+        ButBuscar3.setBackground(new java.awt.Color(255, 255, 255));
+        ButBuscar3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        ButBuscar3.setForeground(new java.awt.Color(4, 21, 111));
+        ButBuscar3.setText("Buscar");
+        ButBuscar3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButBuscar3ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(ButBuscar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 90, 150, 50));
 
         jTabbedPane1.addTab("Cadastrar Gols", jPanel3);
 
@@ -116,38 +170,60 @@ public class Estatistica extends javax.swing.JFrame {
         jLabel21.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         jLabel21.setForeground(new java.awt.Color(4, 21, 111));
         jLabel21.setText("Selecione Campeonato:");
-        jPanel4.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, 230, 70));
+        jPanel4.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 230, 50));
 
-        ComboCamp2.setBackground(new java.awt.Color(255, 255, 255));
-        ComboCamp2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        ComboCamp2.setForeground(new java.awt.Color(4, 21, 111));
-        jPanel4.add(ComboCamp2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 350, 390, 50));
+        ComboCamp1.setBackground(new java.awt.Color(255, 255, 255));
+        ComboCamp1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        ComboCamp1.setForeground(new java.awt.Color(4, 21, 111));
+        jPanel4.add(ComboCamp1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 400, 50));
 
-        jTable1.setBackground(new java.awt.Color(255, 255, 255));
-        jTable1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jTable1.setForeground(new java.awt.Color(4, 21, 111));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        TabelaArtilheiro.setBackground(new java.awt.Color(255, 255, 255));
+        TabelaArtilheiro.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        TabelaArtilheiro.setForeground(new java.awt.Color(4, 21, 111));
+        TabelaArtilheiro.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "ID", "Nome", "Usuário", "Senha"
+                "Jogador", "Gols"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
         });
-        jTable1.setRowHeight(35);
-        jTable1.setSelectionBackground(new java.awt.Color(4, 21, 111));
-        jTable1.setSelectionForeground(new java.awt.Color(255, 255, 255));
-        jScrollPane1.setViewportView(jTable1);
+        TabelaArtilheiro.setRowHeight(35);
+        TabelaArtilheiro.setSelectionBackground(new java.awt.Color(4, 21, 111));
+        TabelaArtilheiro.setSelectionForeground(new java.awt.Color(255, 255, 255));
+        jScrollPane1.setViewportView(TabelaArtilheiro);
+        if (TabelaArtilheiro.getColumnModel().getColumnCount() > 0) {
+            TabelaArtilheiro.getColumnModel().getColumn(0).setResizable(false);
+            TabelaArtilheiro.getColumnModel().getColumn(1).setResizable(false);
+        }
 
         jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 320));
+
+        ButBuscar4.setBackground(new java.awt.Color(255, 255, 255));
+        ButBuscar4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        ButBuscar4.setForeground(new java.awt.Color(4, 21, 111));
+        ButBuscar4.setText("Buscar");
+        ButBuscar4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButBuscar4ActionPerformed(evt);
+            }
+        });
+        jPanel4.add(ButBuscar4, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 380, 180, 50));
 
         jTabbedPane1.addTab("Tabela de Artilheiro", jPanel4);
 
@@ -279,7 +355,7 @@ public class Estatistica extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void IconResultadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_IconResultadoMouseClicked
         Resultado minhatela = new Resultado(txtUsuario.getText());
         minhatela.setVisible(true);
@@ -320,6 +396,462 @@ public class Estatistica extends javax.swing.JFrame {
         minhatela.setVisible(true);
         dispose();
     }//GEN-LAST:event_Btn_logoutMouseClicked
+
+    private void ButBuscar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButBuscar2ActionPerformed
+        
+        String nCampeonato = (String) ComboCamp.getSelectedItem();
+        String nJogador = (String) ComboJogador.getSelectedItem();
+        int idC = 0;
+        int id = 0;
+        String sus = "";
+        conectar.conectaBanco();
+        try{
+            conectar.executarSQL(
+                "SELECT "
+                +"id"
+                +" FROM "
+                +"campeonato"
+                +" WHERE "
+                +" nome = '"+ nCampeonato +"'"
+                +";"
+            );
+            while(conectar.getResultSet().next()){
+                idC = conectar.getResultSet().getInt(1);
+            }
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null, "Erro ao buscar!");
+        }finally{
+            conectar.fechaBanco();
+        }
+        
+        conectar.conectaBanco();
+        try{
+            conectar.executarSQL(
+                "SELECT "
+                +"id"
+                +" FROM "
+                +"jogador"
+                +" WHERE "
+                +" nome = '"+ nJogador +"'"
+                +";"
+            );
+            while(conectar.getResultSet().next()){
+                id = conectar.getResultSet().getInt(1);
+            }
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null, "Erro ao buscar!");
+        }finally{
+            conectar.fechaBanco();
+        }
+        
+        conectar.conectaBanco();
+        try{
+            conectar.executarSQL(
+                "SELECT "
+                +"id_camp"
+                +" FROM "
+                +"artilheiros"
+                +" WHERE "
+                +" id_camp = '"+ idC +"'"
+                +" AND "        
+                +" id_jogador = '"+ id + "'"
+                +";"
+            );
+            while(conectar.getResultSet().next()){
+                sus = conectar.getResultSet().getString(1);
+            }
+            if(sus.equals("")){
+                int status=0;
+                conectar.conectaBanco();
+        try {
+            status = this.conectar.insertSQL("INSERT INTO artilheiros ("
+                    + "id_camp,"
+                    + "id_jogador,"
+                    + "gols"
+                + ") VALUES ("
+                    + "'" + idC + "',"
+                    + "'" + id+ "',"
+                    + "'" + 0 +"'"
+                + ");");
+                if(status == 1){
+                    TxtGols.setText("0");
+                }else{JOptionPane.showMessageDialog(null, "Houve algum problema de cadastro");
+                }
+        } catch (Exception e){
+                JOptionPane.showMessageDialog(null, "Houve algum problema com a conexão do servidor");
+                }
+       finally {
+        }
+        conectar.fechaBanco();
+        
+            }else{
+                String gols = "0";
+                conT.conectaBanco();
+        try{
+            conT.executarSQL(
+                "SELECT "
+                +"gols"
+                +" FROM "
+                +"artilheiros"
+                +" WHERE "
+                +" id_camp = '"+ idC +"'"
+                +" AND "
+                +" id_jogador = '"+ id +"'"
+                +";"
+            );
+            while(conT.getResultSet().next()){
+                gols = conT.getResultSet().getString(1);
+                TxtGols.setText(gols);
+            }
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null, "Erro ao buscar!");
+        }finally{
+            conT.fechaBanco();
+        }
+        }
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null, "Erro ao buscar!");
+        }finally{
+            conectar.fechaBanco();
+        }
+        
+    }//GEN-LAST:event_ButBuscar2ActionPerformed
+
+    private void ButBuscar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButBuscar3ActionPerformed
+        ComboJogador.removeAllItems();
+        String nCampeonato = (String) ComboCamp.getSelectedItem();
+        int idC = 0;
+        String idT = "";
+        conectar.conectaBanco();
+        try{
+            conectar.executarSQL(
+                "SELECT "
+                +"id"
+                +" FROM "
+                +"campeonato"
+                +" WHERE "
+                +" nome = '"+ nCampeonato +"'"
+                +";"
+            );
+            while(conectar.getResultSet().next()){
+                idC = conectar.getResultSet().getInt(1);
+            }
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null, "Erro ao buscar!");
+        }finally{
+            conectar.fechaBanco();
+        }
+        
+        conectar.conectaBanco();
+        try{
+            conectar.executarSQL(
+                "SELECT "
+                +"id_time"
+                +" FROM "
+                +"camp_time"
+                +" WHERE "
+                +" id_camp = '"+ idC +"'"
+                +";"
+            );
+            while(conectar.getResultSet().next()){
+                idT = conectar.getResultSet().getString(1);
+                conT.conectaBanco();
+        try{
+            conT.executarSQL(
+                "SELECT "
+                +"nome"
+                +" FROM "
+                +"jogador"
+                +" WHERE "
+                +" id_time = '"+ idT +"'"
+                +";"
+            );
+            while(conT.getResultSet().next()){
+                ComboJogador.addItem(conT.getResultSet().getString(1));
+            }
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null, "Erro ao buscar!");
+        }finally{
+            conT.fechaBanco();
+        }
+            }
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null, "Erro ao buscar!");
+        }finally{
+            conectar.fechaBanco();
+        }
+    }//GEN-LAST:event_ButBuscar3ActionPerformed
+
+    private void MaisUmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MaisUmActionPerformed
+        String nCam = (String)ComboCamp.getSelectedItem();
+        String nJog = (String)ComboJogador.getSelectedItem();
+        int idC = 0;
+        int id = 0;
+        String sus = "";
+        conectar.conectaBanco();
+        try{
+            conectar.executarSQL(
+                "SELECT "
+                +"id"
+                +" FROM "
+                +"campeonato"
+                +" WHERE "
+                +" nome = '"+ nCam +"'"
+                +";"
+            );
+            while(conectar.getResultSet().next()){
+                idC = conectar.getResultSet().getInt(1);
+            }
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null, "Erro ao buscar aquiee!");
+        }finally{
+            conectar.fechaBanco();
+        }
+        
+        conectar.conectaBanco();
+        try{
+            conectar.executarSQL(
+                "SELECT "
+                +"id"
+                +" FROM "
+                +"jogador"
+                +" WHERE "
+                +" nome = '"+ nJog +"'"
+                +";"
+            );
+            while(conectar.getResultSet().next()){
+                id = conectar.getResultSet().getInt(1);
+            }
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null, "Erro ao buscar aquie!");
+        }finally{
+            conectar.fechaBanco();
+        }
+        
+        conectar.conectaBanco();
+        try{
+            conectar.executarSQL(
+                "SELECT "
+                +"gols"
+                +" FROM "
+                +"artilheiros"
+                +" WHERE "
+                +" id_camp = '"+ idC +"'"
+                +" AND "
+                +" id_jogador = '"+id+"'"
+                +";"
+            );
+            while(conectar.getResultSet().next()){
+                int gols = conectar.getResultSet().getInt(1)+1;
+                TxtGols.setText(String.valueOf(gols));
+                conT.conectaBanco();
+                    boolean status = false;
+                        try {status = this.conT.updateSQL(
+                                "UPDATE artilheiros SET "
+                                    + "gols = '" + gols + "'"
+                                + " WHERE "
+                                + "id_camp = '" + idC + "'"
+                                + " AND "
+                                + "id_jogador = '"+id+"'"
+                                + ";"
+                            );
+                        if(status){JOptionPane.showMessageDialog(null, "Atualização realizada com sucesso");
+                        }else{ JOptionPane.showMessageDialog(null, "Houve um erro na atualização, tente novamente");
+                        }
+                        } catch (Exception e) {
+                            e.getMessage();
+                            JOptionPane.showMessageDialog(null, "Houve um erro na atualização");
+                        } finally {conT.fechaBanco();
+                        }
+            }
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null, "Erro ao buscar aq!");
+        }finally{
+            conectar.fechaBanco();
+        }
+        AtualizarTabela();
+    }//GEN-LAST:event_MaisUmActionPerformed
+
+    private void MenosUmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenosUmActionPerformed
+        String nCam = (String)ComboCamp.getSelectedItem();
+        String nJog = (String)ComboJogador.getSelectedItem();
+        int idC = 0;
+        int id = 0;
+        String sus = "";
+        conectar.conectaBanco();
+        try{
+            conectar.executarSQL(
+                "SELECT "
+                +"id"
+                +" FROM "
+                +"campeonato"
+                +" WHERE "
+                +" nome = '"+ nCam +"'"
+                +";"
+            );
+            while(conectar.getResultSet().next()){
+                idC = conectar.getResultSet().getInt(1);
+            }
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null, "Erro ao buscar aquiee!");
+        }finally{
+            conectar.fechaBanco();
+        }
+        
+        conectar.conectaBanco();
+        try{
+            conectar.executarSQL(
+                "SELECT "
+                +"id"
+                +" FROM "
+                +"jogador"
+                +" WHERE "
+                +" nome = '"+ nJog +"'"
+                +";"
+            );
+            while(conectar.getResultSet().next()){
+                id = conectar.getResultSet().getInt(1);
+            }
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null, "Erro ao buscar aquie!");
+        }finally{
+            conectar.fechaBanco();
+        }
+        
+        conectar.conectaBanco();
+        try{
+            conectar.executarSQL(
+                "SELECT "
+                +"gols"
+                +" FROM "
+                +"artilheiros"
+                +" WHERE "
+                +" id_camp = '"+ idC +"'"
+                +" AND "
+                +" id_jogador = '"+id+"'"
+                +";"
+            );
+            while(conectar.getResultSet().next()){
+                int gols = conectar.getResultSet().getInt(1)-1;
+                TxtGols.setText(String.valueOf(gols));
+                conT.conectaBanco();
+                    boolean status = false;
+                        try {status = this.conT.updateSQL(
+                                "UPDATE artilheiros SET "
+                                    + "gols = '" + gols + "'"
+                                + " WHERE "
+                                + "id_camp = '" + idC + "'"
+                                + " AND "
+                                + "id_jogador = '"+id+"'"
+                                + ";"
+                            );
+                        if(status){JOptionPane.showMessageDialog(null, "Atualização realizada com sucesso");
+                        }else{ JOptionPane.showMessageDialog(null, "Houve um erro na atualização, tente novamente");
+                        }
+                        } catch (Exception e) {
+                            e.getMessage();
+                            JOptionPane.showMessageDialog(null, "Houve um erro na atualização");
+                        } finally {conT.fechaBanco();
+                        }
+            }
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null, "Erro ao buscar aq!");
+        }finally{
+            conectar.fechaBanco();
+        }
+        AtualizarTabela();
+    }//GEN-LAST:event_MenosUmActionPerformed
+
+    private void ComboJogadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboJogadorActionPerformed
+        TxtGols.setText("0");
+    }//GEN-LAST:event_ComboJogadorActionPerformed
+
+    private void ComboCampActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboCampActionPerformed
+        TxtGols.setText("0");
+        ComboJogador.removeAllItems();
+    }//GEN-LAST:event_ComboCampActionPerformed
+
+    private void ButBuscar4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButBuscar4ActionPerformed
+        String nomeC = (String)ComboCamp1.getSelectedItem();
+        String nomeJ = "";
+        String idj = "";
+        int idc = 0;
+        
+        conectar.conectaBanco();
+        try{
+            conectar.executarSQL(
+                "SELECT "
+                +"id"
+                +" FROM "
+                +"campeonato"
+                +" WHERE "
+                +" nome = '"+ nomeC +"'"
+                +";"
+            );
+            while(conectar.getResultSet().next()){
+                idc = conectar.getResultSet().getInt(1);
+            }
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null, "Erro ao buscar!");
+        }finally{
+            conectar.fechaBanco();
+        }
+        
+        conectar.conectaBanco();
+        String listar_dados = 
+                "SELECT "
+                +"id_jogador, "
+                +"gols "
+                + "FROM "
+                + "artilheiros "
+                + " WHERE "
+                + "id_camp = '"+idc+"' "
+                + "ORDER BY "
+                + "gols"
+                + " DESC"
+                + ";";
+
+        try{
+            conectar.executarSQL(listar_dados);
+            DefaultTableModel model =(DefaultTableModel) TabelaArtilheiro.getModel();
+            model.setNumRows(0);
+            while(conectar.getResultSet().next()){
+            idj = conectar.getResultSet().getString(1);
+        conT.conectaBanco();
+        try{
+            conT.executarSQL(
+                "SELECT "
+                    +"nome"
+                +" FROM "
+                    +"jogador"
+                +" WHERE "
+                +"id = '"+idj+"';"
+            );
+            while(conT.getResultSet().next()){
+                nomeJ = conT.getResultSet().getString(1);
+                idj = "";
+            }
+                }catch (Exception e){
+                    JOptionPane.showMessageDialog(null, "Erro ao buscar!");
+                    
+                }finally{
+            conT.fechaBanco();
+        }
+                model.addRow(new Object[]{
+                nomeJ,
+                this.conectar.getResultSet().getString(2)
+                });
+            }
+        } 
+        catch (HeadlessException | SQLException e) {            
+                JOptionPane.showMessageDialog(null, "Falha em buscar times!");
+        } finally{  
+            ((DefaultTableCellRenderer) TabelaArtilheiro.getTableHeader().getDefaultRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
+            ((DefaultTableCellRenderer) TabelaArtilheiro.getDefaultRenderer(JLabel.class)).setHorizontalAlignment(SwingConstants.CENTER);
+            conectar.fechaBanco();
+        }  
+        
+    }//GEN-LAST:event_ButBuscar4ActionPerformed
     public void AtualizarComboCamp(JComboBox si){
         si.removeAllItems();
         conectar.conectaBanco();
@@ -339,6 +871,86 @@ public class Estatistica extends javax.swing.JFrame {
             conectar.fechaBanco();
     }
     }
+    public void AtualizarTabela(){
+        String nomeC = (String)ComboCamp1.getSelectedItem();
+        String nomeJ = "";
+        String idj = "";
+        int idc = 0;
+        
+        conectar.conectaBanco();
+        try{
+            conectar.executarSQL(
+                "SELECT "
+                +"id"
+                +" FROM "
+                +"campeonato"
+                +" WHERE "
+                +" nome = '"+ nomeC +"'"
+                +";"
+            );
+            while(conectar.getResultSet().next()){
+                idc = conectar.getResultSet().getInt(1);
+            }
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null, "Erro ao buscar!");
+        }finally{
+            conectar.fechaBanco();
+        }
+        
+        conectar.conectaBanco();
+        String listar_dados = 
+                "SELECT "
+                +"id_jogador, "
+                +"gols "
+                + "FROM "
+                + "artilheiros "
+                + " WHERE "
+                + "id_camp = '"+idc+"' "
+                + "ORDER BY "
+                + "gols"
+                + " DESC"
+                + ";";
+
+        try{
+            conectar.executarSQL(listar_dados);
+            DefaultTableModel model =(DefaultTableModel) TabelaArtilheiro.getModel();
+            model.setNumRows(0);
+            while(conectar.getResultSet().next()){
+            idj = conectar.getResultSet().getString(1);
+        conT.conectaBanco();
+        try{
+            conT.executarSQL(
+                "SELECT "
+                    +"nome"
+                +" FROM "
+                    +"jogador"
+                +" WHERE "
+                +"id = '"+idj+"';"
+            );
+            while(conT.getResultSet().next()){
+                nomeJ = conT.getResultSet().getString(1);
+                idj = "";
+            }
+                }catch (Exception e){
+                    JOptionPane.showMessageDialog(null, "Erro ao buscar!");
+                    
+                }finally{
+            conT.fechaBanco();
+        }
+                model.addRow(new Object[]{
+                nomeJ,
+                this.conectar.getResultSet().getString(2)
+                });
+            }
+        } 
+        catch (HeadlessException | SQLException e) {            
+                JOptionPane.showMessageDialog(null, "Falha em buscar times!");
+        } finally{  
+            ((DefaultTableCellRenderer) TabelaArtilheiro.getTableHeader().getDefaultRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
+            ((DefaultTableCellRenderer) TabelaArtilheiro.getDefaultRenderer(JLabel.class)).setHorizontalAlignment(SwingConstants.CENTER);
+            conectar.fechaBanco();
+        }  
+    }
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -349,18 +961,23 @@ public class Estatistica extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Btn_logout;
+    private javax.swing.JButton ButBuscar2;
+    private javax.swing.JButton ButBuscar3;
+    private javax.swing.JButton ButBuscar4;
     private javax.swing.JLabel ButConfig;
     private javax.swing.JLabel ButEstatistica;
     private javax.swing.JLabel ButInicio;
     private javax.swing.JLabel ButResultado;
+    private javax.swing.JComboBox<String> ComboCamp;
     private javax.swing.JComboBox<String> ComboCamp1;
-    private javax.swing.JComboBox<String> ComboCamp2;
     private javax.swing.JComboBox<String> ComboJogador;
     private javax.swing.JLabel IconEstatistica;
     private javax.swing.JLabel IconInicio;
     private javax.swing.JLabel IconResultado;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
+    private javax.swing.JButton MaisUm;
+    private javax.swing.JButton MenosUm;
+    private javax.swing.JTable TabelaArtilheiro;
+    private javax.swing.JTextField TxtGols;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
@@ -376,8 +993,6 @@ public class Estatistica extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel txtUsuario;
     // End of variables declaration//GEN-END:variables
 }
