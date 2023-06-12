@@ -1,10 +1,29 @@
 package Main;
 import Classes.Partida;
+import ClassesPDF.Partidas;
+import ClassesPDF.TimeGols;
+import ClassesPDF.TimeResponsavel;
 import Conexões.MySQL;
 import Metodos.SoNumeros;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import java.awt.Desktop;
 import java.awt.HeadlessException;
 import java.awt.Toolkit;
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
 import static java.lang.System.exit;
+import java.net.HttpURLConnection;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -1267,7 +1286,201 @@ public class Resultado extends javax.swing.JFrame {
     }//GEN-LAST:event_ButExcluirActionPerformed
 
     private void ButGerarPDFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButGerarPDFActionPerformed
-        JOptionPane.showMessageDialog(null, "PDF Gerado agora procura ai bobo");
+        String url = "http://localhost:3030/";
+        int idc = 0;
+        int puts1 = 0;
+        int puts2 = 0;
+        List<Partidas> partidasList = new ArrayList<>();
+        TimeResponsavel[] timeResponsavelArray = new TimeResponsavel[8];
+        String nomeC = (String)ComboCamp3.getSelectedItem();
+        
+        conectar.conectaBanco();
+        try{
+            conectar.executarSQL(
+                "SELECT "
+                +"id"
+                +" FROM "
+                +"campeonato"
+                +" WHERE "
+                +" nome = '"+ nomeC +"'"
+                +";"
+            );
+            while(conectar.getResultSet().next()){
+                idc = conectar.getResultSet().getInt(1);
+            }
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null, "Erro ao buscar!");
+        }finally{
+            conectar.fechaBanco();
+        }
+        
+        conectar.conectaBanco();
+            try{
+            conectar.executarSQL(
+                "SELECT "
+                +"times.nome,"
+                +"times.tecnico"
+                +" FROM "
+                +"camp_time "
+                +"left join campeonato on camp_time.id_camp = campeonato.id "
+                +"left join times on camp_time.id_time = times.id"
+                +" WHERE "
+                +" id_camp = '"+ idc +"';"
+            );
+            while(conectar.getResultSet().next()){
+                timeResponsavelArray[puts1]= new TimeResponsavel(conectar.getResultSet().getString(1), conectar.getResultSet().getString(2));
+                puts1 = puts1+1;
+            }
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null, "Erro ao buscar!");
+        }finally{
+            conectar.fechaBanco();
+        }
+        
+            conectar.conectaBanco();
+            try{
+            conectar.executarSQL(
+                "SELECT "
+                +"a.nome,"
+                +"partida.golsT1,"
+                +"b.nome,"
+                +"partida.golsT2"
+                +" FROM "
+                +"partida "
+                +"left join campeonato on partida.id_camp = campeonato.id "
+                +"left join times a on partida.id_time1 = a.id "
+                +"left join times b on partida.id_time2 = b.id"
+                +" WHERE "
+                +" id_camp = '"+ idc +"';"
+            );
+            while(conectar.getResultSet().next()){
+                Partidas partida1 = new Partidas(new TimeGols[] {
+                new TimeGols(conectar.getResultSet().getString(1), conectar.getResultSet().getString(2)),
+                new TimeGols(conectar.getResultSet().getString(3), conectar.getResultSet().getString(4))
+            });
+            partidasList.add(partida1);
+            }
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null, "Erro ao buscar!");
+        }finally{
+            conectar.fechaBanco();
+        }
+            
+        try {
+            // Cria um objeto para representar os dados do JSON
+            ClassesPDF.Campeonato campeonato = new ClassesPDF.Campeonato();
+            campeonato.setCampeonatoNome(nomeC);
+            campeonato.setTimes(timeResponsavelArray);
+            campeonato.setPartidas(partidasList.toArray(new Partidas[partidasList.size()]));
+
+            // Converte o objeto para JSON
+            ObjectMapper objectMapper = new ObjectMapper();
+            String json = objectMapper.writeValueAsString(campeonato);
+
+            // Cria a conexão HTTP
+            URL obj = new URL(url);
+            HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+            con.setRequestMethod("POST");
+            con.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
+            con.setDoOutput(true);
+
+            // Envia o JSON no corpo da requisição
+            try (OutputStream os = con.getOutputStream()) {
+                byte[] input = json.getBytes("utf-8");
+                os.write(input, 0, input.length);
+            }
+
+            // Obtém a resposta da requisição
+            int responseCode = con.getResponseCode();
+
+            System.out.println("Código de resposta: " + responseCode);
+            String jsonResponse = "";
+            try (InputStream inputStream = con.getInputStream();
+                 BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
+                String line;
+                StringBuilder response = new StringBuilder();
+                while ((line = reader.readLine()) != null) {
+                    response.append(line);
+                }
+            jsonResponse = response.toString();
+            }
+
+            // Imprime a resposta JSON
+            System.out.println("Resposta JSON: " + jsonResponse);
+            
+            // Analisa o JSON utilizando a biblioteca Jackson
+            ObjectMapper finalMapper = new ObjectMapper();
+            JsonNode jsonNode = finalMapper.readTree(jsonResponse);
+            
+            // Verifica se a propriedade "pdfURL" está presente no JSON
+            if (jsonNode.has("pdfURL")) {
+                String pdfURL = jsonNode.get("pdfURL").asText();
+                System.out.println("URL do PDF: " + pdfURL);
+                Object[] options = { "Baixar PDF", "Abrir Link" };
+
+        // Mostrar o JOptionPane
+            int choice = JOptionPane.showOptionDialog(null, "Escolha uma opção", "Opções",
+                JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+
+        // Verificar a opção selecionada
+            if (choice == 0) {
+            // Opção "Baixar PDF" selecionada
+            // Coloque aqui o código para baixar o arquivo PDF
+                System.out.println("Baixando o arquivo PDF...");
+                String saveDirectory = "C:/Users/Pichau/Downloads"; // Substitua pelo diretório onde você deseja salvar o arquivo
+                String fileName = "RegistroCamepeonato"+(String)ComboCamp3.getSelectedItem()+".pdf"; // Substitua pelo nome desejado para o arquivo
+
+        try {
+            // Abre a conexão com o link do arquivo
+            URL ur = new URL(pdfURL);
+            InputStream inputStream = ur.openStream();
+
+            // Cria um InputStream bufferizado para leitura
+            BufferedInputStream bufferedInputStream = new BufferedInputStream(inputStream);
+
+            // Define o caminho completo do arquivo
+            Path saveFilePath = Path.of(saveDirectory, fileName);
+
+            // Salva o arquivo localmente usando o NIO
+            Files.copy(bufferedInputStream, saveFilePath, StandardCopyOption.REPLACE_EXISTING);
+
+            // Fecha os streams abertos
+            bufferedInputStream.close();
+            inputStream.close();
+
+            System.out.println("Download concluído. O arquivo foi salvo em: " + saveFilePath);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+            } else if (choice == 1) {
+            // Opção "Abrir Link" selecionada
+            // Coloque aqui o código para abrir o link do PDF no navegador
+                System.out.println("Abrindo o link do PDF no navegador...");
+                try {
+            // Cria uma instância da classe Desktop
+            Desktop desktop = Desktop.getDesktop();
+
+            // Verifica se o suporte para abrir a URL está disponível
+            if (desktop.isSupported(Desktop.Action.BROWSE)) {
+                // Cria uma instância da classe URI com a URL
+                URI uri = new URI(pdfURL);
+
+                // Abre a URL no navegador padrão
+                desktop.browse(uri);
+            }
+        } catch (IOException | URISyntaxException e) {
+            e.printStackTrace();
+        }
+            } else {
+            // O JOptionPane foi fechado sem selecionar uma opção
+                System.out.println("Nenhuma opção selecionada.");
+            }
+                } else {
+                    System.out.println("A propriedade 'pdfURL' não está presente no JSON.");
+                }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_ButGerarPDFActionPerformed
 
     private void ButAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButAtualizarActionPerformed
