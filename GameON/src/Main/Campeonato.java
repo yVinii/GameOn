@@ -1,8 +1,15 @@
 package Main;
 import Classes.*;
+import ClassesPDF.Partidas;
+import ClassesPDF.TimeGols;
+import ClassesPDF.TimeResponsavel;
 import Conexões.MySQL;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import java.awt.Desktop;
 import java.awt.HeadlessException;
 import java.awt.Toolkit;
+import java.io.BufferedInputStream;
 import static java.lang.System.exit;
 import java.sql.SQLException;
 import javax.swing.JComboBox;
@@ -21,10 +28,17 @@ import javax.swing.table.DefaultTableModel;
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.net.HttpURLConnection;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
 public class Campeonato extends javax.swing.JFrame{
     MySQL conectar = new MySQL();
     MySQL conT = new MySQL();
@@ -998,43 +1012,197 @@ public class Campeonato extends javax.swing.JFrame{
 
     private void ButGerarPDFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButGerarPDFActionPerformed
         String url = "http://localhost:3030/";
-        String jsonInputString = "{\"campeonatoNome\":\"Campeonato Sorojaca\",\"times\":[{\"nome\":\"Criciúma\",\"responsavel\":\"Amaury Jr.\"},{\"nome\":\"Flamengo\",\"responsavel\":\"Jefferson\"},{\"nome\":\"Corinthians\",\"responsavel\":\"Joaquim Barbosa\"},{\"nome\":\"Grêmio\",\"responsavel\":\"Zacarias\"},{\"nome\":\"Seleção de Marrocos\",\"responsavel\":\"Zintz\"},{\"nome\":\"Palmeiras\",\"responsavel\":\"Michael Mayers\"},{\"nome\":\"Barcelona\",\"responsavel\":\"Vinicius\"}],\"partidas\":[{\"times\":[{\"nome\":\"Criciúma\",\"gols\":\"2\"},{\"nome\":\"Flamengo\",\"gols\":\"2\"}]},{\"times\":[{\"nome\":\"Corinthians\",\"gols\":\"0\"},{\"nome\":\"Tolima\",\"gols\":\"2\"}]},{\"times\":[{\"nome\":\"Grêmio\",\"gols\":\"3\"},{\"nome\":\"Seleção de Marrocos\",\"gols\":\"1\"}]},{\"times\":[{\"nome\":\"Palmeiras\",\"gols\":\"4\"},{\"nome\":\"Barcelona\",\"gols\":\"0\"}]}]}";
+        int idc = 0;
+        int puts1 = 0;
+        int puts2 = 0;
+        List<Partidas> partidasList = new ArrayList<>();
+        TimeResponsavel[] timeResponsavelArray = new TimeResponsavel[8];
+        String nomeC = (String)ComboCamp4.getSelectedItem();
         
+        conectar.conectaBanco();
+        try{
+            conectar.executarSQL(
+                "SELECT "
+                +"id"
+                +" FROM "
+                +"campeonato"
+                +" WHERE "
+                +" nome = '"+ nomeC +"'"
+                +";"
+            );
+            while(conectar.getResultSet().next()){
+                idc = conectar.getResultSet().getInt(1);
+            }
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null, "Erro ao buscar!");
+        }finally{
+            conectar.fechaBanco();
+        }
+        
+        conectar.conectaBanco();
+            try{
+            conectar.executarSQL(
+                "SELECT "
+                +"times.nome,"
+                +"times.tecnico"
+                +" FROM "
+                +"camp_time "
+                +"left join campeonato on camp_time.id_camp = campeonato.id "
+                +"left join times on camp_time.id_time = times.id"
+                +" WHERE "
+                +" id_camp = '"+ idc +"';"
+            );
+            while(conectar.getResultSet().next()){
+                timeResponsavelArray[puts1]= new TimeResponsavel(conectar.getResultSet().getString(1), conectar.getResultSet().getString(2));
+                puts1 = puts1+1;
+            }
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null, "Erro ao buscar!");
+        }finally{
+            conectar.fechaBanco();
+        }
+        
+            conectar.conectaBanco();
+            try{
+            conectar.executarSQL(
+                "SELECT "
+                +"a.nome,"
+                +"partida.golsT1,"
+                +"b.nome,"
+                +"partida.golsT2"
+                +" FROM "
+                +"partida "
+                +"left join campeonato on partida.id_camp = campeonato.id "
+                +"left join times a on partida.id_time1 = a.id "
+                +"left join times b on partida.id_time2 = b.id"
+                +" WHERE "
+                +" id_camp = '"+ idc +"';"
+            );
+            while(conectar.getResultSet().next()){
+                Partidas partida1 = new Partidas(new TimeGols[] {
+                new TimeGols(conectar.getResultSet().getString(1), conectar.getResultSet().getString(2)),
+                new TimeGols(conectar.getResultSet().getString(3), conectar.getResultSet().getString(4))
+            });
+            partidasList.add(partida1);
+            }
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null, "Erro ao buscar!");
+        }finally{
+            conectar.fechaBanco();
+        }
+            
         try {
+            // Cria um objeto para representar os dados do JSON
+            ClassesPDF.Campeonato campeonato = new ClassesPDF.Campeonato();
+            campeonato.setCampeonatoNome(nomeC);
+            campeonato.setTimes(timeResponsavelArray);
+            campeonato.setPartidas(partidasList.toArray(new Partidas[partidasList.size()]));
+
+            // Converte o objeto para JSON
+            ObjectMapper objectMapper = new ObjectMapper();
+            String json = objectMapper.writeValueAsString(campeonato);
+
             // Cria a conexão HTTP
             URL obj = new URL(url);
             HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-            
-            // Define o método da requisição como POST
             con.setRequestMethod("POST");
-
-            // Define o cabeçalho da requisição
             con.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
-
-            // Habilita a escrita do corpo da requisição
             con.setDoOutput(true);
 
-            // Escreve o corpo da requisição
-            DataOutputStream wr = new DataOutputStream(con.getOutputStream());
-            wr.write(jsonInputString.getBytes(StandardCharsets.UTF_8));
-            wr.flush();
-            wr.close();
+            // Envia o JSON no corpo da requisição
+            try (OutputStream os = con.getOutputStream()) {
+                byte[] input = json.getBytes("utf-8");
+                os.write(input, 0, input.length);
+            }
 
             // Obtém a resposta da requisição
             int responseCode = con.getResponseCode();
-            
-            // Lê a resposta da requisição
-            BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
-            String inputLine;
-            StringBuffer response = new StringBuffer();
-            while ((inputLine = in.readLine()) != null) {
-                response.append(inputLine);
-            }
-            in.close();
-            
-            // Imprime a resposta da requisição
+
             System.out.println("Código de resposta: " + responseCode);
-            System.out.println("Resposta: " + response.toString());
+            String jsonResponse = "";
+            try (InputStream inputStream = con.getInputStream();
+                 BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
+                String line;
+                StringBuilder response = new StringBuilder();
+                while ((line = reader.readLine()) != null) {
+                    response.append(line);
+                }
+            jsonResponse = response.toString();
+            }
+
+            // Imprime a resposta JSON
+            System.out.println("Resposta JSON: " + jsonResponse);
+            
+            // Analisa o JSON utilizando a biblioteca Jackson
+            ObjectMapper finalMapper = new ObjectMapper();
+            JsonNode jsonNode = finalMapper.readTree(jsonResponse);
+            
+            // Verifica se a propriedade "pdfURL" está presente no JSON
+            if (jsonNode.has("pdfURL")) {
+                String pdfURL = jsonNode.get("pdfURL").asText();
+                System.out.println("URL do PDF: " + pdfURL);
+                Object[] options = { "Baixar PDF", "Abrir Link" };
+
+        // Mostrar o JOptionPane
+            int choice = JOptionPane.showOptionDialog(null, "Escolha uma opção", "Opções",
+                JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+
+        // Verificar a opção selecionada
+            if (choice == 0) {
+            // Opção "Baixar PDF" selecionada
+            // Coloque aqui o código para baixar o arquivo PDF
+                System.out.println("Baixando o arquivo PDF...");
+                String saveDirectory = "C:/Users/Pichau/Downloads"; // Substitua pelo diretório onde você deseja salvar o arquivo
+                String fileName = "RegistroCamepeonato"+(String)ComboCamp4.getSelectedItem()+".pdf"; // Substitua pelo nome desejado para o arquivo
+
+        try {
+            // Abre a conexão com o link do arquivo
+            URL ur = new URL(pdfURL);
+            InputStream inputStream = ur.openStream();
+
+            // Cria um InputStream bufferizado para leitura
+            BufferedInputStream bufferedInputStream = new BufferedInputStream(inputStream);
+
+            // Define o caminho completo do arquivo
+            Path saveFilePath = Path.of(saveDirectory, fileName);
+
+            // Salva o arquivo localmente usando o NIO
+            Files.copy(bufferedInputStream, saveFilePath, StandardCopyOption.REPLACE_EXISTING);
+
+            // Fecha os streams abertos
+            bufferedInputStream.close();
+            inputStream.close();
+
+            System.out.println("Download concluído. O arquivo foi salvo em: " + saveFilePath);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+            } else if (choice == 1) {
+            // Opção "Abrir Link" selecionada
+            // Coloque aqui o código para abrir o link do PDF no navegador
+                System.out.println("Abrindo o link do PDF no navegador...");
+                try {
+            // Cria uma instância da classe Desktop
+            Desktop desktop = Desktop.getDesktop();
+
+            // Verifica se o suporte para abrir a URL está disponível
+            if (desktop.isSupported(Desktop.Action.BROWSE)) {
+                // Cria uma instância da classe URI com a URL
+                URI uri = new URI(pdfURL);
+
+                // Abre a URL no navegador padrão
+                desktop.browse(uri);
+            }
+        } catch (IOException | URISyntaxException e) {
+            e.printStackTrace();
+        }
+            } else {
+            // O JOptionPane foi fechado sem selecionar uma opção
+                System.out.println("Nenhuma opção selecionada.");
+            }
+                } else {
+                    System.out.println("A propriedade 'pdfURL' não está presente no JSON.");
+                }
         } catch (IOException e) {
             e.printStackTrace();
         }

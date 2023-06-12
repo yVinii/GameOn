@@ -8,8 +8,9 @@ import Classes.*;
 
 public class Login extends javax.swing.JFrame {
     MySQL conectar = new MySQL();
+    MySQL conT = new MySQL();
     Funcionario p1 = new Funcionario();
-    
+    Funcionario p2 = new Funcionario();
     public Login() {
         initComponents(); 
         Visivel.setVisible(false);
@@ -232,6 +233,38 @@ public class Login extends javax.swing.JFrame {
                 + ";"
             );
         while(conectar.getResultSet().next()){
+            conT.conectaBanco();
+            p2 = new Funcionario();
+        //String senha = TxtSenha.getText();
+        try {this.conT.executarSQL(
+                   "SELECT "
+                    + "usuario,"
+                    + "senha"
+                 + " FROM"
+                     + " mesario"
+                 + " WHERE"
+                     + " usuario = '" + usuario + "'"+ " AND"
+                     + " senha = '" + senha + "'"
+                
+                + ";"
+            );
+        while(conT.getResultSet().next()){
+            p2.setUsuario(conT.getResultSet().getString(1));
+            p2.setSenha(conT.getResultSet().getString(2));
+        }
+        if(p2.getUsuario().equals("")){
+            JOptionPane.showMessageDialog(null, "Houve algum problema ao consultar cadastro");
+        }else{
+            JOptionPane.showMessageDialog(null, "Bem Vindo Mesário "+ usuario);
+           
+            InicioMesario minhatela = new InicioMesario(usuario);
+            minhatela.setVisible(true);
+            dispose();
+        }
+        } catch (Exception e) { 
+            
+        } finally {  conT.fechaBanco();
+        }
             p1.setUsuario(conectar.getResultSet().getString(1));
             p1.setSenha(conectar.getResultSet().getString(2));
         }
@@ -245,41 +278,12 @@ public class Login extends javax.swing.JFrame {
             dispose();
         }
         } catch (Exception e) {
-            
+            JOptionPane.showMessageDialog(null, "Usuário ou senha estão inválidos");
+            TxtUsuario.setText("");
+            TxtSenha.setText("");
         } finally {  conectar.fechaBanco();
         }
-            conectar.conectaBanco();
-            p1 = new Funcionario();
-        //String senha = TxtSenha.getText();
-        try {this.conectar.executarSQL(
-                   "SELECT "
-                    + "usuario,"
-                    + "senha"
-                 + " FROM"
-                     + " mesario"
-                 + " WHERE"
-                     + " usuario = '" + usuario + "'"+ " AND"
-                     + " senha = '" + senha + "'"
-                
-                + ";"
-            );
-        while(conectar.getResultSet().next()){
-            p1.setUsuario(conectar.getResultSet().getString(1));
-            p1.setSenha(conectar.getResultSet().getString(2));
-        }
-        if(p1.getUsuario().equals("")){
-            JOptionPane.showMessageDialog(null, "Houve algum problema ao consultar cadastro");
-        }else{
-            JOptionPane.showMessageDialog(null, "Bem Vindo Mesário "+ usuario);
-           
-            InicioMesario minhatela = new InicioMesario(usuario);
-            minhatela.setVisible(true);
-            dispose();
-        }
-        } catch (Exception e) { 
             
-        } finally {  conectar.fechaBanco();
-        }
     }//GEN-LAST:event_ButEntrarMouseClicked
     public static void main(String args[]) {
         try {

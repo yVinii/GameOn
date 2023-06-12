@@ -1,4 +1,5 @@
-[Fri Jun 09 19:54:22.580483 2023] [mpm_winnt:notice] [pid 14832:tid 656] AH00455: Apache/2.4.6 (Win32) PHP/5.4.17 configured -- resuming normal operations
-[Fri Jun 09 19:54:22.580483 2023] [mpm_winnt:notice] [pid 14832:tid 656] AH00456: Apache Lounge VC10 Server built: Jul 16 2013 11:15:41
-[Fri Jun 09 19:54:22.580483 2023] [core:notice] [pid 14832:tid 656] AH00094: Command line: 'C:\\Users\\Pichau\\Documents\\NetBeansProjects\\GameOn Oficial 3\\GameOn\\USBWebserver v8.6/apache2/bin/httpd_usbwv8.exe -d C:/Users/Pichau/Documents/NetBeansProjects/GameOn Oficial 3/GameOn/USBWebserver v8.6/apache2'
-[Fri Jun 09 19:54:22.587428 2023] [mpm_winnt:notice] [pid 14832:tid 656] AH00418: Parent: Created child process 17880
+[Sun Jun 11 19:56:42.388876 2023] [mpm_winnt:notice] [pid 16300:tid 928] AH00455: Apache/2.4.6 (Win32) PHP/5.4.17 configured -- resuming normal operations
+[Sun Jun 11 19:56:42.389873 2023] [mpm_winnt:notice] [pid 16300:tid 928] AH00456: Apache Lounge VC10 Server built: Jul 16 2013 11:15:41
+[Sun Jun 11 19:56:42.389873 2023] [core:notice] [pid 16300:tid 928] AH00094: Command line: 'C:\\Users\\Pichau\\Documents\\NetBeansProjects\\GameOn Oficial 3\\GameOn\\USBWebserver v8.6/apache2/bin/httpd_usbwv8.exe -d C:/Users/Pichau/Documents/NetBeansProjects/GameOn Oficial 3/GameOn/USBWebserver v8.6/apache2'
+[Sun Jun 11 19:56:42.395893 2023] [mpm_winnt:notice] [pid 16300:tid 928] AH00418: Parent: Created child process 14228
+[Sun Jun 11 19:56:43.064869 2023] [mpm_winnt:notice] [pid 14228:tid 688] AH00354: Child: Starting 64 worker threads.
