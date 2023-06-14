@@ -233,13 +233,26 @@ public class Login extends javax.swing.JFrame {
                 + ";"
             );
         while(conectar.getResultSet().next()){
+            p1.setUsuario(conectar.getResultSet().getString(1));
+            p1.setSenha(conectar.getResultSet().getString(2));
+        }
+        if(p1.getUsuario().equals("")){
+            JOptionPane.showMessageDialog(null, "Houve algum problema ao consultar cadastro");
+        }else{
+            JOptionPane.showMessageDialog(null, "Bem Vindo Admin "+ usuario);
+            InicioAdm minhaTela = new InicioAdm(usuario);
+            
+            minhaTela.setVisible(true);
+            dispose();
+        }
+        } catch (Exception e) {
+            
             conT.conectaBanco();
             p2 = new Funcionario();
-        //String senha = TxtSenha.getText();
-        try {this.conT.executarSQL(
-                   "SELECT "
-                    + "usuario,"
-                    + "senha"
+            try {this.conT.executarSQL(
+                    "SELECT "
+                        + "usuario,"
+                        + "senha"
                  + " FROM"
                      + " mesario"
                  + " WHERE"
@@ -261,26 +274,13 @@ public class Login extends javax.swing.JFrame {
             minhatela.setVisible(true);
             dispose();
         }
-        } catch (Exception e) { 
-            
-        } finally {  conT.fechaBanco();
-        }
-            p1.setUsuario(conectar.getResultSet().getString(1));
-            p1.setSenha(conectar.getResultSet().getString(2));
-        }
-        if(p1.getUsuario().equals("")){
-            JOptionPane.showMessageDialog(null, "Houve algum problema ao consultar cadastro");
-        }else{
-            JOptionPane.showMessageDialog(null, "Bem Vindo Admin "+ usuario);
-            InicioAdm minhaTela = new InicioAdm(usuario);
-            
-            minhaTela.setVisible(true);
-            dispose();
-        }
-        } catch (Exception e) {
+        } catch (Exception e1) { 
             JOptionPane.showMessageDialog(null, "Usuário ou senha estão inválidos");
             TxtUsuario.setText("");
             TxtSenha.setText("");
+        } finally {  conT.fechaBanco();
+        }
+            
         } finally {  conectar.fechaBanco();
         }
             
